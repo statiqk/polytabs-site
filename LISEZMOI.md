@@ -71,6 +71,15 @@ Le contenu des sections *Fonctionnalités*, *Outils*, *Prise en main* et *Questi
 ## Tester le site chez toi
 Dans ce dossier : `python -m http.server 8000`, puis ouvre http://localhost:8000. (Ouvrir `index.html` directement par double-clic marche aussi pour le contenu, mais pas pour la lecture de GitHub dans certains navigateurs.)
 
+## Les outils intégrés (section « Outils ») : mise à jour automatique
+La section « Outils » n'est pas écrite à la main : sa liste (noms, raccourcis, icônes, choix du menu « Ranger ») est **relue dans le code de l'application**, puis la page est régénérée. Seule la rédaction d'un nouvel outil reste à écrire (un fichier de textes).
+Les scripts sont dans l'archive `polytabs-site-source.zip` (il faut Python 3) :
+
+```
+python tools/update.py CHEMIN/vers/panneaux-app/index.html
+```
+La commande relit l'application, régénère `polytabs-site/index.html` et vérifie que le site et l'application sont d'accord. Si l'application a gagné, perdu ou modifié un outil, elle le signale. `index.html` est un fichier **généré** : ne le modifie pas à la main, il serait écrasé (le détail est dans `LISEZMOI-source.md`).
+
 ## La vidéo de démonstration
 Le dossier `media/` contient une démonstration de 45 secondes, filmée dans la vraie application, sans voix ni musique, avec des sous-titres incrustés :
 - `polytabs-demo-16x9.mp4` et `.webm` (1920 × 1080), affichée sur ordinateur et tablette ;

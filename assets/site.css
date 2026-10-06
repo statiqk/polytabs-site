@@ -162,7 +162,12 @@ h2 { font-family: var(--f-display); font-weight: 700; font-size: clamp(2rem, 4.2
 .ic--amber { background: var(--amber-bg); color: var(--amber); }
 h3 { font-family: var(--f-display); font-size: 1.3rem; line-height: 1.2; letter-spacing: -0.01em; font-weight: 700; color: var(--head); }
 .card--lg h3 { font-size: 1.45rem; }
-.card--tool h3 { font-size: 1.25rem; letter-spacing: 0; }
+.card--tool h3, .card--tool h4 { font-family: var(--f-display); font-size: 1.25rem; line-height: 1.2; font-weight: 700; letter-spacing: 0; color: var(--head); margin: 0; }
+.tools-h { margin: 6px 0 -22px; font-family: var(--f-display); font-size: 1.2rem; font-weight: 700; letter-spacing: -0.01em; color: var(--head); }
+.tools--panel { grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); }
+.tags--actions { margin-top: 2px; }
+.tags--actions .tag { display: inline-flex; align-items: center; gap: 6px; }
+.tag kbd { font-size: .7rem; padding: 1px 6px; }
 .card p { color: var(--dim); line-height: 1.65; text-wrap: pretty; }
 .stack { position: relative; height: 120px; margin-top: 6px; }
 .stack span { position: absolute; width: 52%; height: 78px; border-radius: 10px; }
@@ -174,7 +179,7 @@ h3 { font-family: var(--f-display); font-size: 1.3rem; line-height: 1.2; letter-
 .tag--ext { font-family: var(--f-mono); padding: 5px 10px; border-radius: 8px; border: 0; background: var(--violet-bg); color: #d9c4fc; font-size: .8rem; }
 .wgts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr)); gap: 8px; margin: 4px 0 0; padding: 0; list-style: none; }
 .wgts li { display: flex; align-items: center; gap: 9px; padding: 9px 12px; border-radius: 10px; background: var(--panel-2); border: 1px solid var(--line); font-size: .9rem; color: #dfe3ea; }
-.tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); gap: 20px; }
+.tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px; }
 .tools .card p { line-height: 1.6; }
 .keys { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
 kbd { font-family: var(--f-mono); font-size: .78rem; padding: 3px 9px; border-radius: 7px; border: 1px solid var(--line-2); border-bottom-width: 2px; background: var(--panel-2); color: var(--text); }
