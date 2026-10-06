@@ -29,6 +29,19 @@ La réponse est gardée une heure dans le navigateur du visiteur (GitHub limite 
 
 **Pour désactiver** : dans `assets/site.js`, mets `const AUTO_UPDATE = false;`. Aucune requête n'est alors envoyée.
 
+### Quelle publication le site retient-il ?
+Le site lit la liste des 100 dernières publications (une seule requête) et retient celle dont le **numéro de version est le plus élevé** (brouillons et préversions ignorés). Il ne se fie donc pas à l'ordre renvoyé par GitHub.
+
+Le numéro est lu à la fin de l'étiquette, ou à défaut dans le titre de la publication. Ces écritures sont toutes comprises : `v1.0.20`, `v.1.0.20` (point en trop), `V1.0.20`, `1.0.20`, ou un titre « PolyTabs 1.0.20 ». Une étiquette sans numéro (« nightly ») est ignorée.
+Pour la lisibilité des liens, je recommande l'écriture `v1.0.20`.
+
+### Si le site n'affiche pas la dernière version
+1. **La publication est-elle publiée ?** Un brouillon (draft) ou une préversion (pre-release) n'est jamais retenu.
+2. **Contient-elle l'installeur ?** Un fichier nommé `PolyTabs-Setup-….exe` doit être joint. Sans lui, la version s'affiche mais le bouton garde le lien vers la page des versions.
+3. **Délai.** Chaque visiteur garde la réponse de GitHub pendant une heure. Pour forcer la mise à jour dans ton navigateur : supprime la clé `polytabs-site:release:v1` du stockage local (outils de développement → Application), ou ouvre le site en navigation privée.
+4. **Limite de GitHub.** GitHub accepte 60 requêtes par heure et par adresse IP. Derrière un même réseau (entreprise, école), la limite peut être atteinte : le site affiche alors son texte écrit dans `index.html`. Pense à retoucher ce texte de secours de temps en temps (version et cartes de la section *Nouveautés*).
+5. **Les notes.** La version et le lien se mettent à jour même si les notes n'ont pas le bon format ; seules les cartes restent celles de secours (voir plus bas).
+
 ### Écrire les notes de version pour que le site les affiche
 La description de la publication GitHub doit suivre cette forme (c'est celle des fichiers `patch-notes-….md`) :
 
@@ -57,6 +70,16 @@ Le contenu des sections *Fonctionnalités*, *Outils*, *Prise en main* et *Questi
 
 ## Tester le site chez toi
 Dans ce dossier : `python -m http.server 8000`, puis ouvre http://localhost:8000. (Ouvrir `index.html` directement par double-clic marche aussi pour le contenu, mais pas pour la lecture de GitHub dans certains navigateurs.)
+
+## Accessibilité, adaptation aux écrans et impression
+Le site a été vérifié de 320 px de large (petit téléphone) à 2560 px, en portrait et en paysage :
+- aucun défilement horizontal, y compris avec un texte agrandi à 200 % dans le navigateur (la taille de texte choisie par le visiteur est respectée) ;
+- zones de clic d'au moins 44 px, parcours complet au clavier avec cadre de focus visible, lien « Aller au contenu » ;
+- outil d'accessibilité axe-core (WCAG 2.0, 2.1 et 2.2, niveaux A et AA) : aucun problème ;
+- mode contraste élevé de Windows, réduction des animations, et impression (fond blanc, sans la maquette ni les boutons) pris en charge ;
+- aucun décalage de mise en page au chargement.
+
+Un mot trop long pour l'écran est coupé plutôt que de faire défiler la page. Si tu ajoutes du contenu, garde les liens et les boutons à 44 px de haut au minimum.
 
 ## Sécurité et confidentialité
 - Une politique de sécurité (`Content-Security-Policy`, dans `index.html`) n'autorise que les fichiers du site et les requêtes vers `api.github.com`.

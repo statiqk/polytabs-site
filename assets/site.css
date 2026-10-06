@@ -19,7 +19,10 @@
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--f-body); font-size: 16px; line-height: 1.6; overflow-x: clip; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--f-body); font-size: 1rem; line-height: 1.6; overflow-x: hidden; overflow-x: clip; }
+/* Un mot plus large que l'écran (texte très agrandi, petit écran) est coupé plutôt que de faire défiler la page ; sans ce cas, rien ne change. */
+body { overflow-wrap: break-word; }
+h1, h2, h3, kbd { overflow-wrap: anywhere; }
 img, svg { display: block; max-width: 100%; }
 a { color: var(--accent-soft); }
 a:hover { color: #a9cdff; }
@@ -32,7 +35,7 @@ p, h1, h2, h3 { margin: 0; }
 
 /* ---------- barre du haut ---------- */
 .site-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 32px; padding-top: 18px; padding-bottom: 18px; }
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--head); }
+.brand { min-height: 44px; display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--head); }
 .brand:hover { color: var(--head); }
 .brand-name { font-family: var(--f-display); font-weight: 700; font-size: 1.35rem; letter-spacing: -0.02em; }
 .nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0 8px; }
@@ -43,6 +46,8 @@ p, h1, h2, h3 { margin: 0; }
 .btn:active { transform: translateY(1px); }
 .btn--sm { margin-left: 8px; min-height: 44px; padding: 0 20px; border-radius: 12px; font-size: .95rem; }
 .btn--lg { min-height: 56px; padding: 0 28px; font-size: 1.05rem; }
+.btn { max-width: 100%; }
+.btn span { min-width: 0; overflow-wrap: anywhere; }      /* un libellé long (grand texte, petit écran) passe à la ligne au lieu de déborder */
 .btn svg { flex: none; }
 .link-arrow { min-height: 44px; display: inline-flex; align-items: center; gap: 8px; font-weight: 500; text-decoration: none; }
 
@@ -100,9 +105,8 @@ html:not(.js) .mp-head, html:not(.js) .mock-tab { cursor: default; }
 .clock-time { font-family: var(--f-display); font-weight: 700; font-size: 44px; line-height: 1; letter-spacing: -0.03em; color: var(--head); }
 .clock-date { font-size: 12px; color: var(--mute); }
 .clock-alarm { margin-top: 4px; padding: 3px 10px; border-radius: 999px; background: var(--amber-bg); color: var(--amber); font-size: 11px; font-weight: 600; }
-.todo { padding: 12px 14px; font-size: 12.5px; }
+.todo { margin: 0; padding: 12px 14px; display: flex; flex-direction: column; gap: 9px; font-size: 12.5px; }
 .todo li { list-style: none; display: flex; align-items: center; gap: 9px; color: var(--text); }
-.todo { margin: 0; display: flex; flex-direction: column; gap: 9px; }
 .todo .box { width: 15px; height: 15px; border-radius: 4px; border: 1.5px solid var(--line-2); flex: none; }
 .todo .done { color: var(--mute); text-decoration: line-through; }
 .todo .done .box { background: var(--accent); border-color: var(--accent); }
@@ -204,15 +208,19 @@ details[open] summary svg { transform: rotate(45deg); }
 .cta p { max-width: 36em; font-size: 1.1rem; color: var(--dim); text-wrap: pretty; }
 
 /* ---------- pied de page ---------- */
-.site-footer { padding-top: 24px; padding-bottom: 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; color: var(--mute); font-size: .9rem; }
+.site-footer { padding-top: 24px; padding-bottom: 48px; color: var(--mute); font-size: .9rem; }
+.foot-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; }
 .site-footer .brand-line { display: flex; align-items: center; gap: 10px; }
 .site-footer nav { display: flex; flex-wrap: wrap; gap: 0 8px; }
 .site-footer nav a { padding: 12px; text-decoration: none; }
-.privacy { padding-bottom: 56px; font-size: .82rem; color: var(--mute); max-width: 48rem; }
+.privacy { margin-top: 20px; font-size: .82rem; color: var(--mute); max-width: 48rem; }
 
 @keyframes rise { from { opacity: 0; transform: translateY(16px); } }
 .rise { animation: rise .8s cubic-bezier(.2, .7, .2, 1) backwards; }
 .rise-2 { animation-delay: .12s; }
+@media (max-width: 420px) {
+  .mock-dot:not(.mock-dot--add) { display: none; }
+}
 @media (max-width: 640px) {
   .section { padding-top: 64px; gap: 32px; }
   .hero { gap: 40px; padding-top: 32px; }
@@ -223,4 +231,24 @@ details[open] summary svg { transform: rotate(45deg); }
   .rise { animation: none; }
   html { scroll-behavior: auto; }
   .btn, summary svg { transition: none; }
+}
+
+/* Mode contraste élevé de Windows : les couleurs sont remplacées par celles du système ; on garde de quoi distinguer les états. */
+@media (forced-colors: active) {
+  .btn { border: 1px solid ButtonText; }
+  .chip i { forced-color-adjust: none; }
+  .mock-tab[aria-pressed="true"] span { outline: 2px solid Highlight; }
+  .mp.is-front .mp-box { outline: 2px solid Highlight; }
+  .ic, .mp-ic, .mp-badge, .tag, .news-card, .card { border: 1px solid CanvasText; }
+}
+
+/* Impression : fond blanc, sans la maquette ni les boutons. */
+@media print {
+  :root { --bg: #fff; --panel: #fff; --panel-2: #f3f4f6; --panel-3: #fff; --line: #c9ccd3; --line-2: #a9adb6; --text: #1b1f27; --head: #000; --dim: #343a45; --mute: #454b56; --accent: #0b5cad; --accent-soft: #0b5cad; --accent-deep: #dbe9fb; --amber: #7a5400; --amber-bg: #fdf0cf; --violet: #4b2a91; --violet-bg: #ece4fb; }
+  body { background: #fff; color: var(--text); }
+  .mock-fig, .skip, .btn, .nav, .stack, .rise { display: none; }
+  .rise { animation: none; }
+  .section { padding-top: 32px; }
+  .card, .news-card, .step, details { break-inside: avoid; }
+  a { color: var(--accent); }
 }

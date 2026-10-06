@@ -51,7 +51,8 @@
   /* ---------------------------------------------------------------- 2. Version automatique (GitHub) */
   if (!AUTO_UPDATE) { root.dataset.release = 'static'; return; }
 
-  const API = 'https://api.github.com/repos/' + REPO + '/releases/latest';
+  // Toutes les publications récentes (une seule requête) : la page choisit elle-même le numéro de version le plus élevé, sans dépendre de l'ordre renvoyé par GitHub.
+  const API = 'https://api.github.com/repos/' + REPO + '/releases?per_page=100';
   const HTML_PREFIX = 'https://github.com/' + REPO + '/';
   const DL_PREFIX = HTML_PREFIX + 'releases/download/';
   const CACHE_KEY = 'polytabs-site:release:v1';
@@ -61,6 +62,21 @@
   const SHOWN_SECTIONS = /nouveaut|correction|am[ée]lioration|fonctionnalit/i;   // « Technique », « À retenir », « Connu » ne sont pas affichés
 
   const VERSION_RE = /^\d+(?:\.\d+){1,3}$/;
+  // Le numéro est lu à la fin de l'étiquette ou, à défaut, du titre de la publication : « v1.0.19 », « v.1.0.19 » (point en trop), « V1.0.19 », « 1.0.19 »
+  // ou « PolyTabs 1.0.19 » donnent tous 1.0.19. Seuls des chiffres et des points sont gardés ; une étiquette sans numéro (« nightly ») est ignorée.
+  const VERSION_AT_END = /(\d+(?:\.\d+){1,3})\s*$/;
+  function versionOf(j) {
+    for (const t of [j && j.tag_name, j && j.name]) {
+      const m = typeof t === 'string' ? VERSION_AT_END.exec(t.trim()) : null;
+      if (m) return m[1];
+    }
+    return null;
+  }
+  function compareVersions(a, b) {
+    const x = a.split('.').map(Number), y = b.split('.').map(Number);
+    for (let i = 0; i < Math.max(x.length, y.length); i++) { const d = (x[i] || 0) - (y[i] || 0); if (d) return d; }      // comparaison numérique : 1.0.10 > 1.0.9
+    return 0;
+  }
   const clean = (s) => String(s).replace(/[*_`#]/g, '').replace(/\s+/g, ' ').trim();
 
   // Texte d'une note (Markdown) → texte DOM sûr : seuls **gras**, `code` et le texte des liens sont gardés, jamais de HTML.
@@ -116,10 +132,10 @@
   // Ne garde que ce dont la page a besoin, et vérifie chaque valeur : une réponse inattendue est ignorée en bloc.
   function normalize(j) {
     if (!j || typeof j !== 'object' || j.draft || j.prerelease) return null;
-    const tag = typeof j.tag_name === 'string' ? j.tag_name.trim().replace(/^v/, '') : '';
-    if (!VERSION_RE.test(tag)) return null;
+    const tag = versionOf(j);
+    if (!tag || !VERSION_RE.test(tag)) return null;
     const assets = Array.isArray(j.assets) ? j.assets : [];
-    const exe = assets.find((a) => a && typeof a.name === 'string' && /^PolyTabs-Setup-[\w.\-]+\.exe$/i.test(a.name) &&
+    const exe = assets.find((a) => a && typeof a.name === 'string' && /^PolyTabs-Setup-[\w.-]+\.exe$/i.test(a.name) &&
       typeof a.browser_download_url === 'string' && a.browser_download_url.indexOf(DL_PREFIX) === 0);
     return {
       version: tag,
@@ -129,6 +145,20 @@
       date: typeof j.published_at === 'string' && !isNaN(Date.parse(j.published_at)) ? j.published_at : null,
       notes: parseNotes(typeof j.body === 'string' ? j.body.slice(0, 20000) : '')
     };
+  }
+
+  // Parmi les publications reçues (brouillons et préversions écartés), garde celle dont le numéro est le plus élevé ; à numéro égal, la plus récemment publiée.
+  function pickLatest(json) {
+    const list = Array.isArray(json) ? json : [json];
+    let best = null;
+    for (const j of list) {
+      if (!j || typeof j !== 'object' || j.draft || j.prerelease) continue;
+      const v = versionOf(j);
+      if (!v) continue;
+      const when = Date.parse(j.published_at) || 0;
+      if (!best || compareVersions(v, best.v) > 0 || (compareVersions(v, best.v) === 0 && when > best.when)) best = { j, v, when };
+    }
+    return best ? normalize(best.j) : null;
   }
 
   // Un contenu relu depuis le stockage local est revérifié de la même façon (il a pu être modifié).
@@ -191,7 +221,7 @@
       const res = await fetch(API, { headers: { Accept: 'application/vnd.github+json' }, signal: ctl.signal, credentials: 'omit', referrerPolicy: 'no-referrer' });
       clearTimeout(timer);
       if (!res.ok) throw new Error('HTTP ' + res.status);
-      const rel = normalize(await res.json());
+      const rel = pickLatest(await res.json());
       if (!rel) throw new Error('réponse inattendue');
       writeCache(rel);
       applyRelease(rel, 'live');
