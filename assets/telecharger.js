@@ -42,6 +42,7 @@
       target = latest(await res.json());
       if (!target) throw new Error('aucun installeur');
       if (ver) ver.textContent = target.v;
+      doc.querySelectorAll('[data-version]').forEach((e) => { e.textContent = target.v; });      // pied de page compris
       again.hidden = false;
       start();
     } catch (e) {
