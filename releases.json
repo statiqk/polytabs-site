@@ -1,0 +1,43 @@
+[
+  {
+    "version": "1.0.20",
+    "date": "2026-10-06T12:52:44.143Z",
+    "download": null,
+    "size": 117662911,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Moteur plus récent, capture fiabilisée, panneaux et favoris améliorés, nouveau logo, un panneau toujours visible sans faire défiler la page.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Un menu repensé",
+              "text": "Icônes de type, pastille « Ouvert », ordre libre, renommage, navigation au clavier, et favoris à jour entre plusieurs fenêtres."
+            },
+            {
+              "title": "Fiabilisée de bout en bout",
+              "text": "La boîte d'enregistrement s'ouvre toujours, la zone reste exacte même avec un zoom de page, et la taille du fichier est fidèle à l'écran."
+            },
+            {
+              "title": "Plus agréables à manier",
+              "text": "Le panneau cliqué passe devant, la zone de travail défile enfin, et les gros fichiers s'affichent en moins d'une seconde."
+            },
+            {
+              "title": "Tape juste exemple.com",
+              "text": "PolyTabs complète l'adresse, la vérifie et propose un bon nom : BBC, WhatsApp, GitHub, ou encore 192.168.1.1."
+            },
+            {
+              "title": "Un nouveau logo",
+              "text": "Le nom PolyTabs et les boutons de la barre du haut adoptent une nouvelle typographie, dans l'appli, à l'ouverture, à la fermeture et dans l'installeur."
+            },
+            {
+              "title": "Des panneaux qui restent dans la fenêtre",
+              "text": "Un panneau ne sort plus de l'écran, un ajout sans place est refusé avec des solutions, et « Remplir la fenêtre » ajuste tous les panneaux d'un clic."
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

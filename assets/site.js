@@ -190,9 +190,7 @@
     doc.querySelectorAll('[data-version]').forEach((e) => { e.textContent = rel.version; });
     // Chaque lien garde son adresse d'origine (celle écrite dans la page) : si la publication n'a pas d'installeur, ou si une réponse
     // plus récente remplace une réponse en cache, aucun lien ne reste sur une ancienne version.
-    const original = (a) => { if (!a.dataset.defaultHref) a.dataset.defaultHref = a.getAttribute('href'); return a.dataset.defaultHref; };
-    doc.querySelectorAll('[data-download]').forEach((a) => { const d = original(a); a.href = rel.download || d; });        // « d » est lu AVANT d'écraser le lien
-    doc.querySelectorAll('[data-notes-link]').forEach((a) => { const d = original(a); a.href = rel.htmlUrl || d; });
+    // Les boutons « Télécharger » restent sur telecharger.html : l'adresse de l'installeur n'est jamais écrite dans la page.
 
     const parts = ['Version ' + rel.version];
     if (rel.size) parts.push('installeur de ' + Math.round(rel.size / 1048576) + '\u00a0Mo');

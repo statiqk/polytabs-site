@@ -17,6 +17,15 @@ Remplace `https://statiqk.github.io/polytabs-site/` aux endroits suivants, pour 
 
 Pour un domaine personnalisé : ajoute un fichier `CNAME` contenant le nom de domaine, puis configure-le dans Settings → Pages.
 
+## La page « Notes de version » (`versions.html`)
+Elle affiche **toutes** les publications de `statiqk/polytabs-releases` (une seule requête, cache d'une heure) : la plus récente est dépliée, les autres se déplient au clic. Chaque version a une ancre (`versions.html#v1.0.20`), utilisable depuis l'application. Les notes suivent le même format que pour l'accueil (voir plus bas) ; ici, tous les points sont affichés, pas seulement 8.
+Si GitHub ne répond pas, la page lit `releases.json` (copie de secours hébergée avec le site). **Ce fichier ne contient pour l'instant que la 1.0.20** : ajoute une entrée par ancienne version (même structure) pour un historique complet hors ligne.
+Attention : `index.html` est généré. Le lien « Notes de version » du menu et du pied de page a été ajouté à la main : reporte-le dans le modèle du générateur (`tools/`), sinon `update.py` l'effacera.
+
+## Le lien de téléchargement (`telecharger.html`)
+Tous les boutons « Télécharger » du site pointent vers `telecharger.html`. Cette page lit la dernière publication sur GitHub et lance le téléchargement de l'installeur : l'adresse GitHub n'est écrite dans aucune page ni dans `releases.json`. Elle reste visible dans les outils de développement du navigateur (la page interroge `api.github.com`) et dans le téléchargement lui-même.
+Les pages `versions.html` et `versions-archives.html` (6 dernières versions, puis les archives) lisent le même dépôt.
+
 ## La version automatique
 
 À chaque visite, la page lit la dernière publication de `statiqk/polytabs-releases` (API GitHub) et met à jour toute seule :
