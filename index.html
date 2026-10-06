@@ -7,7 +7,7 @@
 <meta name="description" content="Tableau de bord pour Windows : des panneaux libres pour tes sites, des fichiers suivis en direct, une horloge, des tâches, des notes et la météo.">
 <meta name="theme-color" content="#0f1115">
 <meta name="color-scheme" content="dark">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src https://api.github.com; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src https://api.github.com; base-uri 'none'; form-action 'none'">
 <!-- Aperçu de lien (réseaux sociaux, messageries). Si ton site n'est pas à l'adresse https://statiqk.github.io/polytabs-site/, remplace-la ci-dessous (voir LISEZMOI.md). -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
@@ -52,6 +52,7 @@
 <div class="actions">
 <a class="btn btn--lg" data-download href="https://github.com/statiqk/polytabs-releases/releases/latest"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span>Télécharger pour Windows</span></a>
 <a class="link-arrow" href="#fonctionnalites">Voir ce qu'il sait faire<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<a class="link-arrow" href="#demo"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5.5 3.5-5.5 3.5z"/></svg>Voir la vidéo (45 s)</a>
 </div>
 <div class="fines">
 <p class="fine" id="release-line" hidden></p>
@@ -118,6 +119,33 @@
 <p><b>2</b><span>onglets pour s'organiser</span></p>
 <p><b>0</b><span>compte à créer</span></p>
 </div>
+</section>
+
+<section id="demo" class="wrap section" aria-labelledby="t-demo">
+<div class="section-head">
+<span class="eyebrow">En vidéo</span>
+<h2 id="t-demo">PolyTabs en 45 secondes</h2>
+<p class="sub">La vraie application, filmée sans montage : ajouter un site, suivre un fichier en direct, tout placer à la main. Sans voix ni musique, avec des sous-titres incrustés.</p>
+</div>
+<figure class="demo">
+<video class="demo-video demo-wide" controls preload="none" playsinline width="1920" height="1080" data-poster="media/polytabs-demo-16x9.jpg" aria-label="Démonstration de PolyTabs, 45 secondes" aria-describedby="demo-text">
+<source src="media/polytabs-demo-16x9.mp4" type="video/mp4">
+<source src="media/polytabs-demo-16x9.webm" type="video/webm">
+<track kind="captions" src="media/polytabs-demo.fr.vtt" srclang="fr" label="Français">
+<p>Ton navigateur ne lit pas cette vidéo : <a href="media/polytabs-demo-16x9.mp4">télécharge-la</a>.</p>
+</video>
+<video class="demo-video demo-tall" controls preload="none" playsinline width="1080" height="1920" data-poster="media/polytabs-demo-9x16.jpg" aria-label="Démonstration de PolyTabs, 45 secondes, format vertical" aria-describedby="demo-text">
+<source src="media/polytabs-demo-9x16.mp4" type="video/mp4">
+<source src="media/polytabs-demo-9x16.webm" type="video/webm">
+<track kind="captions" src="media/polytabs-demo.fr.vtt" srclang="fr" label="Français">
+<p>Ton navigateur ne lit pas cette vidéo : <a href="media/polytabs-demo-9x16.mp4">télécharge-la</a>.</p>
+</video>
+<figcaption>La vidéo ne se charge que si tu la lances. Aucun suivi, aucun service extérieur.</figcaption>
+</figure>
+<details class="demo-transcript">
+<summary>Lire le déroulé de la vidéo<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#7ab4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+<div class="answer" id="demo-text"><ol class="demo-steps"><li><b>0:00</b> — Carte d'introduction : « PolyTabs, tout ce que tu suis, sur un seul écran ».</li><li><b>0:03</b> — Ajoute un site web : clic sur « Ajouter un panneau », saisie de l'adresse ventes.fr, et le panneau s'ouvre avec le tableau de ventes.</li><li><b>0:10</b> — Dépose un fichier : un fichier journal glissé dans la fenêtre devient un panneau, qui se met à jour en direct à chaque nouvelle ligne.</li><li><b>0:18</b> — Glisse, redimensionne, superpose : le journal est déplacé sur le premier panneau et agrandi ; « Ranger » remet ensuite tout en grille.</li><li><b>0:28</b> — Des widgets prêts à l'emploi, sur 2 onglets : l'onglet 2 réunit horloge, calendrier, tâches, notes, minuteur et chronomètre ; une tâche est cochée et le minuteur démarre.</li><li><b>0:36</b> — Plus de place ? Le message « Plus de place dans cet onglet » propose « Ajouter dans l'onglet 1 », qui ouvre la boîte d'ajout dans l'autre onglet.</li><li><b>0:42</b> — Carte de fin : « Télécharger pour Windows », avec l'adresse github.com/statiqk/polytabs-releases.</li></ol></div>
+</details>
 </section>
 
 <section id="fonctionnalites" class="wrap section" aria-labelledby="t-fonct">

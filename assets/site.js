@@ -48,6 +48,17 @@
     });
   }
 
+  /* ---------------------------------------------------------------- 1 bis. Vidéo : image de couverture de la version affichée */
+  // Seule la vidéo visible reçoit son image de couverture (horizontale sur ordinateur et tablette, verticale sur petit écran) : on évite de télécharger les deux.
+  // Sans JavaScript, la vidéo reste lisible (commandes natives), simplement sans image de couverture.
+  const phoneQuery = window.matchMedia ? window.matchMedia('(max-width: 560px)') : null;
+  const placePoster = () => {
+    const v = doc.querySelector(phoneQuery && phoneQuery.matches ? '.demo-tall' : '.demo-wide');
+    if (v && v.dataset.poster && !v.getAttribute('poster')) v.setAttribute('poster', v.dataset.poster);
+  };
+  placePoster();
+  if (phoneQuery && phoneQuery.addEventListener) phoneQuery.addEventListener('change', placePoster);       // rotation d'un téléphone, redimensionnement de la fenêtre
+
   /* ---------------------------------------------------------------- 2. Version automatique (GitHub) */
   if (!AUTO_UPDATE) { root.dataset.release = 'static'; return; }
 

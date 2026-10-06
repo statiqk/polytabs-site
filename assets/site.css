@@ -128,6 +128,18 @@ html:not(.js) .mp-head, html:not(.js) .mock-tab { cursor: default; }
 .mp--cal .cal-pad { padding-bottom: 28px; }
 .mock-cap { font-size: .85rem; color: var(--mute); text-align: center; }
 
+/* ---------- vidéo ---------- */
+.demo { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.demo-video { display: block; width: 100%; max-width: 1000px; height: auto; aspect-ratio: 16 / 9; background: #000; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 30px 80px rgba(0, 0, 0, .5); }
+.demo-video a { text-decoration: underline; }      /* texte de secours (navigateur sans lecteur vidéo) : le lien se distingue aussi par le soulignement */
+.demo-video:focus-visible { outline: 2px solid #8bbcff; outline-offset: 4px; }
+.demo-tall { display: none; max-width: 360px; aspect-ratio: 9 / 16; }
+.demo figcaption { max-width: 40rem; font-size: .9rem; color: var(--mute); text-align: center; }
+.demo-transcript { width: 100%; max-width: 50rem; margin: 0 auto; }
+.demo-steps { margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 10px; }
+.demo-steps b { font-family: var(--f-mono); font-weight: 500; color: var(--accent-soft); }
+@media (max-width: 560px) { .demo-wide { display: none; } .demo-tall { display: block; } }
+
 /* ---------- faits ---------- */
 .facts { display: flex; flex-wrap: wrap; gap: 12px 40px; padding: 22px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); justify-content: space-between; margin-bottom: 24px; }
 .facts p { display: flex; align-items: baseline; gap: 10px; color: var(--dim); }
@@ -246,7 +258,7 @@ details[open] summary svg { transform: rotate(45deg); }
 @media print {
   :root { --bg: #fff; --panel: #fff; --panel-2: #f3f4f6; --panel-3: #fff; --line: #c9ccd3; --line-2: #a9adb6; --text: #1b1f27; --head: #000; --dim: #343a45; --mute: #454b56; --accent: #0b5cad; --accent-soft: #0b5cad; --accent-deep: #dbe9fb; --amber: #7a5400; --amber-bg: #fdf0cf; --violet: #4b2a91; --violet-bg: #ece4fb; }
   body { background: #fff; color: var(--text); }
-  .mock-fig, .skip, .btn, .nav, .stack, .rise { display: none; }
+  .mock-fig, .skip, .btn, .nav, .stack, .rise, .demo { display: none; }
   .rise { animation: none; }
   .section { padding-top: 32px; }
   .card, .news-card, .step, details { break-inside: avoid; }

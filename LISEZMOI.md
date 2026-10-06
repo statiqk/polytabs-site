@@ -71,6 +71,16 @@ Le contenu des sections *Fonctionnalités*, *Outils*, *Prise en main* et *Questi
 ## Tester le site chez toi
 Dans ce dossier : `python -m http.server 8000`, puis ouvre http://localhost:8000. (Ouvrir `index.html` directement par double-clic marche aussi pour le contenu, mais pas pour la lecture de GitHub dans certains navigateurs.)
 
+## La vidéo de démonstration
+Le dossier `media/` contient une démonstration de 45 secondes, filmée dans la vraie application, sans voix ni musique, avec des sous-titres incrustés :
+- `polytabs-demo-16x9.mp4` et `.webm` (1920 × 1080), affichée sur ordinateur et tablette ;
+- `polytabs-demo-9x16.mp4` et `.webm` (1080 × 1920), affichée sur petit écran (moins de 560 px de large) ;
+- deux images de couverture (`.jpg`) et un fichier de sous-titres `polytabs-demo.fr.vtt` (désactivé par défaut, car les sous-titres sont déjà dans l'image ; il sert aux outils d'accessibilité).
+
+La vidéo n'est téléchargée qu'au moment où le visiteur la lance (aucune lecture automatique, aucun son, aucun service extérieur). Le déroulé écrit est dans la section « Lire le déroulé de la vidéo ». Chaque fichier vidéo pèse environ 2 Mo.
+
+La carte de fin ne porte pas de numéro de version : la vidéo reste valable d'une version à l'autre. Elle montre en revanche l'interface actuelle : si l'application change beaucoup, il faudra la refilmer et remplacer les fichiers de `media/` (mêmes noms), sans toucher à la page.
+
 ## Accessibilité, adaptation aux écrans et impression
 Le site a été vérifié de 320 px de large (petit téléphone) à 2560 px, en portrait et en paysage :
 - aucun défilement horizontal, y compris avec un texte agrandi à 200 % dans le navigateur (la taille de texte choisie par le visiteur est respectée) ;
