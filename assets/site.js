@@ -59,6 +59,31 @@
   placePoster();
   if (phoneQuery && phoneQuery.addEventListener) phoneQuery.addEventListener('change', placePoster);       // rotation d'un téléphone, redimensionnement de la fenêtre
 
+
+  /* Bascule Illustration / Vidéo du hero */
+  (() => {
+    const fig = doc.querySelector('.mock-fig'), bm = doc.getElementById('seg-mock'), bv = doc.getElementById('seg-vid');
+    const pane = doc.getElementById('vidpane'), mock = doc.getElementById('mock'), tr = doc.querySelector('.vid-only');
+    if (!fig || !bm || !bv || !pane || !mock) return;
+    const show = (video) => {
+      bm.setAttribute('aria-selected', String(!video)); bv.setAttribute('aria-selected', String(video));
+      mock.hidden = video; pane.hidden = !video; if (tr) tr.hidden = !video; fig.classList.toggle('is-video', video);
+      if (video) { placePoster(); } else { pane.querySelectorAll('video').forEach(v => v.pause()); }
+    };
+    bm.addEventListener('click', () => show(false));
+    bv.addEventListener('click', () => show(true));
+    doc.querySelectorAll('[data-show-video]').forEach(a => a.addEventListener('click', () => show(true)));
+  })();
+
+
+  /* Un lien vers une question (#avertissement-windows…) ouvre la question */
+  (() => {
+    const ouvre = () => { const el = location.hash.length > 1 ? doc.getElementById(decodeURIComponent(location.hash.slice(1))) : null; if (el && el.tagName === 'DETAILS') el.open = true; };
+    ouvre();
+    window.addEventListener('hashchange', ouvre);
+    doc.addEventListener('click', (e) => { const a = e.target.closest && e.target.closest('a[href*="#"]'); if (a) setTimeout(ouvre, 0); });
+  })();
+
   /* ---------------------------------------------------------------- 2. Version automatique (GitHub) */
   if (!AUTO_UPDATE) { root.dataset.release = 'static'; return; }
 

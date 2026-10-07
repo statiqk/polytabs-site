@@ -43,6 +43,7 @@
 </nav>
 </header>
 
+<div class="new-bar" id="newbar" role="note"><span class="new">Nouveau</span><span>Depuis la 1.0.25 : le Lecteur audio et vidéo et le glisser-déposer de médias</span><a href="#fonctionnalites">Voir →</a></div>
 <main id="contenu">
 <div id="top"></div>
 <section class="wrap hero" aria-labelledby="titre">
@@ -53,7 +54,7 @@
 <div class="actions">
 <a class="btn btn--lg" data-download href="telecharger.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span>Télécharger pour Windows</span></a>
 <a class="link-arrow" href="#fonctionnalites">Voir ce qu'il sait faire<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-<a class="link-arrow" href="#demo"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5.5 3.5-5.5 3.5z"/></svg>Voir la vidéo (45 s)</a>
+<a class="link-arrow" href="#top" data-show-video><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5.5 3.5-5.5 3.5z"/></svg>Voir la vidéo (45 s)</a>
 </div>
 <p class="hero-note"><strong>Windows peut afficher un avertissement à l'installation.</strong> C'est normal : <a href="#avertissement-windows">voici comment continuer</a>.</p>
 <div class="fines">
@@ -63,6 +64,11 @@
 </div>
 
 <figure class="mock-fig rise rise-2">
+<div class="seg" role="tablist" aria-label="Aperçu">
+<button type="button" role="tab" class="seg-b" id="seg-mock" aria-selected="true" aria-controls="mock">Illustration</button>
+<button type="button" role="tab" class="seg-b" id="seg-vid" aria-selected="false" aria-controls="vidpane"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5.5 3.5-5.5 3.5z"/></svg>Vidéo · 45 s</button>
+</div>
+
 <div class="mock" id="mock">
 <div class="mock-bar">
 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true" focusable="false"><rect x="2" y="3" width="12" height="9" rx="2.2" fill="#4f9dff"/><rect x="16" y="3" width="6" height="9" rx="2.2" fill="#4f9dff" opacity=".55"/><rect x="2" y="14" width="7" height="7" rx="2.2" fill="#4f9dff" opacity=".55"/><rect x="11" y="14" width="11" height="7" rx="2.2" fill="#4f9dff" opacity=".8"/></svg><span class="mock-name">PolyTabs</span>
@@ -110,25 +116,7 @@
 </div></div>
 </div>
 </div>
-<figcaption class="mock-cap">Illustration interactive : clique sur l'en-tête d'un panneau pour le mettre devant, et sur 1 ou 2 pour changer d'onglet.</figcaption>
-</figure>
-</section>
-
-<section class="wrap" aria-label="En bref">
-<div class="facts">
-<p><b>9</b><span>widgets intégrés</span></p>
-<p><b>2</b><span>onglets pour s'organiser</span></p>
-<p><b>0</b><span>compte à créer</span></p>
-</div>
-</section>
-
-<section id="demo" class="wrap section" aria-labelledby="t-demo">
-<div class="section-head">
-<span class="eyebrow">En vidéo</span>
-<h2 id="t-demo">PolyTabs en 45 secondes</h2>
-<p class="sub">La vraie application, filmée sans montage : ajouter un site, suivre un fichier en direct, tout placer à la main. Sans voix ni musique, avec des sous-titres incrustés.</p>
-</div>
-<figure class="demo">
+<div class="vidpane" id="vidpane" hidden>
 <video class="demo-video demo-wide" controls preload="none" playsinline width="1920" height="1080" data-poster="media/polytabs-demo-16x9.jpg" aria-label="Démonstration de PolyTabs, 45 secondes" aria-describedby="demo-text">
 <source src="media/polytabs-demo-16x9.mp4" type="video/mp4">
 <source src="media/polytabs-demo-16x9.webm" type="video/webm">
@@ -141,12 +129,21 @@
 <track kind="captions" src="media/polytabs-demo.fr.vtt" srclang="fr" label="Français">
 <p>Ton navigateur ne lit pas cette vidéo : <a href="media/polytabs-demo-9x16.mp4">télécharge-la</a>.</p>
 </video>
-<figcaption>La vidéo ne se charge que si tu la lances. Aucun suivi, aucun service extérieur.</figcaption>
-</figure>
-<details class="demo-transcript">
+</div>
+<details class="demo-transcript vid-only" hidden>
 <summary>Lire le déroulé de la vidéo<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#7ab4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
 <div class="answer" id="demo-text"><ol class="demo-steps"><li><b>0:00</b> — Carte d'introduction : « PolyTabs, tout ce que tu suis, sur un seul écran ».</li><li><b>0:03</b> — Ajoute un site web : clic sur « Ajouter un panneau », saisie de l'adresse ventes.fr, et le panneau s'ouvre avec le tableau de ventes.</li><li><b>0:10</b> — Dépose un fichier : un fichier journal glissé dans la fenêtre devient un panneau, qui se met à jour en direct à chaque nouvelle ligne.</li><li><b>0:18</b> — Glisse, redimensionne, superpose : le journal est déplacé sur le premier panneau et agrandi ; « Ranger » remet ensuite tout en grille.</li><li><b>0:28</b> — Des widgets prêts à l'emploi, sur 2 onglets : l'onglet 2 réunit horloge, calendrier, tâches, notes, minuteur et chronomètre ; une tâche est cochée et le minuteur démarre.</li><li><b>0:36</b> — Plus de place ? Le message « Plus de place dans cet onglet » propose « Ajouter dans l'onglet 1 », qui ouvre la boîte d'ajout dans l'autre onglet.</li><li><b>0:42</b> — Carte de fin : « Télécharger pour Windows », avec l'adresse github.com/statiqk/polytabs-releases.</li></ol></div>
 </details>
+<figcaption class="mock-cap">Illustration interactive : clique sur l'en-tête d'un panneau pour le mettre devant, et sur 1 ou 2 pour changer d'onglet.</figcaption>
+</figure>
+</section>
+
+<section class="wrap" aria-label="En bref">
+<div class="facts">
+<p><b>9</b><span>widgets intégrés</span></p>
+<p><b>2</b><span>onglets pour s'organiser</span></p>
+<p><b>0</b><span>compte à créer</span></p>
+</div>
 </section>
 
 <section id="fonctionnalites" class="wrap section" aria-labelledby="t-fonct">
@@ -165,88 +162,59 @@
 <ul class="tags"><li class="tag">Rafraîchissement automatique</li><li class="tag">Identité Chrome au choix</li></ul></div>
 </div>
 <div class="row">
-<div class="card card--lg f2"><span class="ic ic--violet"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7.5A1.5 1.5 0 0 1 4.5 6h4.2l2 2.3h8.8A1.5 1.5 0 0 1 21 9.8v8.7a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5z"/></svg></span><h3>Des fichiers qui se suivent en direct</h3>
+<div class="card card--lg f2"><span class="ic ic--violet"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7.5A1.5 1.5 0 0 1 4.5 6h4.2l2 2.3h8.8A1.5 1.5 0 0 1 21 9.8v8.7a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5z"/></svg></span><h3>Des fichiers qui se suivent en direct<span class="new">Nouveau</span></h3>
 <p>Affiche un fichier, ou le plus récent d'un dossier. Le panneau se met à jour dès que le fichier change, même un journal de 40 Mo.</p>
 <ul class="tags"><li class="tag tag--ext">TXT</li><li class="tag tag--ext">LOG</li><li class="tag tag--ext">CSV</li><li class="tag tag--ext">PDF</li><li class="tag tag--ext">HTML</li><li class="tag tag--ext">Images</li></ul></div>
 <div class="card card--lg f3"><span class="ic ic--amber"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg></span><h3>Neuf widgets prêts à l'emploi</h3>
 <p>Le calendrier affiche les jours fériés français et les numéros de semaine. Les notes sont enrichies, les tâches ont des échéances et un « Annuler » après suppression.</p>
-<ul class="wgts"><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>Horloge et réveil</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h12M6 21h12M7 3c0 5 5 6 5 9s-5 4-5 9M17 3c0 5-5 6-5 9s5 4 5 9"/></svg>Minuteur</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M9.5 2.5h5"/></svg>Chronomètre</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Calendrier</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6l1.5 1.5L8 5M4 12l1.5 1.5L8 11M4 18l1.5 1.5L8 17M11 6.5h9M11 12.5h9M11 18.5h9"/></svg>Tâches</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h9l4 4v14H6zM15 3v4h4M9 12h7M9 16h5"/></svg>Notes</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7a2 2 0 0 1 2-2h4l2 2.5h8a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M8 12.5h8M8 16h5"/></svg>Dossier</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M10 8.6v6.8l5.6-3.4z"/></svg>Lecteur audio et vidéo</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10.5 6.3A3.6 3.6 0 1 0 5 11.3"/><path d="M7 1.8v1.2M1.8 7H3M3.3 3.3l.8.8M10.7 3.3l-.8.8"/><path d="M9 20a4 4 0 0 1 .5-8 5.5 5.5 0 0 1 10.5 1.5A3.3 3.3 0 0 1 19.5 20z"/></svg>Météo</li></ul></div>
+<ul class="wgts"><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>Horloge et réveil</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h12M6 21h12M7 3c0 5 5 6 5 9s-5 4-5 9M17 3c0 5-5 6-5 9s5 4 5 9"/></svg>Minuteur</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M9.5 2.5h5"/></svg>Chronomètre</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Calendrier</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6l1.5 1.5L8 5M4 12l1.5 1.5L8 11M4 18l1.5 1.5L8 17M11 6.5h9M11 12.5h9M11 18.5h9"/></svg>Tâches</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h9l4 4v14H6zM15 3v4h4M9 12h7M9 16h5"/></svg>Notes</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7a2 2 0 0 1 2-2h4l2 2.5h8a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M8 12.5h8M8 16h5"/></svg>Dossier</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M10 8.6v6.8l5.6-3.4z"/></svg>Lecteur audio et vidéo<span class="new">Nouveau</span></li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10.5 6.3A3.6 3.6 0 1 0 5 11.3"/><path d="M7 1.8v1.2M1.8 7H3M3.3 3.3l.8.8M10.7 3.3l-.8.8"/><path d="M9 20a4 4 0 0 1 .5-8 5.5 5.5 0 0 1 10.5 1.5A3.3 3.3 0 0 1 19.5 20z"/></svg>Météo</li></ul></div>
 </div>
-<div class="row">
-<div class="card f1"><span class="ic ic--blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span><h3>Pensé pour plusieurs écrans</h3><p>PolyTabs reconnaît chaque écran et lui rend ses panneaux au démarrage. Un panneau passe d'une fenêtre ou d'un écran à l'autre en un geste, avec ses réglages.</p></div>
-<div class="card f1"><span class="ic ic--amber"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg></span><h3>Il te parle, même sans internet</h3><p>Une voix de synthèse annonce le réveil et les alertes. Une fois la voix téléchargée, elle fonctionne hors connexion.</p></div>
-<div class="card f1"><span class="ic ic--violet"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l8 3v6c0 4.5-3.3 8-8 9-4.7-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Chez toi, sur ton ordinateur</h3><p>Panneaux, notes, tâches et favoris sont enregistrés sur ton ordinateur, sans compte en ligne. Les mises à jour arrivent depuis GitHub, avec une sauvegarde avant l'installation.</p></div>
-</div>
-</div>
-</section>
-
-<section id="nouveautes" class="wrap section" aria-labelledby="nouveautes-title">
-<div class="section-head">
-<span class="eyebrow">Dernière version</span>
-<h2 id="nouveautes-title">Nouveautés de la version 1.0.26</h2>
-<p class="sub" id="nouveautes-intro">Version 1.0.26 : les notes de version et le téléchargement à portée de clic depuis les réglages.</p>
-</div>
-<div class="news-grid" id="nouveautes-grid">
-<article class="news-card"><span class="news-tag">Réglages</span><h3>Les notes de version dans l'appli</h3><p>Dans Mises à jour, un bouton ouvre la page du site pour ta version, et la mise à jour disponible a ses notes complètes.</p></article>
-<article class="news-card"><span class="news-tag">Site</span><h3>Toutes les versions réunies</h3><p>Une page présente les 6 dernières versions, et une autre les archives, avec un lien direct vers chacune.</p></article>
-<article class="news-card"><span class="news-tag">Mises à jour</span><h3>Plus d'impasse en cas d'échec</h3><p>Si PolyTabs ne joint pas GitHub, un bouton propose de télécharger la dernière version depuis le site.</p></article>
-</div>
-<a class="link-arrow news-link" href="versions.html">Lire les notes de version complètes<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-</section>
-
-<section id="outils" class="wrap section" aria-labelledby="t-outils">
-<div class="section-head">
-<span class="eyebrow">Outils intégrés</span>
-<h2 id="t-outils">Des outils sous la main, sans ouvrir autre chose</h2>
-<p class="sub">Dans la barre du haut et dans l'en-tête de chaque panneau, avec leur raccourci quand il y en a un.</p>
-</div>
-<h3 class="tools-h">Dans la barre du haut</h3>
-<div class="tools">
-<div class="card card--tool"><span class="ic ic--blue"><svg viewBox="0 0 16 16" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g transform="translate(0 -.5)"><path d="M2.5 5.5h1.8l.9-1.5h5.6l.9 1.5h1.8a.7.7 0 0 1 .7.7v6.1a.7.7 0 0 1-.7.7h-11a.7.7 0 0 1-.7-.7V6.2a.7.7 0 0 1 .7-.7z"/><circle cx="8" cy="9" r="2.3"/></g></svg></span><h4>Capture de zone</h4><p>Trace un rectangle sur tes panneaux : l&#x27;image est copiée, puis proposée à l&#x27;enregistrement.</p><span class="keys"><kbd>Ctrl</kbd><kbd>Maj</kbd><kbd>S</kbd></span></div>
-<div class="card card--tool"><span class="ic ic--blue"><svg viewBox="0 0 16 16" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="1.5" y="5" width="13" height="6" rx="1"/><path d="M4 5v2.5M6.5 5v1.6M9 5v2.5M11.5 5v1.6"/></svg></span><h4>Règle</h4><p>Vérifie un alignement, pose des repères et zoome sur les pixels.</p><span class="keys"><kbd>Ctrl</kbd><kbd>Maj</kbd><kbd>L</kbd></span></div>
-<div class="card card--tool"><span class="ic ic--blue"><svg viewBox="0 0 16 16" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="2" width="4.25" height="4.25" rx="1"/><rect x="9.75" y="2" width="4.25" height="4.25" rx="1"/><rect x="2" y="9.75" width="4.25" height="4.25" rx="1"/><rect x="9.75" y="9.75" width="4.25" height="4.25" rx="1"/></svg></span><h4>Ranger</h4><p>Range les panneaux de l&#x27;onglet en grille, sans changer leur taille. La petite flèche à côté propose aussi « Remplir la fenêtre » : ajuste la taille des panneaux pour occuper toute la zone, sans trou ni dépassement.</p><span class="keys"><kbd>Ctrl</kbd><kbd>Maj</kbd><kbd>G</kbd></span><span class="note-small">La flèche à droite du bouton ouvre le menu</span></div>
-<div class="card card--tool"><span class="ic ic--amber"><svg viewBox="0 0 16 16" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 1.9l1.9 3.9 4.3.6-3.1 3 .7 4.3L8 11.7l-3.8 2 .7-4.3-3.1-3 4.3-.6z"/></svg></span><h4>Favoris</h4><p>Étoile un panneau pour le retrouver en un clic. Renomme et ordonne tes favoris, ou ouvre-les au clavier.</p><span class="note-small">L&#x27;étoile est dans l&#x27;en-tête de chaque panneau</span></div>
-<div class="card card--tool"><span class="ic ic--blue"><svg viewBox="0 0 16 16" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.3 8A5.3 5.3 0 1 1 11.7 4.2M13.5 2.2v2.6h-2.6"/></svg></span><h4>Tout rafraîchir</h4><p>Recharge d&#x27;un coup tous les sites et tous les fichiers de l&#x27;onglet.</p><span class="note-small">Les widgets se mettent à jour tout seuls</span></div>
-<div class="card card--tool"><span class="ic ic--violet"><svg viewBox="0 0 16 16" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M5.5 5.5V4A1.5 1.5 0 0 1 7 2.5h6A1.5 1.5 0 0 1 14.5 4v6a1.5 1.5 0 0 1-1.5 1.5h-2.5"/></svg></span><h4>Nouvelle fenêtre</h4><p>Ouvre une fenêtre vierge, par exemple pour un second écran. Chaque écran garde son jeu de panneaux, et un panneau peut passer d&#x27;une fenêtre à l&#x27;autre.</p><span class="keys"><kbd>Ctrl</kbd><kbd>Maj</kbd><kbd>N</kbd></span></div>
-</div>
-<h3 class="tools-h">Dans chaque panneau</h3>
-<div class="tools tools--panel">
-<div class="card card--tool"><span class="ic ic--violet"><svg viewBox="0 0 16 16" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v3M8 11.5v3M1.5 8h3M11.5 8h3"/></svg></span><h4>Vérifier l&#x27;alignement</h4><p>Dans un panneau de site web (ou un fichier HTML), clique sur deux éléments de la page ou plus : PolyTabs les mesure et dit s&#x27;ils sont alignés à gauche, au centre, à droite, en haut, au milieu ou en bas, ou sur la même ligne de texte, avec l&#x27;écart en pixels.</p><span class="note-small">Bouton ⌖ de l&#x27;en-tête du panneau</span></div>
-<div class="card card--tool"><h4>Et aussi, dans l'en-tête</h4><p>Chaque panneau a ses propres boutons.</p><ul class="tags tags--actions"><li class="tag">Mettre en favori<span class="keys keys--sm"><kbd>Ctrl</kbd><kbd>D</kbd></span></li><li class="tag">Page précédente<span class="keys keys--sm"><kbd>Alt</kbd><kbd>←</kbd></span></li><li class="tag">Page suivante<span class="keys keys--sm"><kbd>Alt</kbd><kbd>→</kbd></span></li><li class="tag">Rafraîchir</li><li class="tag">Déplacer vers un écran</li><li class="tag">Taille par défaut</li><li class="tag">Modifier</li><li class="tag">Supprimer<span class="keys keys--sm"><kbd>Ctrl</kbd><kbd>W</kbd></span></li></ul></div>
-</div>
-<div class="shortcuts"><strong>Les autres raccourcis</strong>
-<span><span class="keys keys--sm"><kbd>Ctrl</kbd><kbd>N</kbd></span>ajouter un panneau</span>
-<span><span class="keys keys--sm"><kbd>Ctrl</kbd><kbd>1</kbd><kbd>2</kbd></span>changer d&#x27;onglet</span>
-<span><span class="keys keys--sm"><kbd>Ctrl</kbd><kbd>D</kbd></span>mettre un panneau en favori</span>
-<span><span class="keys keys--sm"><kbd>Ctrl</kbd><kbd>W</kbd></span>supprimer le panneau</span>
-<span><span class="keys keys--sm"><kbd>Alt</kbd><kbd>←</kbd><kbd>→</kbd></span>page précédente ou suivante (panneau de site)</span>
-<span><span class="keys keys--sm"><kbd>Ctrl</kbd><kbd>+</kbd><kbd>−</kbd><kbd>0</kbd></span>zoomer l&#x27;interface (0 pour revenir à 100 %)</span>
+<ul class="feat-mini">
+<li><span class="ic ic--blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span><div><b>Pensé pour plusieurs écrans</b><span>Chaque écran retrouve ses panneaux au démarrage.</span></div></li>
+<li><span class="ic ic--amber"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg></span><div><b>Il te parle, même sans internet</b><span>Une voix annonce le réveil et les alertes, même hors connexion.</span></div></li>
+<li><span class="ic ic--violet"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l8 3v6c0 4.5-3.3 8-8 9-4.7-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><div><b>Chez toi, sur ton ordinateur</b><span>Tout reste sur ton ordinateur, sans compte en ligne.</span></div></li>
+</ul>
 </div>
 </section>
 
 
-<section class="wrap section" aria-labelledby="t-gestes">
-<div class="section-head"><span class="eyebrow">Prise en main</span><h2 id="t-gestes">En trois gestes</h2></div>
-<ol class="steps">
-<li class="step"><span class="step-n" aria-hidden="true">1</span><h3>Ajoute</h3><p>Clique sur « + » : un site web, un fichier ou un dossier, ou l'un des neuf widgets. Tu peux aussi déposer un fichier dans la fenêtre.</p></li>
-<li class="step"><span class="step-n" aria-hidden="true">2</span><h3>Place</h3><p>Glisse, redimensionne, superpose. La position et la taille de chaque panneau sont retrouvées à chaque lancement.</p></li>
-<li class="step"><span class="step-n" aria-hidden="true">3</span><h3>Retrouve</h3><p>Deux onglets, des favoris, un jeu de panneaux par écran : tout est là où tu l'as laissé.</p></li>
-</ol>
+
+<section id="outils" class="wrap section section--tight" aria-labelledby="t-outils">
+<div class="section-head section-head--row">
+<div><span class="eyebrow">Outils intégrés</span><h2 id="t-outils">Des outils sous la main</h2></div>
+<a class="more-link" href="outils.html">Tous les outils et raccourcis <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div>
+<ul class="tools-mini">
+<li><span class="ic ic--blue"><svg viewBox="0 0 16 16" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g transform="translate(0 -.5)"><path d="M2.5 5.5h1.8l.9-1.5h5.6l.9 1.5h1.8a.7.7 0 0 1 .7.7v6.1a.7.7 0 0 1-.7.7h-11a.7.7 0 0 1-.7-.7V6.2a.7.7 0 0 1 .7-.7z"/><circle cx="8" cy="9" r="2.3"/></g></svg></span><span class="txt"><b>Capture de zone</b><span class="keys keys--sm"><kbd>Ctrl</kbd><kbd>Maj</kbd><kbd>S</kbd></span></span></li>
+<li><span class="ic ic--blue"><svg viewBox="0 0 16 16" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="1.5" y="5" width="13" height="6" rx="1"/><path d="M4 5v2.5M6.5 5v1.6M9 5v2.5M11.5 5v1.6"/></svg></span><span class="txt"><b>Règle</b><span class="keys keys--sm"><kbd>Ctrl</kbd><kbd>Maj</kbd><kbd>L</kbd></span></span></li>
+<li><span class="ic ic--blue"><svg viewBox="0 0 16 16" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="2" width="4.25" height="4.25" rx="1"/><rect x="9.75" y="2" width="4.25" height="4.25" rx="1"/><rect x="2" y="9.75" width="4.25" height="4.25" rx="1"/><rect x="9.75" y="9.75" width="4.25" height="4.25" rx="1"/></svg></span><span class="txt"><b>Ranger</b><span class="keys keys--sm"><kbd>Ctrl</kbd><kbd>Maj</kbd><kbd>G</kbd></span></span></li>
+<li><span class="ic ic--amber"><svg viewBox="0 0 16 16" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 1.9l1.9 3.9 4.3.6-3.1 3 .7 4.3L8 11.7l-3.8 2 .7-4.3-3.1-3 4.3-.6z"/></svg></span><span class="txt"><b>Favoris</b></span></li>
+<li><span class="ic ic--blue"><svg viewBox="0 0 16 16" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.3 8A5.3 5.3 0 1 1 11.7 4.2M13.5 2.2v2.6h-2.6"/></svg></span><span class="txt"><b>Tout rafraîchir</b></span></li>
+<li><span class="ic ic--violet"><svg viewBox="0 0 16 16" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M5.5 5.5V4A1.5 1.5 0 0 1 7 2.5h6A1.5 1.5 0 0 1 14.5 4v6a1.5 1.5 0 0 1-1.5 1.5h-2.5"/></svg></span><span class="txt"><b>Nouvelle fenêtre</b><span class="keys keys--sm"><kbd>Ctrl</kbd><kbd>Maj</kbd><kbd>N</kbd></span></span></li>
+</ul>
 </section>
 
-<section id="questions" class="wrap section" aria-labelledby="t-faq">
-<div class="faq-wrap">
-<div class="faq-intro"><span class="eyebrow">Questions</span><h2 id="t-faq">Ce que tu te demandes peut-être</h2></div>
+
+
+
+<section id="questions" class="wrap section section--tight" aria-labelledby="t-faq">
+<div class="faq-wrap faq-wrap--compact">
+<div class="faq-intro"><span class="eyebrow">Questions</span><h2 id="t-faq" class="h2like h2like--sm">Avant de télécharger</h2><a class="more-link" href="faq.html">Toutes les questions →</a></div>
 <div class="faq">
-<details id="avertissement-windows" open><summary>Windows affiche un avertissement à l'installation, est-ce normal ?<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#7ab4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary><div class="answer"><p>Oui. L'installeur de PolyTabs n'est pas signé numériquement, et Windows (SmartScreen) peut afficher « Windows a protégé votre ordinateur » devant un programme qu'il ne connaît pas encore.</p><p>Clique sur « Informations complémentaires », puis sur « Exécuter quand même ». L'avertissement ne revient pas pour les mises à jour faites depuis PolyTabs.</p><p>Par précaution, télécharge PolyTabs uniquement depuis ce site (bouton « Télécharger »), et vérifie que le fichier s'appelle « PolyTabs-Setup » suivi du numéro de version.</p></div></details>
+<details id="avertissement-windows"><summary>Windows affiche un avertissement à l'installation, est-ce normal ?<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#7ab4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary><div class="answer"><p>Oui. L'installeur de PolyTabs n'est pas signé numériquement, et Windows (SmartScreen) peut afficher « Windows a protégé votre ordinateur » devant un programme qu'il ne connaît pas encore.</p><p>Clique sur « Informations complémentaires », puis sur « Exécuter quand même ». L'avertissement ne revient pas pour les mises à jour faites depuis PolyTabs.</p><p>Par précaution, télécharge PolyTabs uniquement depuis ce site (bouton « Télécharger »), et vérifie que le fichier s'appelle « PolyTabs-Setup » suivi du numéro de version.</p></div></details>
 <details><summary>Sur quel système fonctionne PolyTabs ?<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#7ab4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary><div class="answer"><p>Sur Windows, en 64 bits. L'installation est classique, et PolyTabs se désinstalle comme n'importe quelle application.</p></div></details>
 <details><summary>Où sont enregistrées mes données ?<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#7ab4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary><div class="answer"><p>Sur ton ordinateur : tes panneaux, tes notes, tes tâches et tes favoris restent dans l'application. Il n'y a aucun compte à créer.</p></div></details>
-<details><summary>Mes sites sont-ils séparés les uns des autres ?<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#7ab4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary><div class="answer"><p>Oui : chaque panneau web a sa propre session, donc deux comptes d'un même service peuvent coexister. Supprimer un panneau efface ses connexions.</p></div></details>
 <details><summary>Comment se font les mises à jour ?<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#7ab4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary><div class="answer"><p>PolyTabs consulte GitHub et installe les nouvelles versions. Tu choisis dans les Réglages comment cela se passe, et une sauvegarde est faite avant l'installation.</p></div></details>
-<details><summary>La voix fonctionne-t-elle sans internet ?<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#7ab4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary><div class="answer"><p>Oui, une fois la voix téléchargée. Sans elle, PolyTabs utilise la voix de Windows.</p></div></details>
-<details><summary>Puis-je l'utiliser sur plusieurs écrans ?<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#7ab4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary><div class="answer"><p>Oui. PolyTabs reconnaît chaque écran et lui garde son propre jeu de panneaux. Tu peux ouvrir une nouvelle fenêtre et y déplacer un panneau.</p></div></details>
 </div>
 </div>
+</section>
+
+<section class="wrap steps-strip" aria-label="Prise en main">
+<ol>
+<li><span class="n" aria-hidden="true">1</span><div><b>Ajoute</b><span>Clique sur « + », ou dépose un fichier dans la fenêtre.</span></div></li>
+<li><span class="n" aria-hidden="true">2</span><div><b>Place</b><span>Glisse, redimensionne, superpose.</span></div></li>
+<li><span class="n" aria-hidden="true">3</span><div><b>Retrouve</b><span>Tout est là où tu l'as laissé.</span></div></li>
+</ol>
 </section>
 
 <section class="wrap cta-wrap" aria-labelledby="t-cta">
@@ -264,7 +232,7 @@
 <footer class="wrap site-footer">
 <div class="foot-row">
 <div class="brand-line"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden="true" focusable="false"><rect x="2" y="3" width="12" height="9" rx="2.2" fill="#4f9dff"/><rect x="16" y="3" width="6" height="9" rx="2.2" fill="#4f9dff" opacity=".55"/><rect x="2" y="14" width="7" height="7" rx="2.2" fill="#4f9dff" opacity=".55"/><rect x="11" y="14" width="11" height="7" rx="2.2" fill="#4f9dff" opacity=".8"/></svg><span>PolyTabs · par JL Assist · version <span data-version>1.0.26</span></span></div>
-<nav aria-label="Liens du pied de page"><a href="telecharger.html">Téléchargements</a><a href="versions.html">Notes de version</a></nav>
+<nav aria-label="Liens du pied de page"><a href="outils.html">Outils</a><a href="faq.html">Questions</a><a href="telecharger.html">Téléchargements</a><a href="versions.html">Notes de version</a></nav>
 </div>
 <p class="privacy">Ce site n'utilise ni cookie ni outil de suivi. Pour afficher la dernière version et trouver l'installeur, ton navigateur interroge directement GitHub (api.github.com) et garde la réponse une heure dans son stockage local. Les polices et les images sont hébergées avec la page.</p>
 </footer>
