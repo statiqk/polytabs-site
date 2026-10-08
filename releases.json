@@ -1,5 +1,79 @@
 [
   {
+    "version": "1.0.32",
+    "date": "2026-10-08T12:00:00.000Z",
+    "download": null,
+    "size": 117715590,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Les images glissées depuis un site ne s'accumulent plus, la voix naturelle ne retarde plus la fermeture, et la voix s'arrête enfin à la demande.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Ménage des images glissées depuis un site",
+              "text": "À la fermeture de la dernière fenêtre, l'appli supprime les images déposées que plus aucun panneau ni aucun favori n'utilise. Les images d'un panneau encore ouvert (dans n'importe quel onglet ou sur n'importe quel écran) sont gardées, et elles reviennent au prochain lancement. La limite de 150 images disparaît. La suppression est définitive, sans corbeille. Les fichiers que tu glisses depuis l'Explorateur ou que tu épingles depuis le widget Dossier ne sont jamais touchés."
+            },
+            {
+              "title": "Bouton « Arrêter » dans Réglages > Voix",
+              "text": "Pendant la lecture, « Écouter » devient « Arrêter » et coupe la voix tout de suite."
+            },
+            {
+              "title": "La voix s'arrête quand on le demande",
+              "text": "Désactiver les annonces coupe la phrase en cours, et une nouvelle phrase remplace l'ancienne au lieu de se superposer. Cela vaut pour la voix naturelle comme pour la voix Windows."
+            },
+            {
+              "title": "Heures plus naturelles",
+              "text": "« 7 heures et demie », « midi et demi », « 7 heures 05 »."
+            },
+            {
+              "title": "Menu Favoris plus compact",
+              "text": "Les lignes passent de 50 à 40 px, avec le nom et le site sur la même ligne : on voit environ un tiers de favoris en plus sans défiler. La pastille « Ouvert » devient un point vert (point creux si le panneau est ouvert dans l'autre onglet, « ×2 » s'il l'est plusieurs fois, le détail dans l'infobulle). Les boutons d'action et la poignée de déplacement n'apparaissent qu'au survol ou au clavier."
+            },
+            {
+              "title": "Sections repliables dans les Favoris",
+              "text": "Un clic sur « OUVERTS » ou « AUTRES » replie la section ; l'état est mémorisé, et une recherche déplie tout."
+            },
+            {
+              "title": "Les mises à jour sont détectées pendant que l'appli est ouverte",
+              "text": "PolyTabs vérifie discrètement toutes les 10 minutes, ainsi qu'au réveil de l'ordinateur et quand tu reviens sur une fenêtre. Dès qu'une version est publiée, elle est signalée dans l'appli et annoncée à la voix (une seule fois, sans couper une autre phrase). En mode « À la fermeture », elle est aussi téléchargée en arrière-plan. Rien n'est jamais installé en cours de travail, et une vérification manquée (réseau coupé) n'affiche aucune erreur."
+            },
+            {
+              "title": "Onglets nommés plus compacts",
+              "text": "Quand tes onglets portent un nom, seul l'onglet actif l'affiche : l'autre se replie sur son numéro, et son nom se déplie au survol ou au clavier (sauf quand la barre manque de place). La barre du haut garde ainsi de la place pour les autres boutons."
+            }
+          ]
+        },
+        {
+          "title": "Corrections",
+          "items": [
+            {
+              "title": "Fermeture avec la voix naturelle",
+              "text": "Le mot d'au revoir dit par la voix naturelle n'annonçait pas sa fin : l'appli attendait toujours 8 secondes avant de se fermer, et coupait les phrases plus longues. Elle se ferme maintenant dès que la phrase est terminée."
+            },
+            {
+              "title": "Mot d'au revoir plus sûr",
+              "text": "Quand la voix démarre, elle dispose de 12 s au plus pour finir sa phrase (au lieu de 8 s), et sans voix du navigateur la voix Windows prend le relais après 2,5 s au lieu de 6,5 s."
+            },
+            {
+              "title": "Jours fériés",
+              "text": "Les vœux étaient mal accordés pour certains jours (« bon Toussaint », « bon Assomption »…). Chaque jour a maintenant sa formule."
+            },
+            {
+              "title": "Longue liste de tâches",
+              "text": "« Et 1 autres » devient « Et 1 autre », avec une vraie pause avant."
+            },
+            {
+              "title": "Réglages de voix et fenêtres multiples",
+              "text": "Un réglage modifié (annonces, prénom, voix, vitesse) est pris en compte tout de suite par les minuteurs et réveils des autres fenêtres."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "version": "1.0.20",
     "date": "2026-10-06T12:52:44.143Z",
     "download": null,

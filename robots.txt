@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://statiqk.github.io/polytabs-site/sitemap.xml
