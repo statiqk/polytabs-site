@@ -1,5 +1,64 @@
 [
   {
+    "version": "1.0.33",
+    "date": "2026-10-09T10:16:35Z",
+    "download": null,
+    "size": 117717424,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Les PDF s'affichent enfin quel que soit leur poids, les fichiers texte gardent leurs accents, et chaque fenêtre porte maintenant le nom de son écran dans la barre des tâches.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Fenêtres repérables dans la barre des tâches",
+              "text": "Avec plusieurs fenêtres ouvertes, chacune prend un titre du type « 2 · PolyTabs · Écran 2 · Création », visible dans l'aperçu au survol de l'icône et dans Alt + Tab. Les écrans sont numérotés de gauche à droite d'après leur place sur le bureau (et non d'après la numérotation de Windows). Le titre se met à jour tout seul quand tu déplaces une fenêtre, branches ou débranches un écran, changes d'onglet ou le renommes. Avec une seule fenêtre, le titre reste simple (« PolyTabs · Cours »)."
+            },
+            {
+              "title": "Les fenêtres s'appellent « Écran N »",
+              "text": "Dans la liste pour envoyer un panneau vers une autre fenêtre et dans les messages « Plus de place dans … », « Fenêtre principale » et « Fenêtre N » sont remplacés par « Écran N » (« Écran 2 · fenêtre 1 » et « Écran 2 · fenêtre 2 » quand deux fenêtres partagent un écran)."
+            },
+            {
+              "title": "Plus de formats dans le panneau « Fichier local »",
+              "text": "Texte : .toml, .sql, .sh, .bat, .cmd, .ps1, .jsx, .tsx, .cfg, .srt, .vtt, .env, .mjs, .scss et quelques autres. Tableaux : .tsv. Pages : .xhtml. Images : .ico, .avif, .jfif, .jpe."
+            }
+          ]
+        },
+        {
+          "title": "Corrections",
+          "items": [
+            {
+              "title": "PDF affichés vides",
+              "text": "Un PDF de quelques Mo s'affichait vide dans le panneau « Fichier local ». Le fichier est maintenant ouvert directement depuis le disque, sans limite de taille, et le panneau se met toujours à jour quand le fichier change."
+            },
+            {
+              "title": "Accents illisibles",
+              "text": "Les fichiers texte et CSV enregistrés en « ANSI » (exports Excel français, vieux fichiers) affichaient « L�a » au lieu de « Léa ». Ils sont maintenant reconnus et lus correctement, y compris les gros journaux."
+            },
+            {
+              "title": "Fichiers UTF-16",
+              "text": "Les fichiers du Bloc-notes en mode « Unicode » ou issus de PowerShell s'affichaient avec des caractères parasites. Ils sont lisibles."
+            }
+          ]
+        },
+        {
+          "title": "Technique",
+          "items": [
+            {
+              "title": "main.js : sniffEncoding / decodeText (UTF-8 strict, repli Windows-1252, UTF-16 avec BOM), lecture en fenêtre alignée pour les gros fichiers ; screenNumberOf, windowLabel, refreshWindowTitles (titre composé dans le processus principal, page-title-updated intercepté)",
+              "text": ""
+            },
+            {
+              "title": "index.html : le titre de la page suit l'onglet actif (document.title) ; le PDF est un <embed> vers file://…?t=<mtime> au lieu d'une data: URL (plafonnée par Chromium)",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "version": "1.0.32",
     "date": "2026-10-08T12:00:00.000Z",
     "download": null,
@@ -74,6 +133,584 @@
     }
   },
   {
+    "version": "1.0.31",
+    "date": "2026-10-08T14:12:54Z",
+    "download": null,
+    "size": 117711662,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Le bouton « Ranger » tient maintenant compte de la taille et du type de chaque panneau, et te demande avant de réduire quoi que ce soit.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Ranger par paquets",
+              "text": "Les petits widgets (horloge, minuteur, météo…) sont regroupés dans une colonne à gauche, à la taille dont ils ont besoin. Les widgets à liste (dossier, tâches, notes, calendrier) comblent le bas de cette colonne, et les sites se partagent le reste de la fenêtre, sans trou."
+            },
+            {
+              "title": "Aperçu avant de ranger",
+              "text": "Quand un panneau doit rapetisser, rien ne bouge tout de suite : des cadres en pointillés montrent où ira chaque panneau, avec « ↓ réduire » ou « ↑ agrandir ». Tu choisis Appliquer, Choisir… ou Annuler (Échap)."
+            },
+            {
+              "title": "Choisir les changements",
+              "text": "Une case par panneau : décoche celui qui doit garder sa taille, le reste se range autour. Le bouton Ranger applique directement, sans aperçu, quand aucun panneau ne rapetisse."
+            },
+            {
+              "title": "Garder mes tailles",
+              "text": "Un interrupteur dans le menu du bouton Ranger remet l'ancien rangement en grille, qui ne redimensionne rien. Le même rangement en grille sert quand il n'y a pas assez de place pour tout remplir."
+            },
+            {
+              "title": "Image glissée depuis un site",
+              "text": "Glisse une image d'un panneau « site » sur l'appli : elle s'ouvre dans un nouveau panneau en mode liseuse. Ça marche aussi pour les images fabriquées par la page (comme l'aperçu d'un fichier sur claude.ai), relues dans la page d'origine, et pour les images protégées par une connexion, téléchargées avec la session du panneau. Si l'image ne peut pas être récupérée, le message dit pourquoi (site, code d'erreur)."
+            },
+            {
+              "title": "Noms dans les onglets",
+              "text": "Un onglet nommé affiche son numéro en discret devant son nom."
+            }
+          ]
+        },
+        {
+          "title": "Corrections",
+          "items": [
+            {
+              "title": "Menu « Ranger »",
+              "text": "Les boutons du menu sont alignés et de même taille."
+            },
+            {
+              "title": "Bouton liseuse",
+              "text": "L'icône en forme de livre est plus grande et plus lisible."
+            }
+          ]
+        },
+        {
+          "title": "Technique",
+          "items": [
+            {
+              "title": "Un panneau redimensionné par le rangement mémorise la taille que tu lui avais donnée (tidy dans ses données) : au rangement suivant, c'est cette taille qui sert de référence, donc les panneaux ne grossissent pas à chaque rangement",
+              "text": ""
+            },
+            {
+              "title": "Profils de besoin des widgets (minimum, taille idéale, maximum) dans SMART_PROFILES ; calcul dans computeSmartLayout",
+              "text": ""
+            },
+            {
+              "title": "drop-image : téléchargement par le processus principal (30 Mo au plus, adresses du réseau local refusées, type vérifié sur le contenu). Une adresse http:// est d'abord essayée en https://. Avec la session du panneau « site » d'origine, puis sans. Les adresses blob: sont relues dans le panneau qui les a fabriquées (readBlobFromPanels) et les adresses file:// sont refusées",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.30",
+    "date": "2026-10-08T12:27:44Z",
+    "download": null,
+    "size": 117710347,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Le bouton « Ranger » tient maintenant compte de la taille et du type de chaque panneau, et te demande avant de réduire quoi que ce soit.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Ranger par paquets",
+              "text": "Les petits widgets (horloge, minuteur, météo…) sont regroupés dans une colonne à gauche, à la taille dont ils ont besoin. Les widgets à liste (dossier, tâches, notes, calendrier) comblent le bas de cette colonne, et les sites se partagent le reste de la fenêtre, sans trou."
+            },
+            {
+              "title": "Aperçu avant de ranger",
+              "text": "Quand un panneau doit rapetisser, rien ne bouge tout de suite : des cadres en pointillés montrent où ira chaque panneau, avec « ↓ réduire » ou « ↑ agrandir ». Tu choisis Appliquer, Choisir… ou Annuler (Échap)."
+            },
+            {
+              "title": "Choisir les changements",
+              "text": "Une case par panneau : décoche celui qui doit garder sa taille, le reste se range autour. Le bouton Ranger applique directement, sans aperçu, quand aucun panneau ne rapetisse."
+            },
+            {
+              "title": "Garder mes tailles",
+              "text": "Un interrupteur dans le menu du bouton Ranger remet l'ancien rangement en grille, qui ne redimensionne rien."
+            },
+            {
+              "title": "Image glissée depuis un site",
+              "text": "Glisse une image d'un panneau « site » sur l'appli : elle s'ouvre dans un nouveau panneau en mode liseuse. Si le site refuse de la donner ou si elle est trop grosse, un message te l'explique."
+            },
+            {
+              "title": "Noms dans les onglets",
+              "text": "Un onglet nommé affiche son numéro en discret devant son nom."
+            }
+          ]
+        },
+        {
+          "title": "Corrections",
+          "items": [
+            {
+              "title": "Menu « Ranger »",
+              "text": "Les boutons du menu sont alignés et de même taille."
+            },
+            {
+              "title": "Bouton liseuse",
+              "text": "L'icône en forme de livre est plus grande et plus lisible."
+            }
+          ]
+        },
+        {
+          "title": "Technique",
+          "items": [
+            {
+              "title": "Un panneau redimensionné par le rangement mémorise la taille que tu lui avais donnée (tidy dans ses données) : au rangement suivant, c'est cette taille qui sert de référence, donc les panneaux ne grossissent pas à chaque rangement",
+              "text": ""
+            },
+            {
+              "title": "Profils de besoin des widgets (minimum, taille idéale, maximum) dans SMART_PROFILES ; calcul dans computeSmartLayout",
+              "text": ""
+            },
+            {
+              "title": "drop-image : téléchargement par le processus principal (https seulement, 30 Mo au plus, adresses du réseau local refusées, type vérifié sur le contenu)",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.29",
+    "date": "2026-10-08T10:08:43Z",
+    "download": null,
+    "size": 117706132,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Glisse une image depuis un site pour l'ouvrir en liseuse, et quelques finitions sur les onglets et les menus.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Image glissée depuis un site",
+              "text": "Quand tu glisses une image d'un panneau « site » sur l'appli, un message t'indique de la déposer, puis elle s'ouvre dans un nouveau panneau en mode liseuse. Si le site refuse de donner l'image, ou si elle est trop grosse, un message te l'explique."
+            },
+            {
+              "title": "Noms dans les onglets",
+              "text": "Un onglet nommé affiche son numéro en discret devant son nom."
+            }
+          ]
+        },
+        {
+          "title": "Corrections",
+          "items": [
+            {
+              "title": "Menu « Ranger »",
+              "text": "Les boutons du menu sont alignés et de même taille."
+            },
+            {
+              "title": "Bouton liseuse",
+              "text": "L'icône en forme de livre est plus grande et plus lisible."
+            }
+          ]
+        },
+        {
+          "title": "Technique",
+          "items": [
+            {
+              "title": "Nouvel échange drop-image : le processus principal télécharge l'image (https seulement, 30 Mo au plus, adresses du réseau local refusées, type vérifié sur le contenu) et la range dans le dossier de données de l'appli, 150 images au plus",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.28",
+    "date": "2026-10-08T08:05:06Z",
+    "download": null,
+    "size": 117704044,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Une image s'affiche maintenant comme dans une liseuse : fond sombre, zoom, plein écran, et parcours des images du dossier.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Mode liseuse pour les images",
+              "text": "Un bouton en forme de livre dans l'en-tête d'un panneau image affiche l'image sur fond sombre, sans bordure. Le choix est retenu panneau par panneau. Les commandes (nom du fichier, zoom, flèches) apparaissent quand tu bouges la souris et disparaissent après 2 secondes."
+            },
+            {
+              "title": "Zoom et déplacement",
+              "text": "La molette zoome autour du curseur, on déplace l'image en la faisant glisser. 0 ajuste l'image à la fenêtre, 1 l'affiche à sa taille réelle, + et − zooment au clavier."
+            },
+            {
+              "title": "Plein écran du panneau",
+              "text": "Un double-clic sur l'image ou la touche Espace agrandit la liseuse sur toute la zone de travail, sans l'en-tête. Échap, Espace ou un nouveau double-clic la remet à sa place."
+            },
+            {
+              "title": "Parcourir le dossier",
+              "text": "Les flèches ← et → passent à l'image précédente ou suivante du même dossier, dans l'ordre naturel des noms (img2 avant img10), avec un compteur du type « 3 / 42 ». Les images voisines sont préchargées."
+            },
+            {
+              "title": "Images du widget Dossier",
+              "text": "Un double-clic (ou Entrée) sur une image du widget Dossier l'ouvre en liseuse plein écran, par-dessus les panneaux. Le bouton « Épingler » la garde dans un vrai panneau. Au clic droit, « Ouvrir avec Windows » reste disponible, et les autres types de fichiers s'ouvrent comme avant."
+            }
+          ]
+        },
+        {
+          "title": "Technique",
+          "items": [
+            {
+              "title": "Liseuse : fonctions readerMount, openDirViewer ; réglage reader enregistré dans les données du panneau et conservé par « Modifier ». Le zoom et l'image affichée après navigation ne sont pas enregistrés",
+              "text": ""
+            },
+            {
+              "title": "Nouveaux échanges avec le processus principal : list-images (images du dossier d'un fichier) et, pour le widget Dossier, dir:view, dir:images, dir:view-path. Comme le reste du widget, la page n'envoie jamais de chemin : identifiant du widget, sous-dossiers et nom, vérifiés dans le dossier choisi",
+              "text": ""
+            },
+            {
+              "title": "Images : 30 Mo au plus (au-delà, un message remplace l'image sans bloquer la navigation)",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.27",
+    "date": "2026-10-07T17:35:55Z",
+    "download": null,
+    "size": 117699204,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Les menus Favoris et Ranger sont repensés : plus lisibles, plus rapides à utiliser, avec une recherche et la possibilité d'annuler un rangement.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Recherche dans les favoris",
+              "text": "Un champ en haut du menu filtre la liste pendant que tu tapes, sans tenir compte des accents ni des majuscules. Ctrl + F, ou simplement taper une lettre, lance la recherche."
+            },
+            {
+              "title": "Favoris ouverts en premier",
+              "text": "Le menu sépare « Ouverts » et « Autres ». Une pastille verte indique les favoris déjà ouverts, avec le nombre de copies. Le tri par glisser ou Alt + ↑ / ↓ reste possible dans chaque groupe."
+            },
+            {
+              "title": "Ajouter le panneau actif",
+              "text": "Un bouton en bas du menu Favoris ajoute le panneau sélectionné aux favoris, sans passer par son étoile."
+            },
+            {
+              "title": "Ranger en tuiles",
+              "text": "Le menu propose six dispositions, avec une vignette qui montre le résultat avec tes vrais panneaux : grille, remplir la fenêtre, colonnes égales, un principal + le reste, côte à côte, empilés."
+            },
+            {
+              "title": "Colonnes égales en 2, 3 ou 4",
+              "text": "Le nombre de colonnes se choisit en bas du menu Ranger, et PolyTabs le retient."
+            },
+            {
+              "title": "Annuler un rangement",
+              "text": "Après un rangement, un bouton « Annuler » apparaît 10 secondes, et Ctrl + Z rétablit les positions et les tailles d'avant pendant une minute."
+            }
+          ]
+        },
+        {
+          "title": "Corrections",
+          "items": [
+            {
+              "title": "Actions des favoris visibles",
+              "text": "Renommer, copier et supprimer ne disparaissent plus tant qu'on ne survole pas la ligne : elles sont atténuées en permanence. Un crayon permet de renommer sans double-clic."
+            },
+            {
+              "title": "Disposition impossible expliquée",
+              "text": "Si trop de panneaux ne tiennent pas dans une disposition, sa vignette est grisée et un message explique pourquoi, au lieu de ne rien faire."
+            }
+          ]
+        },
+        {
+          "title": "Technique",
+          "items": [
+            {
+              "title": "Menu Favoris : en-tête fixe, largeur 380 px, hauteur max 600 px, type de panneau indiqué par l'icône et la couleur (plus de pastille LOCAL / WEB / WIDGET)",
+              "text": ""
+            },
+            {
+              "title": "Menu Ranger : nouvelles fonctions computeArrangeLayout, arrangePanels, undoLayout ; le rangement appelé en interne (« Ranger puis ajouter ») reste silencieux",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.26",
+    "date": "2026-10-07T12:14:55Z",
+    "download": null,
+    "size": 117694490,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Glisser un média pour le lire",
+              "text": "Un fichier audio ou vidéo, un dossier ou plusieurs fichiers déposés sur la fenêtre créent un Lecteur et se lancent (plusieurs fichiers : une playlist). Déposés sur un Lecteur existant, ils le remplacent. Un bouton « Annuler » permet de revenir en arrière. Les autres fichiers continuent de créer un panneau « Fichier local »."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.25",
+    "date": "2026-10-07T10:51:28Z",
+    "download": null,
+    "size": 117692131,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Nouveau widget « Lecteur »",
+              "text": "Lit un fichier audio ou vidéo, ou un dossier entier (playlist) : lecture/pause, précédent/suivant, barre de progression, volume, vitesse, aléatoire, répétition. Il reprend là où tu t'étais arrêté (sans jamais se lancer tout seul), baisse le volume quand PolyTabs parle ou sonne, répond aux touches multimédia de Windows, et propose « Ouvrir avec Windows » si un format n'est pas lu. Un seul son à la fois. Le lecteur ne modifie jamais tes fichiers."
+            },
+            {
+              "title": "Écran vide repensé",
+              "text": "Au tout premier lancement, un accueil présente PolyTabs. Ensuite, un onglet vide affiche une version courte (« Cet onglet est vide »)."
+            },
+            {
+              "title": "Ajout d'un site en un geste",
+              "text": "Un champ d'adresse sur l'écran vide : colle un lien, appuie sur Entrée, le panneau est créé."
+            },
+            {
+              "title": "Favoris plus propres",
+              "text": "Une icône de type remplace le badge, jusqu'à 5 favoris sont proposés, et « Tous les favoris » ouvre le menu complet."
+            },
+            {
+              "title": "Astuces qui changent",
+              "text": "Raccourci Ctrl + N, glisser un fichier, double-clic sur un en-tête, Ctrl + D."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.24",
+    "date": "2026-10-07T09:31:16Z",
+    "download": null,
+    "size": 117682968,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Corrections dans les Réglages : schéma des écrans plus lisible, page « À propos » plus sobre.",
+      "sections": [
+        {
+          "title": "Corrections",
+          "items": [
+            {
+              "title": "Schéma des écrans lisible",
+              "text": "Dans Réglages > Écran, la carte de l'écran où tu es n'est plus coupée : « Vous êtes ici » devient une étiquette posée sur le bord de la carte, et les noms trop longs se terminent par « … ». Une info-bulle donne le détail de chaque écran."
+            },
+            {
+              "title": "Plus d'écran fantôme dans le schéma",
+              "text": "Un écran mémorisé mais débranché et sans panneaux (reste d'un ancien branchement, d'un bureau à distance…) n'est plus affiché. Rien n'est supprimé : s'il contient des panneaux, il reste visible."
+            },
+            {
+              "title": "Page « À propos » plus sobre",
+              "text": "Le halo bleu derrière le logo est atténué et la bannière JL Assist est réduite (540 px) et centrée."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.23",
+    "date": "2026-10-07T02:27:40Z",
+    "download": null,
+    "size": 117682752,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Réglages refaits : les pages « Voix », « Écran », « Mises à jour » et « À propos » sont plus claires, avec un accès direct aux pages du site.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Fenêtre « Nouveau panneau » refaite",
+              "text": "Le type se choisit sur de grandes cartes, puis le formulaire tient sur une colonne, avec les options repliées, un choix de l'onglet de destination et une zone de dépôt pour les fichiers."
+            },
+            {
+              "title": "Page « Voix » retravaillée",
+              "text": "Un bloc en tête indique la voix utilisée, avec un bouton « Écouter » et un interrupteur général pour toutes les annonces vocales."
+            },
+            {
+              "title": "Page « Écran » plus claire",
+              "text": "Un schéma de tes écrans montre où tu es, et chaque jeu de panneaux a une carte lisible avec un bouton « Afficher ici » ou « Échanger avec… »."
+            },
+            {
+              "title": "État de la voix naturelle plus lisible",
+              "text": "Un seul endroit affiche si la voix est installée, à télécharger ou en cours de téléchargement."
+            },
+            {
+              "title": "Page « À propos » repensée",
+              "text": "Une carte d'identité avec le logo, la version et les liens vers le site, les notes de version et les questions fréquentes."
+            },
+            {
+              "title": "Infos de version à copier",
+              "text": "Un bouton « Copier » donne la version, le système et la version d'Electron, pratique pour un signalement. Rien n'est envoyé."
+            },
+            {
+              "title": "Mentions légales repliables",
+              "text": "Droits d'auteur et licences des composants tiers (Electron, Piper, ONNX Runtime, eSpeak NG, voix Siwis, police Bricolage Grotesque)."
+            },
+            {
+              "title": "Page « Mises à jour » refaite",
+              "text": "État clair en haut, choix du mode de mise à jour, notes de version de la mise à jour disponible et boutons vers les pages du site."
+            }
+          ]
+        },
+        {
+          "title": "Corrections",
+          "items": [
+            {
+              "title": "Plus d'impasse si la vérification échoue",
+              "text": "Quand PolyTabs ne peut pas joindre GitHub, un bouton « Télécharger depuis le site » propose d'installer la dernière version à la main."
+            },
+            {
+              "title": "Libellés fidèles pendant les opérations",
+              "text": "Le bouton principal affiche « Vérification… », « Téléchargement… » ou « Installation… » au lieu de rester sur « Vérifier maintenant »."
+            }
+          ]
+        },
+        {
+          "title": "Technique",
+          "items": [
+            {
+              "title": "Pages du site ouvertes depuis une liste fixe côté application : la page n'envoie jamais d'adresse",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.22",
+    "date": "2026-10-07T01:21:47Z",
+    "download": null,
+    "size": 117680283,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Réglages refaits : les pages « Voix », « Écran », « Mises à jour » et « À propos » sont plus claires, avec un accès direct aux pages du site.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Page « Voix » retravaillée",
+              "text": "Un bloc en tête indique la voix utilisée, avec un bouton « Écouter » et un interrupteur général pour toutes les annonces vocales."
+            },
+            {
+              "title": "Page « Écran » plus claire",
+              "text": "Un schéma de tes écrans montre où tu es, et chaque jeu de panneaux a une carte lisible avec un bouton « Afficher ici » ou « Échanger avec… »."
+            },
+            {
+              "title": "État de la voix naturelle plus lisible",
+              "text": "Un seul endroit affiche si la voix est installée, à télécharger ou en cours de téléchargement."
+            },
+            {
+              "title": "Page « À propos » repensée",
+              "text": "Une carte d'identité avec le logo, la version et les liens vers le site, les notes de version et les questions fréquentes."
+            },
+            {
+              "title": "Infos de version à copier",
+              "text": "Un bouton « Copier » donne la version, le système et la version d'Electron, pratique pour un signalement. Rien n'est envoyé."
+            },
+            {
+              "title": "Mentions légales repliables",
+              "text": "Droits d'auteur et licences des composants tiers (Electron, Piper, ONNX Runtime, eSpeak NG, voix Siwis, police Bricolage Grotesque)."
+            },
+            {
+              "title": "Page « Mises à jour » refaite",
+              "text": "État clair en haut, choix du mode de mise à jour, notes de version de la mise à jour disponible et boutons vers les pages du site."
+            }
+          ]
+        },
+        {
+          "title": "Corrections",
+          "items": [
+            {
+              "title": "Plus d'impasse si la vérification échoue",
+              "text": "Quand PolyTabs ne peut pas joindre GitHub, un bouton « Télécharger depuis le site » propose d'installer la dernière version à la main."
+            },
+            {
+              "title": "Libellés fidèles pendant les opérations",
+              "text": "Le bouton principal affiche « Vérification… », « Téléchargement… » ou « Installation… » au lieu de rester sur « Vérifier maintenant »."
+            }
+          ]
+        },
+        {
+          "title": "Technique",
+          "items": [
+            {
+              "title": "Pages du site ouvertes depuis une liste fixe côté application : la page n'envoie jamais d'adresse",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.21",
+    "date": "2026-10-06T23:08:43Z",
+    "download": null,
+    "size": 117676283,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Les notes de version et le téléchargement sont maintenant à portée de clic depuis les réglages.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Notes de version dans l'appli",
+              "text": "Dans Réglages, Mises à jour, le bouton « Notes de version » ouvre la page du site pour ta version, et « Notes de version complètes » détaille la mise à jour disponible."
+            },
+            {
+              "title": "Un site plus complet",
+              "text": "Les notes de toutes les versions sont réunies sur une page du site, avec les archives des versions plus anciennes."
+            }
+          ]
+        },
+        {
+          "title": "Corrections",
+          "items": [
+            {
+              "title": "Plus d'impasse si la vérification échoue",
+              "text": "Quand PolyTabs ne peut pas joindre GitHub, un bouton « Télécharger depuis le site » propose d'installer la dernière version à la main."
+            }
+          ]
+        },
+        {
+          "title": "Technique",
+          "items": [
+            {
+              "title": "Pages du site ouvertes depuis une liste fixe côté application : la page n'envoie jamais d'adresse",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "version": "1.0.20",
     "date": "2026-10-06T12:52:44.143Z",
     "download": null,
@@ -112,6 +749,488 @@
           ]
         }
       ]
+    }
+  },
+  {
+    "version": "1.0.19",
+    "date": "2026-10-05T22:24:23Z",
+    "download": null,
+    "size": 117660301,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Un panneau ajouté reste désormais toujours visible, sans faire défiler la page, et la typographie du logo gagne les titres des panneaux et l'écran d'au revoir. Tes panneaux, favoris et réglages sont conservés.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Plus de place ? L'ajout est refusé, avec des solutions",
+              "text": "Un nouveau panneau ne se pose plus par-dessus les autres : s'il n'y a plus d'emplacement libre, le message « Plus de place dans cet onglet » propose « Ranger puis ajouter » (si le rangement libère de la place) ou « Ajouter dans l'onglet 2 »."
+            },
+            {
+              "title": "Panneau réduit pour tenir",
+              "text": "Quand la taille normale ne tient pas, le panneau prend le plus grand espace libre (jamais sous 260 × 180 px), et un message en donne la taille."
+            },
+            {
+              "title": "Fenêtre réduite : les panneaux ramenés en un clic",
+              "text": "Si des panneaux dépassent après un redimensionnement ou à l'ouverture, un message propose « Ramener dans la fenêtre » (les panneaux sont rapprochés et réduits au besoin) ou « Laisser tel quel »."
+            },
+            {
+              "title": "Titres des panneaux et phrase d'au revoir",
+              "text": "Ils utilisent la même typographie que le nom de l'application."
+            }
+          ]
+        },
+        {
+          "title": "Corrections",
+          "items": [
+            {
+              "title": "Déplacement vers une fenêtre pleine",
+              "text": "Un panneau envoyé vers une fenêtre qui n'a plus de place reste dans la fenêtre d'origine, avec un message, au lieu de chevaucher les autres. Aucun panneau n'est perdu."
+            }
+          ]
+        },
+        {
+          "title": "Technique",
+          "items": [
+            {
+              "title": "Le déplacement d'un panneau entre fenêtres se fait en deux temps : la fenêtre d'arrivée accepte ou refuse, et la fenêtre d'origine ne supprime son panneau qu'en cas d'acceptation",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.18",
+    "date": "2026-10-05T15:33:29Z",
+    "download": null,
+    "size": 117656352,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Une retouche de typographie dans la barre du haut. Tes panneaux, favoris et réglages sont conservés.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Une mention assortie au logo",
+              "text": "« © 2026 · Powered by JL Assist » utilise désormais la même typographie que le nom de l'application, comme les libellés des boutons de la barre du haut."
+            }
+          ]
+        },
+        {
+          "title": "À retenir",
+          "items": [
+            {
+              "title": "Tout le reste est identique à la version 1.0.17",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.17",
+    "date": "2026-10-05T13:12:09Z",
+    "download": null,
+    "size": 117656355,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Retouches de la barre du haut : des icônes plus nettes et cohérentes, et des libellés mieux ajustés. Tes panneaux, favoris et réglages sont conservés.",
+      "sections": [
+        {
+          "title": "Corrections",
+          "items": [
+            {
+              "title": "Icône « Ranger » plus lisible",
+              "text": "Ses quatre carrés étaient presque collés (un demi-pixel les séparait) et se fondaient en un bloc à l'écran. Ils sont maintenant bien distincts, à toutes les échelles d'affichage."
+            },
+            {
+              "title": "Icône « Réglages » harmonisée",
+              "text": "Elle avait un trait plus fin et une taille supérieure aux autres. Elle a désormais le même trait et la même taille."
+            },
+            {
+              "title": "Icône « Capture » recentrée",
+              "text": "L'appareil photo était un peu trop bas dans sa case."
+            },
+            {
+              "title": "Libellés de la barre du haut mieux ajustés",
+              "text": "Légèrement plus petits et resserrés : les libellés complets s'affichent de nouveau dès 1504 px de large (ils exigeaient 1534 px depuis la 1.0.16), notamment sur les écrans 1920 px réglés à 125 %."
+            }
+          ]
+        },
+        {
+          "title": "À retenir",
+          "items": [
+            {
+              "title": "Les nouveautés de la 1.0.16 (nouvelle typographie du logo et des libellés de la barre) sont toujours là",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.16",
+    "date": "2026-10-05T09:53:16Z",
+    "download": null,
+    "size": 117656358,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Mise à jour d'identité visuelle : une même typographie pour le nom de l'application et la barre du haut. Tes panneaux, favoris et réglages sont conservés.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Un nouveau logo",
+              "text": "Le nom « PolyTabs » adopte une nouvelle typographie, plus affirmée, dans la barre du haut, sur l'écran de démarrage, sur l'écran d'au revoir, dans la carte « À propos » et sur les images de l'installeur et du désinstalleur."
+            },
+            {
+              "title": "Une barre du haut plus cohérente",
+              "text": "Les libellés des boutons (Ajouter un panneau, Favoris, Capture…) utilisent la même police que le logo. Ils sont un peu plus larges : les libellés complets laissent la place aux icônes seules quelques dizaines de pixels plus tôt quand la fenêtre se rétrécit."
+            }
+          ]
+        },
+        {
+          "title": "Technique",
+          "items": [
+            {
+              "title": "La police (Bricolage Grotesque, licence SIL OFL) est incluse dans l'application : rien à télécharger, elle s'affiche aussi sans connexion",
+              "text": ""
+            },
+            {
+              "title": "Tout le reste est identique à la version 1.0.14",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.15",
+    "date": "2026-10-05T09:13:34Z",
+    "download": null,
+    "size": 117656444,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Petite mise à jour d'identité visuelle. Tes panneaux, favoris et réglages sont conservés.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Un nouveau logo",
+              "text": "Le nom « PolyTabs » adopte une nouvelle typographie, plus affirmée, dans la barre du haut, sur l'écran de démarrage, dans la carte « À propos » et sur les images de l'installeur et du désinstalleur."
+            }
+          ]
+        },
+        {
+          "title": "Technique",
+          "items": [
+            {
+              "title": "La police (Bricolage Grotesque, licence SIL OFL) est incluse dans l'application : rien à télécharger, elle s'affiche aussi sans connexion",
+              "text": ""
+            },
+            {
+              "title": "Tout le reste est identique à la version 1.0.14",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.14",
+    "date": "2026-10-05T05:15:27Z",
+    "download": null,
+    "size": 117534717,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Mise à jour importante : moteur plus récent, capture d'écran fiabilisée, panneaux et favoris améliorés. Tes panneaux, favoris et réglages sont conservés.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Une icône de type (globe, dossier, icône du widget) remplace le point de couleur",
+              "text": ""
+            },
+            {
+              "title": "Pastille « Ouvert » sur les favoris déjà affichés (« onglet 2 » s'ils sont dans l'autre onglet)",
+              "text": ""
+            },
+            {
+              "title": "Un clic sur un favori déjà ouvert amène au panneau existant (changement d'onglet, premier plan, clignotement). Ctrl + clic ou le bouton « + » en ajoute une copie",
+              "text": ""
+            },
+            {
+              "title": "Ordre libre : glisser la poignée ou Alt + ↑ / ↓. Renommer : double-clic sur le nom ou F2",
+              "text": ""
+            },
+            {
+              "title": "Navigation au clavier : ↑ ↓ Début Fin, Entrée, Échap",
+              "text": ""
+            },
+            {
+              "title": "Les favoris restent à jour entre plusieurs fenêtres",
+              "text": ""
+            },
+            {
+              "title": "Un clic sur un panneau le met au premier plan, y compris dans un site. L'ordre est conservé après « Modifier » et au redémarrage",
+              "text": ""
+            },
+            {
+              "title": "La zone de travail défile enfin quand les panneaux dépassent la fenêtre",
+              "text": ""
+            },
+            {
+              "title": "Gros fichiers texte : seule la fin (.log, .txt) ou le début est affichée, avec un bandeau. Un journal de 40 Mo s'affiche en moins d'une seconde",
+              "text": ""
+            },
+            {
+              "title": "CSV : séparateurs ;, tabulation et |, guillemets, retours à la ligne dans une cellule",
+              "text": ""
+            },
+            {
+              "title": "exemple.com est accepté et complété en https://exemple.com. localhost et les adresses IP passent en http://",
+              "text": ""
+            },
+            {
+              "title": "Un message montre l'adresse qui sera ouverte. Les adresses collées sont nettoyées. Les adresses javascript:, data:, file:… sont refusées avec une explication",
+              "text": ""
+            },
+            {
+              "title": "Meilleurs noms proposés : BBC, WhatsApp, GitHub, Le Monde, 192.168.1.1, localhost:3000, sites hébergés comme beta-twoseats.netlify.app",
+              "text": ""
+            }
+          ]
+        },
+        {
+          "title": "Corrections",
+          "items": [
+            {
+              "title": "La boîte « Enregistrer la capture » s'ouvre de nouveau",
+              "text": ""
+            },
+            {
+              "title": "Une seule fenêtre de sélection s'ouvre, même avec un double clic ou la touche maintenue",
+              "text": ""
+            },
+            {
+              "title": "La zone capturée ne dépasse plus de la fenêtre et suit le zoom de la page (Ctrl + « + » / « − »)",
+              "text": ""
+            },
+            {
+              "title": "Le fichier enregistré a exactement la taille annoncée, y compris à 125 % et 150 % d'affichage",
+              "text": ""
+            },
+            {
+              "title": "Message d'erreur si l'enregistrement échoue ou si l'écran est protégé",
+              "text": ""
+            },
+            {
+              "title": "La boîte « Enregistrer » s'ouvre sur la fenêtre qui a lancé la capture",
+              "text": ""
+            },
+            {
+              "title": "Déplacer un panneau vers une autre fenêtre conserve le dossier d'un widget Dossier, les autorisations d'un site, sa connexion et la mise à jour automatique d'un fichier",
+              "text": ""
+            },
+            {
+              "title": "Supprimer un panneau « site » efface ses cookies et son stockage (le dossier de session est retiré au démarrage suivant)",
+              "text": ""
+            },
+            {
+              "title": "Un panneau déposé sur un autre reste au-dessus. Les poignées de redimensionnement ne traversent plus le panneau du dessus",
+              "text": ""
+            },
+            {
+              "title": "Un nouveau panneau n'est plus posé de façon à dépasser sous la fenêtre",
+              "text": ""
+            },
+            {
+              "title": "Les repères d'aimantation sont justes quand la zone est défilée",
+              "text": ""
+            },
+            {
+              "title": "Une touche maintenue ne répète plus les raccourcis (Ctrl+Maj+N, capture, règle)",
+              "text": ""
+            }
+          ]
+        },
+        {
+          "title": "Technique",
+          "items": [
+            {
+              "title": "Moteur mis à jour d'Electron 31 vers Electron 44 : correctifs de sécurité, glisser-déposer de fichiers adapté",
+              "text": ""
+            },
+            {
+              "title": "Une entrée de favori abîmée ne casse plus le menu",
+              "text": ""
+            }
+          ]
+        },
+        {
+          "title": "Connu",
+          "items": [
+            {
+              "title": "Supprimer un panneau est immédiat, sans annulation possible (amélioration prévue)",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.13",
+    "date": "2026-10-04T19:44:28Z",
+    "download": null,
+    "size": 117531729,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Correctifs, ajouts etc ..",
+      "sections": []
+    }
+  },
+  {
+    "version": "1.0.12",
+    "date": "2026-10-04T10:53:25Z",
+    "download": null,
+    "size": 82086489,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "",
+      "sections": []
+    }
+  },
+  {
+    "version": "1.0.11",
+    "date": "2026-10-03T15:01:03Z",
+    "download": null,
+    "size": 82085517,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "",
+      "sections": []
+    }
+  },
+  {
+    "version": "1.0.10",
+    "date": "2026-10-03T13:24:05Z",
+    "download": null,
+    "size": 82085323,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Modif panneau tableau",
+      "sections": []
+    }
+  },
+  {
+    "version": "1.0.9",
+    "date": "2026-10-03T10:44:52Z",
+    "download": null,
+    "size": 82084335,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Widget Affichage Dossier Windows + Correctif",
+      "sections": []
+    }
+  },
+  {
+    "version": "1.0.8",
+    "date": "2026-10-03T07:16:54Z",
+    "download": null,
+    "size": 82071997,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "",
+      "sections": []
+    }
+  },
+  {
+    "version": "1.0.7",
+    "date": "2026-10-03T00:50:05Z",
+    "download": null,
+    "size": 82066253,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "",
+      "sections": []
+    }
+  },
+  {
+    "version": "1.0.6",
+    "date": "2026-10-03T00:00:01Z",
+    "download": null,
+    "size": 82065243,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Correctif",
+      "sections": []
+    }
+  },
+  {
+    "version": "1.0.5",
+    "date": "2026-10-02T23:35:54Z",
+    "download": null,
+    "size": 82009706,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Rajouts messages MAJ synthèse vocal.",
+      "sections": []
+    }
+  },
+  {
+    "version": "1.0.4",
+    "date": "2026-10-02T23:09:33Z",
+    "download": null,
+    "size": 82007959,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Version de test : aucune nouveauté visible », puis « Publish release",
+      "sections": []
+    }
+  },
+  {
+    "version": "1.0.3",
+    "date": "2026-10-02T22:54:07Z",
+    "download": null,
+    "size": 82008008,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "test mise a jour 1.0.3",
+      "sections": []
+    }
+  },
+  {
+    "version": "1.0.2",
+    "date": "2026-10-02T22:31:19Z",
+    "download": null,
+    "size": 82008073,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Version de test du système de mise à jour automatique. Aucune nouveauté visible.",
+      "sections": []
+    }
+  },
+  {
+    "version": "1.0.1",
+    "date": "2026-10-02T22:10:28Z",
+    "download": null,
+    "size": 82007939,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Mise à jour automatique",
+      "sections": []
     }
   }
 ]

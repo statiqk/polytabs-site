@@ -398,3 +398,5 @@ details[open] summary svg { transform: rotate(45deg); }
   .card--ranger > * { grid-column: 1; }
   .card--ranger > .menu-list { grid-column: 2; grid-row: 1 / span 6; align-self: center; margin: 0; }
 }
+/* éléments remplis par le navigateur (numéro de version, bandeau) : masqués tant que la version n'est pas connue */
+[data-vwrap][hidden], .new-bar[hidden] { display: none !important; }

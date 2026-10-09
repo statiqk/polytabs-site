@@ -160,6 +160,7 @@
     if (!all.length) return false;
     const shown = ARCHIVE ? all.slice(PER_PAGE) : all.slice(0, PER_PAGE);
     doc.querySelectorAll('[data-version]').forEach((e) => { e.textContent = all[0].version; });
+    doc.querySelectorAll('[data-vwrap]').forEach((e) => { e.hidden = false; });
     const more = doc.getElementById('versions-more');
     if (more) more.hidden = all.length <= PER_PAGE;
     if (redirectFromHash()) return true;

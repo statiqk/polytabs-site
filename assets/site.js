@@ -213,6 +213,13 @@
 
   function applyRelease(rel, origin) {
     doc.querySelectorAll('[data-version]').forEach((e) => { e.textContent = rel.version; });
+    doc.querySelectorAll('[data-vwrap]').forEach((e) => { e.hidden = false; });
+    // Bandeau « Nouveau » : titres des nouveautés de la dernière version publiée (le texte écrit dans la page sert de secours).
+    const bar = doc.getElementById('newbar'), btxt = doc.getElementById('newbar-text');
+    if (bar && btxt) {
+      const t = rel.notes.cards.filter((c) => /^nouveaut/i.test(c.tag)).map((c) => clean(c.title).replace(/[.\s]+$/, '').replace(/^(\S)(?=[^A-ZÀ-Ý])/, (m) => m.toLowerCase())).filter(Boolean).slice(0, 3);
+      if (t.length) { btxt.textContent = 'Dans la ' + rel.version + ' : ' + (t.length === 1 ? t[0] : t.slice(0, -1).join(', ') + ' et ' + t[t.length - 1]); bar.hidden = false; }
+    }
     // Chaque lien garde son adresse d'origine (celle écrite dans la page) : si la publication n'a pas d'installeur, ou si une réponse
     // plus récente remplace une réponse en cache, aucun lien ne reste sur une ancienne version.
     // Les boutons « Télécharger » restent sur telecharger.html : l'adresse de l'installeur n'est jamais écrite dans la page.
