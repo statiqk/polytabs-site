@@ -44,7 +44,7 @@
 </nav>
 </header>
 
-<div class="new-bar" id="newbar" role="note"><span class="new">Nouveau</span><span id="newbar-text">Depuis la 1.0.32 : « Ranger par paquets », un menu Favoris compact et repliable et la détection des mises à jour pendant que l&#x27;appli est ouverte</span><a href="versions.html">Voir →</a></div>
+<div class="new-bar" id="newbar" role="note" hidden><span class="new">Nouveau</span><span id="newbar-text"></span><a href="versions.html">Voir →</a></div>
 <main id="contenu">
 <div id="top"></div>
 <section class="wrap hero" aria-labelledby="titre">
@@ -55,7 +55,7 @@
 <div class="actions">
 <a class="btn btn--lg" data-download href="telecharger.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span>Télécharger pour Windows</span></a>
 <a class="link-arrow" href="#fonctionnalites">Voir ce qu'il sait faire<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-<a class="link-arrow" href="#top" data-show-video><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5.5 3.5-5.5 3.5z"/></svg>Voir la vidéo (95 s)</a>
+<a class="link-arrow" href="#top" data-show-video><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5.5 3.5-5.5 3.5z"/></svg>Voir la vidéo (43 s)</a>
 </div>
 <p class="hero-note"><strong>Windows peut afficher un avertissement à l'installation.</strong> C'est normal : <a href="#avertissement-windows">voici comment continuer</a>.</p>
 <div class="fines">
@@ -67,7 +67,7 @@
 <figure class="mock-fig rise rise-2">
 <div class="seg" role="tablist" aria-label="Aperçu">
 <button type="button" role="tab" class="seg-b" id="seg-mock" aria-selected="true" aria-controls="mock">Illustration</button>
-<button type="button" role="tab" class="seg-b" id="seg-vid" aria-selected="false" aria-controls="vidpane"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5.5 3.5-5.5 3.5z"/></svg>Vidéo · 95 s</button>
+<button type="button" role="tab" class="seg-b" id="seg-vid" aria-selected="false" aria-controls="vidpane"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5.5 3.5-5.5 3.5z"/></svg>Vidéo · 43 s</button>
 </div>
 
 <div class="mock" id="mock">
@@ -119,22 +119,20 @@
 </div>
 </div>
 <div class="vidpane" id="vidpane" hidden>
-<video class="demo-video demo-wide" controls preload="none" playsinline width="1920" height="1080" data-poster="media/polytabs-demo-16x9.jpg" aria-label="Démonstration de PolyTabs, 95 secondes" aria-describedby="demo-text">
+<video class="demo-video demo-wide" controls preload="none" playsinline width="1920" height="1080" data-poster="media/polytabs-demo-16x9.jpg" aria-label="Démonstration de PolyTabs, 43 secondes" aria-describedby="demo-text">
 <source src="media/polytabs-demo-16x9.mp4" type="video/mp4">
 <source src="media/polytabs-demo-16x9.webm" type="video/webm">
-<track kind="captions" src="media/polytabs-demo.fr.vtt" srclang="fr" label="Français">
 <p>Ton navigateur ne lit pas cette vidéo : <a href="media/polytabs-demo-16x9.mp4">télécharge-la</a>.</p>
 </video>
-<video class="demo-video demo-tall" controls preload="none" playsinline width="1080" height="1920" data-poster="media/polytabs-demo-9x16.jpg" aria-label="Démonstration de PolyTabs, 95 secondes, format vertical" aria-describedby="demo-text">
+<video class="demo-video demo-tall" controls preload="none" playsinline width="1080" height="1920" data-poster="media/polytabs-demo-9x16.jpg" aria-label="Démonstration de PolyTabs, 43 secondes, format vertical" aria-describedby="demo-text">
 <source src="media/polytabs-demo-9x16.mp4" type="video/mp4">
 <source src="media/polytabs-demo-9x16.webm" type="video/webm">
-<track kind="captions" src="media/polytabs-demo-9x16.fr.vtt" srclang="fr" label="Français">
 <p>Ton navigateur ne lit pas cette vidéo : <a href="media/polytabs-demo-9x16.mp4">télécharge-la</a>.</p>
 </video>
 </div>
 <details class="demo-transcript vid-only" hidden>
 <summary>Lire le déroulé de la vidéo<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#7ab4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
-<div class="answer" id="demo-text"><ol class="demo-steps"><li><b>0:00</b> — Carte d'introduction : « PolyTabs, tous vos panneaux, sur un seul écran ».</li><li><b>0:04</b> — Le principe : ajout d'un site web, dépôt d'un fichier journal et ajout d'un widget horloge, réunis sur un même écran.</li><li><b>0:18</b> — Rangement automatique : un aperçu montre le résultat avant validation, puis les panneaux se rangent en un clic.</li><li><b>0:23</b> — Usage domestique : météo de Bordeaux, calendrier, liste de courses, horloge, minuteur et notes.</li><li><b>0:32</b> — Études : le cours, les notes et un minuteur de révision côte à côte, avec des onglets nommés.</li><li><b>0:42</b> — Création de contenu : liseuse d'images, statistiques du site et liste d'idées. Une image glissée depuis un site devient un panneau.</li><li><b>0:52</b> — Activité professionnelle : outil de ventes, journal en direct, onglets par clients et favoris compacts.</li><li><b>1:04</b> — Développement : journal en direct, site en cours de développement et outil d'alignement mesuré au pixel.</li><li><b>1:15</b> — Pour tous : mises à jour automatiques, données conservées sur l'ordinateur, aucun compte à créer.</li><li><b>1:27</b> — Carte de fin : d'autres fonctions sont disponibles (capture de zone, règle, liseuse, plusieurs écrans, voix et réveil, météo, minuteur, calendrier), puis « Télécharger pour Windows » avec l'adresse github.com/statiqk/polytabs-releases.</li></ol></div>
+<div class="answer" id="demo-text"><ol class="demo-steps"><li><b>0:00</b> — Carte d'introduction : « Fini les onglets perdus partout. Tes sites, tes fichiers et tes widgets sur un seul écran. »</li><li><b>0:04</b> — Un site : il suffit de taper l'adresse, le panneau est ajouté. Le nom se remplit tout seul.</li><li><b>0:09</b> — Un fichier, suivi en direct : le panneau se met à jour dès que le fichier change.</li><li><b>0:14</b> — Le dernier fichier d'un dossier : PolyTabs affiche toujours le plus récent, et un aperçu liste les fichiers du dossier.</li><li><b>0:19</b> — Neuf widgets prêts à l'emploi : horloge, météo, calendrier, liste de courses, minuteur, notes.</li><li><b>0:24</b> — Un clic pour tout ranger : un aperçu montre le résultat avant validation.</li><li><b>0:29</b> — Usage de tous les jours : météo, courses et minuteur en un coup d'œil.</li><li><b>0:33</b> — Développement : journaux en direct et alignement mesuré au pixel.</li><li><b>0:37</b> — Carte de fin : « Télécharge-le pour Windows », avec l'adresse du site, la version, les mises à jour automatiques et l'absence de compte à créer.</li></ol></div>
 </details>
 <figcaption class="mock-cap">Illustration interactive : clique sur l'en-tête d'un panneau pour le mettre devant, et sur 1 ou 2 pour changer d'onglet.</figcaption>
 </figure>
@@ -156,7 +154,7 @@
 </div>
 <div class="rows">
 <div class="row">
-<div class="card card--lg f3"><span class="ic ic--blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M10 9v11"/></svg></span><h3>Des panneaux libres, qui se superposent<span class="new">Nouveau</span></h3>
+<div class="card card--lg f3"><span class="ic ic--blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M10 9v11"/></svg></span><h3>Des panneaux libres, qui se superposent</h3>
 <p>Glisse un panneau par son en-tête, redimensionne-le par les coins, agrandis-le d'un double-clic. Les bords s'aimantent, « Ranger » les regroupe en paquets et remplit la fenêtre, et le panneau sur lequel tu cliques passe devant les autres. Chaque agencement est enregistré.</p>
 <div class="stack" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span></div></div>
 <div class="card card--lg f2"><span class="ic ic--blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 3.9 5.7 3.9 9s-1.3 6.3-3.9 9c-2.6-2.7-3.9-5.7-3.9-9S9.4 5.7 12 3z"/></svg></span><h3>Des sites qui ne se mélangent pas</h3>
@@ -172,10 +170,10 @@
 <ul class="wgts"><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>Horloge et réveil</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h12M6 21h12M7 3c0 5 5 6 5 9s-5 4-5 9M17 3c0 5-5 6-5 9s5 4 5 9"/></svg>Minuteur</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M9.5 2.5h5"/></svg>Chronomètre</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Calendrier</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6l1.5 1.5L8 5M4 12l1.5 1.5L8 11M4 18l1.5 1.5L8 17M11 6.5h9M11 12.5h9M11 18.5h9"/></svg>Tâches</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h9l4 4v14H6zM15 3v4h4M9 12h7M9 16h5"/></svg>Notes</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7a2 2 0 0 1 2-2h4l2 2.5h8a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M8 12.5h8M8 16h5"/></svg>Dossier</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M10 8.6v6.8l5.6-3.4z"/></svg>Lecteur audio et vidéo</li><li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f5b942" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10.5 6.3A3.6 3.6 0 1 0 5 11.3"/><path d="M7 1.8v1.2M1.8 7H3M3.3 3.3l.8.8M10.7 3.3l-.8.8"/><path d="M9 20a4 4 0 0 1 .5-8 5.5 5.5 0 0 1 10.5 1.5A3.3 3.3 0 0 1 19.5 20z"/></svg>Météo</li></ul></div>
 </div>
 <div class="row">
-<div class="card card--lg f2"><span class="ic ic--amber"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.5 9.7l5.9-.9z"/></svg></span><h3>Des favoris à portée de main<span class="new">Nouveau</span></h3>
+<div class="card card--lg f2"><span class="ic ic--amber"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.5 9.7l5.9-.9z"/></svg></span><h3>Des favoris à portée de main</h3>
 <p>Un menu dense, où l'on voit plus de favoris sans défiler. Un point vert signale ceux qui sont déjà ouverts, et les sections « Ouverts » et « Autres » se replient d'un clic.</p>
 <ul class="tags"><li class="tag">Recherche</li><li class="tag">Ordre libre</li><li class="tag">Au clavier</li></ul></div>
-<div class="card card--lg f2"><span class="ic ic--blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10.5 6.3A3.6 3.6 0 1 0 5 11.3"/><path d="M7 1.8v1.2M1.8 7H3M3.3 3.3l.8.8M10.7 3.3l-.8.8"/><path d="M9 20a4 4 0 0 1 .5-8 5.5 5.5 0 0 1 10.5 1.5A3.3 3.3 0 0 1 19.5 20z"/></svg></span><h3>Toujours à jour, sans y penser<span class="new">Nouveau</span></h3>
+<div class="card card--lg f2"><span class="ic ic--blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10.5 6.3A3.6 3.6 0 1 0 5 11.3"/><path d="M7 1.8v1.2M1.8 7H3M3.3 3.3l.8.8M10.7 3.3l-.8.8"/><path d="M9 20a4 4 0 0 1 .5-8 5.5 5.5 0 0 1 10.5 1.5A3.3 3.3 0 0 1 19.5 20z"/></svg></span><h3>Toujours à jour, sans y penser</h3>
 <p>Même quand l'appli reste ouverte des jours, elle repère toute seule une nouvelle version, la signale et l'annonce à la voix. Rien n'est installé en plein travail.</p>
 <ul class="tags"><li class="tag">Vérification toutes les 10 min</li><li class="tag">Annonce vocale</li></ul></div>
 </div>

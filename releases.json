@@ -1,5 +1,233 @@
 [
   {
+    "version": "1.0.37",
+    "date": "2026-10-09T22:33:28Z",
+    "download": null,
+    "size": 117725301,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Finitions de la boîte « Nouveau panneau » pour « Site web » et « Fichier local ».",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Site web : la zone d'aperçu suit l'adresse",
+              "text": "Adresse valide : le domaine en grand, l'adresse exacte qui sera ouverte et « ● Prêt à ajouter ». Adresse en http:// : même présentation avec « ● Connexion non chiffrée (http) ». Adresse invalide : la zone passe en rouge discret et dit pourquoi, avec un exemple. Rien n'est chargé depuis le site."
+            },
+            {
+              "title": "Adresse vide :",
+              "text": "un clic sur « Ajouter » grisé explique ce qu'il manque et place le curseur dans le champ."
+            }
+          ]
+        },
+        {
+          "title": "Corrections",
+          "items": [
+            {
+              "title": "Fichier local :",
+              "text": "un clic sur « Ajouter » sans fichier ni dossier choisi fermait la boîte sans rien faire. Elle reste ouverte et indique ce qu'il faut choisir."
+            },
+            {
+              "title": "Site web :",
+              "text": "le nom rempli automatiquement s'efface avec l'adresse (il restait affiché après une adresse invalide), et localhost:3000 donne le nom « Localhost »."
+            },
+            {
+              "title": "Le message de refus d'une adresse non web renvoie vers « Fichier local » (l'ancien nom du type n'existait plus)",
+              "text": ""
+            }
+          ]
+        },
+        {
+          "title": "Technique",
+          "items": [
+            {
+              "title": "index.html : renderWebZone, needPick, zone #webZone",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.36",
+    "date": "2026-10-09T21:58:03Z",
+    "download": null,
+    "size": 117724507,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "La boîte « Nouveau panneau » est retravaillée pour « Site web » et « Fichier local » : le formulaire devient l'aperçu du panneau.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Site web : le formulaire est le panneau",
+              "text": "L'en-tête porte le nom du panneau, l'adresse se saisit dessous, et une zone d'aperçu rayée annonce « Le site s'affichera ici ». Le nom est rempli automatiquement depuis l'adresse."
+            },
+            {
+              "title": "Bouton « Ajouter » grisé",
+              "text": "tant que l'adresse, le fichier ou le dossier n'est pas valide, avec un message d'erreur clair pour l'adresse web."
+            },
+            {
+              "title": "Fichier local : même cadre que Site web",
+              "text": "Bascule « Un fichier / Le dernier fichier d'un dossier », zone de dépôt rayée avec « Parcourir… ». Une fois le fichier choisi, la zone affiche son nom, sa taille et sa date de modification."
+            },
+            {
+              "title": "Dossier : aperçu en direct",
+              "text": "Avec le filtre par nom, la boîte liste les derniers fichiers du dossier (taille, date), met en avant celui qui sera affiché (« ● affiché ») et grise ceux que le filtre ignore."
+            },
+            {
+              "title": "Nettoyage automatique compact",
+              "text": "Une seule ligne (« Garder les N derniers fichiers », Simuler, Nettoyer) ; les règles et les raccourcis « Ouvrir le dossier / la corbeille » sont dans un dépliant."
+            }
+          ]
+        },
+        {
+          "title": "Modifications",
+          "items": [
+            {
+              "title": "Les favoris ne sont plus proposés dans la boîte",
+              "text": "« Nouveau panneau » (ce qui corrige aussi leur affichage au survol)."
+            },
+            {
+              "title": "La modification d'un panneau existant garde sa présentation habituelle",
+              "text": ""
+            }
+          ]
+        },
+        {
+          "title": "Technique",
+          "items": [
+            {
+              "title": "main.js : nouveaux canaux stat-file et list-folder-files (lecture seule) ; preload.js : statFile, listFolderFiles",
+              "text": ""
+            },
+            {
+              "title": "index.html : folderPreview, syncSaveOff, fdRender (taille/date), styles #panelDialog:not(.editing)[data-type=\"web\"|\"local\"], suppression de renderFavChips",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.35",
+    "date": "2026-10-09T19:18:26Z",
+    "download": null,
+    "size": 117722509,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "La boîte « Nouveau panneau » est refaite : plus besoin de passer par un écran de choix, les trois types sont dans une barre en haut, et chaque type a sa propre présentation.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Types dans une barre en haut",
+              "text": "Site web, Fichier local et Widget se changent d'un clic, sans écran intermédiaire. La boîte prend la largeur dont le type a besoin (site, fichier, widget)."
+            },
+            {
+              "title": "Widgets en vignettes",
+              "text": "Les neuf widgets sont présentés sur trois colonnes, avec un mini-aperçu de chacun, rangés par sections : Temps, Organisation, Médias et infos. Le champ « Nom » disparaît à la création d'un widget : il porte le nom du widget, que tu peux changer ensuite en modifiant le panneau."
+            },
+            {
+              "title": "Fichier local par type de contenu",
+              "text": "Document (PDF), Image, Texte, Données (CSV, JSON), Page web (HTML) et Dossier. Le type choisi règle le filtre de l'explorateur de fichiers et le texte de la zone de dépôt. « Dossier » ouvre le mode « dernier fichier », avec le filtre par nom et le nettoyage automatique. Le nom du panneau est celui du fichier ou du dossier."
+            },
+            {
+              "title": "Favoris dans la boîte",
+              "text": "Sur « Site web », tes favoris sont proposés sur une ligne : un clic remplit l'adresse et le nom."
+            },
+            {
+              "title": "Onglet de destination nommé",
+              "text": "Le pied de la boîte affiche « 1 · Suivi » et « 2 · Études ». Un onglet sans place est grisé et marqué « plein » ; le panneau n'y est jamais envoyé."
+            }
+          ]
+        },
+        {
+          "title": "Améliorations",
+          "items": [
+            {
+              "title": "« Annuler » et « Ajouter » toujours sur la même ligne",
+              "text": ", quelle que soit la largeur de la fenêtre. Le pied de la boîte reste visible : seul le contenu défile."
+            },
+            {
+              "title": "La modification d'un panneau existant ne change pas",
+              "text": ""
+            }
+          ]
+        },
+        {
+          "title": "Technique",
+          "items": [
+            {
+              "title": "index.html : barre de types (.type-cards en rangée), WIDGET_TILES regroupés en 3 sections avec WIDGET_PREVIEW, LOCAL_KINDS / syncLocalKinds / kindFilters, renderFavChips, renderTarget (onglets nommés, tabIsFull), showChooser n'affiche plus l'étape de choix",
+              "text": ""
+            },
+            {
+              "title": "main.js : pick-file accepte un filtre d'extensions (noms et extensions simples seulement) ; preload.js le transmet",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.34",
+    "date": "2026-10-09T17:34:36Z",
+    "download": null,
+    "size": 117719959,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Un panneau se déplace d'un onglet à l'autre en le faisant glisser, la voix d'accueil démarre dès que la fenêtre apparaît, et les écrans sont numérotés de droite à gauche.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Glisser un panneau vers l'autre onglet",
+              "text": "Attrape un panneau par son en-tête et fais-le glisser sur un onglet, en haut de la fenêtre : il prend la première place libre de cet onglet, avec sa taille et ses réglages. Un site ne se recharge pas et garde sa session. Un message propose « Annuler » (ou Ctrl + Z) pour le remettre à sa place."
+            },
+            {
+              "title": "Onglet plein",
+              "text": "Pendant le glissé, un onglet qui ne peut plus accueillir le panneau est grisé et marqué « plein », et une bulle l'explique quand tu passes dessus. Si tu y lâches quand même le panneau, il revient à sa place avec un court glissement, et un message propose d'ouvrir l'onglet pour y faire de la place. Si le panneau tient seulement une fois réduit, la bulle le précise."
+            }
+          ]
+        },
+        {
+          "title": "Améliorations",
+          "items": [
+            {
+              "title": "Voix d'accueil plus rapide",
+              "text": "Le message est composé et la voix naturelle générée pendant l'écran de démarrage : elle démarre dès que la fenêtre apparaît, au lieu d'une à trois secondes plus tard. Le message est refait comme avant si quelque chose a changé entre-temps (annonce de mise à jour, prénom, vitesse, tâches, réveils, ville météo)."
+            },
+            {
+              "title": "Écrans numérotés de droite à gauche",
+              "text": "« Écran 1 » est maintenant l'écran le plus à droite. Le numéro en tête du titre des fenêtres (aperçu de la barre des tâches, Alt + Tab) et la liste « Envoyer vers… » suivent la même règle."
+            }
+          ]
+        },
+        {
+          "title": "Technique",
+          "items": [
+            {
+              "title": "index.html : computeTabTargets, updateTabDropHover, movePanelToTab, undoTabMove, snapPanelBack (l'élément du panneau reste dans la page, seulement masqué) ; prepareWelcome / takeWelcomePrep, buildWelcomeText({ preview }), speakPiperFirst accepte une synthèse déjà lancée (opts.pre)",
+              "text": ""
+            },
+            {
+              "title": "main.js : screenNumberOf trie les écrans de droite à gauche",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "version": "1.0.33",
     "date": "2026-10-09T10:16:35Z",
     "download": null,
