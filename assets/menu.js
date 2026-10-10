@@ -4,7 +4,7 @@
   'use strict';
   /* Points sous les listes qui défilent sur le côté (téléphone) */
   document.querySelectorAll('.rows, .tools-cats').forEach((box) => {
-    const items = Array.from(box.querySelectorAll(box.classList.contains('rows') ? '.card--lg' : '.tc'));
+    const items = Array.from(box.querySelectorAll(box.classList.contains('rows') ? '.card--lg, .feat-mini' : '.tc'));
     if (items.length < 2) return;
     const dots = document.createElement('div'); dots.className = 'dots'; dots.setAttribute('aria-hidden', 'true');
     items.forEach(() => dots.appendChild(document.createElement('i')));

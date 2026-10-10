@@ -461,6 +461,9 @@ details[open] summary svg { transform: rotate(45deg); }
   .rows .row { display: contents; }
   .rows .card--lg { flex: 0 0 82%; scroll-snap-align: start; min-width: 0; }
   .rows .card--lg .stack, .rows .card--lg .wgts { display: none; }
+  /* la liste « Pensé pour plusieurs écrans… » devient la dernière carte du défilement (elle restait hors de portée) */
+  .rows .feat-mini { flex: 0 0 82%; scroll-snap-align: start; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .rows .feat-mini li { flex: 1; align-items: flex-start; padding: 16px; }
   .cta .nm { display: none; }
   .dots { display: flex; justify-content: center; gap: 6px; margin-top: 14px; }
   .dots i { width: 7px; height: 7px; border-radius: 99px; background: var(--line); transition: width .2s, background .2s; }
@@ -494,3 +497,51 @@ details[open] summary svg { transform: rotate(45deg); }
 
 /* ---------- mention discrète dans la barre du haut : « · NL » ---------- */
 .site-header .brand-name::after { content: "· NL"; font: 500 .5rem var(--f-body, sans-serif); letter-spacing: .12em; color: var(--mute, #5c6572); margin-left: 7px; vertical-align: middle; }
+
+/* ---------- pied de page : version téléphone (carte + tuiles) ---------- */
+.site-footer .bl-id, .site-footer .fb-copy, .site-footer nav .fi { display: none; }
+@media (max-width: 859px) {
+  .site-footer { padding-top: 32px; }
+  .site-footer .foot-row { display: block; background: var(--panel-3); border: 1px solid var(--line); border-radius: 20px; padding: 18px; }
+  .site-footer .brand-line { gap: 12px; }
+  .site-footer .brand-line > svg { width: 32px; height: 32px; flex: none; }
+  .site-footer .bl-copy { display: none; }
+  .site-footer .bl-id { display: flex; flex-direction: column; gap: 4px; }
+  .site-footer .bl-id b { font: 800 1.1rem/1 var(--f-display); color: var(--head); letter-spacing: -.01em; }
+  .site-footer .bl-id small { font-size: .78rem; color: var(--mute); }
+  .site-footer nav { margin-top: 16px; gap: 10px; }
+  .site-footer nav a { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 76px; padding: 12px 6px; text-align: center; font-weight: 600; font-size: .85rem; color: var(--text); background: var(--bg); border: 1px solid var(--line); border-radius: 14px; }
+  .site-footer nav .fi { display: block; color: var(--accent); }
+  .site-footer .privacy { text-align: center; margin: 18px auto 0; font-size: .8rem; }
+  .site-footer .privacy::before { content: "✓ "; color: #3ddc84; }
+  .site-footer .fb-copy { display: block; text-align: center; margin-top: 8px; font-size: .78rem; color: var(--mute); }
+}
+
+/* ---------- questions et prise en main : version téléphone ---------- */
+.qi, .si, .steps-title { display: none; }
+@media (max-width: 859px) {
+  /* questions : une carte par question, avec une icône */
+  .faq-wrap--compact .faq { gap: 10px; }
+  .faq-wrap--compact details { border: 1px solid var(--line); border-radius: 16px; background: var(--panel-3); padding: 0 14px; }
+  .faq-wrap--compact details:last-child { border-bottom: 1px solid var(--line); }
+  .faq-wrap--compact details[open] { background: var(--panel); border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
+  .faq-wrap--compact summary { gap: 12px; min-height: 64px; padding: 10px 0; font-size: .96rem; line-height: 1.35; }
+  .faq-wrap--compact summary > svg { display: none; }
+  .faq-wrap--compact summary::after { content: ""; flex: none; width: 9px; height: 9px; margin: 0 6px 3px 0; border-right: 2px solid var(--mute); border-bottom: 2px solid var(--mute); transform: rotate(45deg); transition: transform .2s ease; }
+  .faq-wrap--compact details[open] summary::after { transform: rotate(-135deg); margin-top: 6px; }
+  .faq-wrap--compact .qi { display: grid; place-items: center; flex: none; width: 38px; height: 38px; border-radius: 11px; color: #6fb0ff; background: #1b2a42; }
+  .faq-wrap--compact details:first-child .qi { color: var(--amber); background: #3a2f1a; }
+  .faq-wrap--compact summary { justify-content: flex-start; }
+  .faq-wrap--compact summary::after { margin-left: auto; }
+  .faq-wrap--compact .answer { margin: 0 0 16px; padding-left: 50px; font-size: .9rem; line-height: 1.6; }
+  /* prise en main : titre et trois colonnes */
+  .steps-strip { padding-top: 24px; }
+  .steps-title { display: block; margin: 0 0 14px; font: 800 1.4rem/1.1 var(--f-display); color: var(--head); letter-spacing: -.01em; }
+  .steps-strip ol { counter-reset: gesture; display: flex; gap: 8px; padding: 0; border: 0; }
+  .steps-strip li { counter-increment: gesture; flex: 1 1 0; min-width: 0; flex-direction: column; align-items: center; text-align: center; gap: 10px; padding: 14px 8px; border-radius: 16px; border: 1px solid var(--accent-deep); background: linear-gradient(180deg, #1b2a42, var(--panel-3)); }
+  .steps-strip .n { display: none; }
+  .steps-strip .si { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; color: #e8f2ff; background: var(--accent-deep); }
+  .steps-strip b { font-size: .95rem; }
+  .steps-strip b::before { content: counter(gesture) " · "; }
+  .steps-strip span:not(.n):not(.si) { display: block; margin-top: 6px; font-size: .76rem; line-height: 1.4; }
+}
