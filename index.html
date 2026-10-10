@@ -29,6 +29,7 @@
 <link rel="stylesheet" href="assets/site.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PolyTabs","operatingSystem":"Windows","applicationCategory":"ProductivityApplication","description":"Tableau de bord fait de panneaux libres : sites web, fichiers suivis en direct, horloge, tâches, notes, météo.","author":{"@type":"Organization","name":"JL Assist"},"inLanguage":"fr"}</script>
 <script src="assets/site.js" defer></script>
+<script src="assets/menu.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
@@ -52,12 +53,14 @@
 <span class="chip"><i></i><span>Pour Windows<span data-vwrap hidden> · version&nbsp;<span data-version></span></span></span></span>
 <h1 id="titre">Tout ce que tu suis, sur un seul écran.</h1>
 <p class="lead">PolyTabs est un tableau de bord fait de panneaux libres : tes sites, des fichiers qui se mettent à jour tout seuls, une horloge, des tâches, la météo. Place chacun où tu veux, sur chacun de tes écrans.</p>
+<button type="button" class="hero-poster" data-show-video aria-label="Voir la vidéo de démonstration (43 secondes)"><img src="media/polytabs-demo-16x9.jpg" alt="" width="1280" height="720" decoding="async"><span class="hp-chip"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5.5 3.5-5.5 3.5z"/></svg>Vidéo 43 s</span></button>
 <div class="actions">
 <a class="btn btn--lg" data-download href="telecharger.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span>Télécharger pour Windows</span></a>
 <a class="link-arrow" href="#fonctionnalites">Voir ce qu'il sait faire<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
 <a class="link-arrow" href="#top" data-show-video><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5.5 3.5-5.5 3.5z"/></svg>Voir la vidéo (43 s)</a>
 </div>
 <p class="hero-note"><strong>Windows peut afficher un avertissement à l'installation.</strong> C'est normal : <a href="#avertissement-windows">voici comment continuer</a>.</p>
+<a class="warn-chip" href="#avertissement-windows">Un avertissement Windows ? C'est normal<span aria-hidden="true"> ›</span></a>
 <div class="fines">
 <p class="fine" id="release-line" hidden></p>
 <p class="fine">Installation classique · mises à jour automatiques · tes données restent sur ton ordinateur</p>
@@ -200,6 +203,7 @@
 <li><span class="ic ic--blue"><svg viewBox="0 0 16 16" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.3 8A5.3 5.3 0 1 1 11.7 4.2M13.5 2.2v2.6h-2.6"/></svg></span><span class="txt"><b>Tout rafraîchir</b></span></li>
 <li><span class="ic ic--violet"><svg viewBox="0 0 16 16" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M5.5 5.5V4A1.5 1.5 0 0 1 7 2.5h6A1.5 1.5 0 0 1 14.5 4v6a1.5 1.5 0 0 1-1.5 1.5h-2.5"/></svg></span><span class="txt"><b>Nouvelle fenêtre</b><span class="keys keys--sm"><kbd>Ctrl</kbd><kbd>Maj</kbd><kbd>N</kbd></span></span></li>
 </ul>
+<div class="tools-cats"><div class="tc tc--amber"><b>Widgets</b><span>9 prêts à l&#x27;emploi</span><ul><li>Horloge et réveil</li><li>Minuteur</li><li>Chronomètre</li><li>+6</li></ul></div><div class="tc tc--blue"><b>Raccourcis</b><span>Au clavier</span><ul><li>Capture de zone</li><li>Règle</li><li>Ranger</li><li>+3</li></ul></div><div class="tc tc--violet"><b>Favoris</b><span>Un menu dense</span><ul><li>Recherche</li><li>Ordre libre</li><li>Au clavier</li></ul></div></div>
 </section>
 
 
@@ -227,12 +231,14 @@
 
 <section class="wrap cta-wrap" aria-labelledby="t-cta">
 <div class="cta">
+<div class="cta-brand" aria-hidden="true"><svg viewBox="0 0 24 24" width="56" height="56" fill="none" aria-hidden="true" focusable="false"><rect x="2" y="3" width="12" height="9" rx="2.2" fill="#4f9dff"/><rect x="16" y="3" width="6" height="9" rx="2.2" fill="#4f9dff" opacity=".55"/><rect x="2" y="14" width="7" height="7" rx="2.2" fill="#4f9dff" opacity=".55"/><rect x="11" y="14" width="11" height="7" rx="2.2" fill="#4f9dff" opacity=".8"/></svg><b>PolyTabs</b><span>Tout ce que tu suis, sur un seul écran.</span></div>
 <h2 id="t-cta">Réunis tout ce que tu suis sur un seul écran.</h2>
 <p>Télécharge PolyTabs pour Windows, installe-le en quelques instants et ajoute ton premier panneau.</p>
 <div class="actions">
-<a class="btn btn--lg" data-download href="telecharger.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span>Télécharger PolyTabs <span data-version></span></span></a>
+<a class="btn btn--lg" data-download href="telecharger.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span>Télécharger<span class="nm"> PolyTabs</span> <span data-version></span></span></a>
 <a class="link-arrow" href="versions.html">Lire les notes de version</a>
 </div>
+<p class="cta-ver"><span data-vwrap hidden>Version <span data-version></span> · </span>Windows 10 et 11</p>
 </div>
 </section>
 </main>
