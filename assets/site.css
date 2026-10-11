@@ -553,6 +553,7 @@ details[open] summary > svg { transform: rotate(45deg); }
 .qi{display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:12px;color:#6fb0ff;background:#1b2a42}
 .qi--warn{color:#ffb454;background:#3a2a12}
 .faq-wrap--compact .faq,.faq--page .faq{gap:10px}
+.faq--page{gap:10px}
 .faq-wrap--compact details,.faq--page details{border:1px solid var(--line);border-radius:16px;background:var(--panel-3);padding:0 18px}
 .faq-wrap--compact details:last-child,.faq--page details:last-child{border-bottom:1px solid var(--line)}
 .faq-wrap--compact details[open],.faq--page details[open]{background:var(--panel);border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
