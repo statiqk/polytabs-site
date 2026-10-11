@@ -214,8 +214,8 @@ details { border-top: 1px solid var(--line); }
 details:last-child { border-bottom: 1px solid var(--line); }
 summary { min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer; font-weight: 600; font-size: 1.08rem; color: var(--head); list-style: none; }
 summary::-webkit-details-marker { display: none; }
-summary svg { flex: none; transition: transform .2s ease; }
-details[open] summary svg { transform: rotate(45deg); }
+summary > svg { flex: none; transition: transform .2s ease; }
+details[open] summary > svg { transform: rotate(45deg); }
 .answer { margin: 0 0 22px; display: flex; flex-direction: column; gap: 12px; color: var(--dim); line-height: 1.7; max-width: 40rem; text-wrap: pretty; }
 
 /* ---------- appel final ---------- */
@@ -548,4 +548,46 @@ details[open] summary svg { transform: rotate(45deg); }
   .steps-strip b { font-size: .95rem; }
   .steps-strip b::before { content: counter(gesture) " · "; }
   .steps-strip span:not(.n):not(.si) { display: block; margin-top: 6px; font-size: .76rem; line-height: 1.4; }
+}
+@media (min-width:860px){
+.qi,.si,.steps-title,.faq-group{display:revert}
+.qi{display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:12px;color:#6fb0ff;background:#1b2a42}
+.qi--warn{color:#ffb454;background:#3a2a12}
+.faq-wrap--compact .faq,.faq--page .faq{gap:10px}
+.faq-wrap--compact details,.faq--page details{border:1px solid var(--line);border-radius:16px;background:var(--panel-3);padding:0 18px}
+.faq-wrap--compact details:last-child,.faq--page details:last-child{border-bottom:1px solid var(--line)}
+.faq-wrap--compact details[open],.faq--page details[open]{background:var(--panel);border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
+.faq-wrap--compact summary,.faq--page summary{justify-content:flex-start;gap:14px;min-height:68px;padding:10px 0}
+.faq-wrap--compact summary>svg,.faq--page summary>svg{display:none}
+.faq-wrap--compact summary::after,.faq--page summary::after{content:"";margin:0 6px 3px auto;flex:none;width:9px;height:9px;border-right:2px solid var(--mute);border-bottom:2px solid var(--mute);transform:rotate(45deg)}
+details[open] summary::after{transform:rotate(-135deg);margin-top:6px}
+.faq-wrap--compact .answer,.faq--page .answer{padding-left:54px;margin-bottom:18px}
+.faq-group{display:block;margin:26px 0 4px;font:700 .78rem var(--f-mono,monospace);letter-spacing:.14em;text-transform:uppercase;color:var(--accent-soft)}
+.faq-group:first-child{margin-top:0}
+.faq--page{max-width:56rem}
+.steps-title{display:block;margin:0 0 18px;font:800 1.7rem/1.1 var(--f-display);color:var(--head);letter-spacing:-.01em}
+.steps-strip ol{border:0;padding:0;gap:16px}
+.steps-strip li{background:var(--panel-3);border:1px solid var(--line);border-radius:18px;padding:18px 20px}
+.steps-strip .n{display:none}
+.si{display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:50%;color:var(--accent);background:color-mix(in srgb,var(--accent) 14%,transparent)}
+.steps-strip b::before{content:counter(gesture) " · ";color:var(--accent)}
+.steps-strip ol{counter-reset:gesture}.steps-strip li{counter-increment:gesture}
+}
+
+/* ---------- pied de page : bureau ---------- */
+@media (min-width:860px){
+.site-footer{padding-top:48px}
+.site-footer .foot-row{display:flex;align-items:center;justify-content:space-between;gap:24px;background:var(--panel-3);border:1px solid var(--line);border-radius:22px;padding:22px 26px}
+.site-footer .bl-copy{display:none}
+.site-footer .bl-id{display:flex;flex-direction:column;gap:4px}
+.site-footer .bl-id b{font:800 1.15rem/1 var(--f-display);color:var(--head)}
+.site-footer .bl-id small{font-size:.8rem;color:var(--mute)}
+.site-footer .brand-line{gap:14px}.site-footer .brand-line>svg{width:36px;height:36px}
+.site-footer nav{gap:10px}
+.site-footer nav a{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--text);font-weight:600;font-size:.88rem}
+.site-footer nav .fi{display:block;color:var(--accent)}
+.site-footer nav a[aria-current="page"]{border-color:var(--accent);color:var(--accent-soft);background:#14202f}
+.site-footer .privacy{text-align:center;margin:18px auto 0;font-size:.82rem}
+.site-footer .privacy::before{content:"✓ ";color:#3ddc84}
+.site-footer .fb-copy{display:block;text-align:center;margin-top:6px;font-size:.8rem;color:var(--mute)}
 }
