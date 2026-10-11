@@ -470,7 +470,6 @@ details[open] summary > svg { transform: rotate(45deg); }
   .dots i.on { width: 22px; background: var(--accent); }
 
   /* outils : une carte par catégorie */
-  .tools-mini { display: none; }
   .tools-cats { margin-top: 8px; }
   .tc { flex: 0 0 76%; scroll-snap-align: start; min-width: 0; padding: 18px; border-radius: 20px; background: var(--panel); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 4px; }
   .tc b { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-soft); }
@@ -604,4 +603,25 @@ details[open] summary::after{transform:rotate(-135deg);margin-top:6px}
   .tt-arrow { width: 22px; height: 22px; }
   .to-top:active { transform: scale(.94); }
   .to-top:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+}
+
+/* ---------- « Des outils sous la main » : barre d'icônes (téléphone) ---------- */
+.tools-pick { display: none; }
+@media (max-width: 859px) {
+  .js-tools .tools-mini, .js-tools .section-head .more-link { display: none; }
+  .js-tools .tools-pick { display: block; }
+  .tbar { display: flex; gap: 8px; justify-content: space-between; margin-top: 14px; padding: 8px; border-radius: 20px; background: var(--panel); border: 1px solid var(--line); }
+  .tb { flex: 1; min-width: 0; aspect-ratio: 1; max-width: 54px; border: 0; border-radius: 14px; background: var(--panel-3); display: grid; place-items: center; padding: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .tb .ic { background: none; width: auto; height: auto; margin: 0; }
+  .tb[aria-selected="true"] { background: #1b2a42; box-shadow: 0 0 0 1.5px var(--accent) inset; }
+  .tb:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .tdetail { margin-top: 10px; padding: 18px; border-radius: 20px; background: var(--panel); border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line)); display: flex; flex-direction: column; gap: 10px; }
+  .tdetail[hidden] { display: none; }
+  .tdetail-h { display: flex; align-items: center; gap: 12px; }
+  .tdetail-h b { font: 800 1.3rem/1.1 var(--f-display); color: var(--head); }
+  .tdetail-h .ic { margin: 0; flex: none; }
+  .tdetail p { margin: 0; color: var(--dim); line-height: 1.55; }
+  .tdetail .keys { margin: 0; }
+  .tp-hint { margin: 12px 0 0; text-align: center; color: var(--mute); font-size: .82rem; }
+  .tools-cta { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 16px; min-height: 52px; border-radius: 14px; background: var(--accent); color: #0b1220; font-weight: 700; text-decoration: none; }
 }

@@ -83,3 +83,25 @@
   });
   upd();
 })();
+
+/* « Outils sous la main » (téléphone) : barre d'icônes ; un outil touché affiche sa description. Sans JavaScript, la liste des six outils reste affichée. */
+(() => {
+  'use strict';
+  const box = document.querySelector('.tools-pick'); if (!box) return;
+  const tabs = Array.from(box.querySelectorAll('[role="tab"]')); if (tabs.length < 2) return;
+  const pick = (t, focus) => {
+    tabs.forEach((x) => {
+      const on = x === t; x.setAttribute('aria-selected', on ? 'true' : 'false'); x.tabIndex = on ? 0 : -1;
+      const p = document.getElementById(x.getAttribute('aria-controls')); if (p) p.hidden = !on;
+    });
+    if (focus) t.focus();
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => pick(t, false));
+    t.addEventListener('keydown', (e) => {
+      const k = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (k) { e.preventDefault(); pick(tabs[(i + k + tabs.length) % tabs.length], true); }
+    });
+  });
+  document.getElementById('outils').classList.add('js-tools');
+})();
