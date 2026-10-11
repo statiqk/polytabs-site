@@ -591,3 +591,17 @@ details[open] summary::after{transform:rotate(-135deg);margin-top:6px}
 .site-footer .privacy::before{content:"✓ ";color:#3ddc84}
 .site-footer .fb-copy{display:block;text-align:center;margin-top:6px;font-size:.8rem;color:var(--mute)}
 }
+
+/* ---------- bouton « haut de page » (téléphone uniquement) ---------- */
+.to-top { display: none; }
+@media (max-width: 859px) {
+  .to-top { position: fixed; right: 14px; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); z-index: 40; width: 52px; height: 52px; padding: 0; border: 0; border-radius: 50%; background: var(--panel-3); color: var(--accent-soft); display: grid; place-items: center; box-shadow: 0 6px 20px rgba(0, 0, 0, .55); cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .to-top[hidden] { display: none; }
+  .to-top > * { grid-area: 1 / 1; }
+  .tt-ring { width: 52px; height: 52px; }
+  .tt-track { stroke: #2c3a52; }
+  .tt-bar { stroke: var(--accent); }
+  .tt-arrow { width: 22px; height: 22px; }
+  .to-top:active { transform: scale(.94); }
+  .to-top:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+}

@@ -52,3 +52,34 @@
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && header.classList.contains('menu-open')) { set(false); btn.focus(); } });
   window.matchMedia('(min-width: 860px)').addEventListener('change', (m) => { if (m.matches) set(false); });
 })();
+
+/* Bouton « haut de page » (téléphone) : apparaît après un peu de défilement, l'anneau montre l'avancement dans la page. */
+(() => {
+  'use strict';
+  const NS = 'http://www.w3.org/2000/svg', C = 144.5;
+  const el = (n, a) => { const e = document.createElementNS(NS, n); Object.keys(a).forEach((k) => e.setAttribute(k, a[k])); return e; };
+  const btn = document.createElement('button');
+  btn.type = 'button'; btn.className = 'to-top'; btn.setAttribute('aria-label', 'Revenir en haut de la page'); btn.hidden = true;
+  const ring = el('svg', { viewBox: '0 0 52 52', class: 'tt-ring', 'aria-hidden': 'true', focusable: 'false' });
+  ring.appendChild(el('circle', { cx: 26, cy: 26, r: 23, fill: 'none', 'stroke-width': 3, class: 'tt-track' }));
+  const bar = el('circle', { cx: 26, cy: 26, r: 23, fill: 'none', 'stroke-width': 3, 'stroke-linecap': 'round', 'stroke-dasharray': C, 'stroke-dashoffset': C, transform: 'rotate(-90 26 26)', class: 'tt-bar' });
+  ring.appendChild(bar);
+  const arrow = el('svg', { viewBox: '0 0 24 24', class: 'tt-arrow', fill: 'none', stroke: 'currentColor', 'stroke-width': 2.2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'aria-hidden': 'true', focusable: 'false' });
+  arrow.appendChild(el('path', { d: 'M12 19V5M5 12l7-7 7 7' }));
+  btn.appendChild(ring); btn.appendChild(arrow); document.body.appendChild(btn);
+  let tick = false;
+  const upd = () => {
+    tick = false;
+    const y = window.scrollY || document.documentElement.scrollTop, max = document.documentElement.scrollHeight - window.innerHeight;
+    btn.hidden = y < 500;
+    bar.setAttribute('stroke-dashoffset', String(C * (1 - (max > 0 ? Math.min(1, y / max) : 0))));
+  };
+  window.addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(upd); } }, { passive: true });
+  window.addEventListener('resize', upd);
+  btn.addEventListener('click', () => {
+    const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: calm ? 'auto' : 'smooth' });
+    const h = document.querySelector('header a, h1'); if (h) h.focus({ preventScroll: true });
+  });
+  upd();
+})();
