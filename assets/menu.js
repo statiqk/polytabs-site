@@ -88,7 +88,7 @@
 (() => {
   'use strict';
   const box = document.querySelector('.tools-pick'); if (!box) return;
-  const tabs = Array.from(box.querySelectorAll('[role="tab"]')); if (tabs.length < 2) return;
+  const tabs = Array.from(box.querySelectorAll('.tbar [role="tab"]')); if (tabs.length < 2) return;
   const pick = (t, focus) => {
     tabs.forEach((x) => {
       const on = x === t; x.setAttribute('aria-selected', on ? 'true' : 'false'); x.tabIndex = on ? 0 : -1;
@@ -101,6 +101,22 @@
     t.addEventListener('keydown', (e) => {
       const k = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
       if (k) { e.preventDefault(); pick(tabs[(i + k + tabs.length) % tabs.length], true); }
+    });
+  });
+  /* Bascule « Outils | Widgets » */
+  const modes = Array.from(box.querySelectorAll('.oseg [role="tab"]'));
+  const mode = (t, focus) => {
+    modes.forEach((x) => {
+      const on = x === t; x.setAttribute('aria-selected', on ? 'true' : 'false'); x.tabIndex = on ? 0 : -1;
+      const p = document.getElementById(x.getAttribute('aria-controls')); if (p) p.hidden = !on;
+    });
+    if (focus) t.focus();
+  };
+  modes.forEach((t, i) => {
+    t.addEventListener('click', () => mode(t, false));
+    t.addEventListener('keydown', (e) => {
+      const k = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (k) { e.preventDefault(); mode(modes[(i + k + modes.length) % modes.length], true); }
     });
   });
   document.getElementById('outils').classList.add('js-tools');
