@@ -657,3 +657,20 @@ details[open] summary::after{transform:rotate(-135deg);margin-top:6px}
   .bi { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 11px; background: #1b2a42; color: var(--accent-soft); }
   .btable li > span:last-child { color: var(--text); font-size: .95rem; }
 }
+
+/* ---------- page « Tous les outils » : en-tête d'un panneau, bouton par bouton (bureau) ---------- */
+@media (min-width: 860px) { .d-tools { display: flex; flex-direction: column; gap: 20px; margin-top: 20px; } }
+.mockhead { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 14px 0 6px; padding: 10px 14px; border-radius: 12px; background: #10141a; border: 1px solid var(--line); }
+.mh-t { font: 600 .9rem var(--f-body, inherit); color: var(--head); min-width: 0; }
+.mh-i { display: flex; gap: 6px; flex: none; }
+.mh-i i { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; background: #1b2a42; color: var(--accent-soft); font-style: normal; }
+.hbl { list-style: none; margin: 12px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.hb { display: flex; flex-direction: column; gap: 8px; padding: 14px; border-radius: 14px; background: var(--panel-3); border: 1px solid var(--line); align-items: flex-start; min-height: 104px; min-width: 0; }
+.hbi { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: #1b2a42; color: var(--accent-soft); }
+.hb b { font: 600 .9rem/1.25 var(--f-body, inherit); color: var(--head); }
+.hb .keys { margin: 0; margin-top: auto; gap: 4px; }
+.ck { list-style: none; margin: 10px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.ck li { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 14px; border-radius: 14px; background: var(--panel-3); border: 1px solid var(--line); }
+.ck .keys { margin: 0; gap: 4px; }
+.ck li > span:last-child { color: var(--head); font-weight: 600; font-size: .92rem; line-height: 1.3; }
+@media (max-width: 1100px) { .hbl { grid-template-columns: repeat(3, 1fr); } .ck { grid-template-columns: 1fr; } }
