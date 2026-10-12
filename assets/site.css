@@ -141,9 +141,9 @@ html:not(.js) .mp-head, html:not(.js) .mock-tab { cursor: default; }
 @media (max-width: 560px) { .demo-wide { display: none; } .demo-tall { display: block; } }
 
 /* ---------- faits ---------- */
-.facts { display: flex; flex-wrap: wrap; gap: 12px 40px; padding: 22px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); justify-content: space-between; margin-bottom: 24px; }
-.facts p { display: flex; align-items: baseline; gap: 10px; color: var(--dim); }
-.facts b { font-family: var(--f-display); font-size: 1.6rem; color: var(--head); }
+.facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 0; border: 0; margin-bottom: 24px; }
+.facts p { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; padding: 26px 12px; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); color: var(--dim); font-size: 1rem; }
+.facts b { font-family: var(--f-display); font-size: 2.6rem; line-height: 1.1; color: var(--accent); }
 
 /* ---------- sections ---------- */
 .section { padding-top: 88px; padding-bottom: 32px; display: flex; flex-direction: column; gap: 44px; }
