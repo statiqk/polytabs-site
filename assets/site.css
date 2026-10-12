@@ -713,3 +713,43 @@ details[open] summary::after{transform:rotate(-135deg);margin-top:6px}
 }
 @media (min-width: 860px) and (max-width: 1100px) { .mf { display: none; } }
 @media (forced-colors: active) { .mock { transform: none; } .mock-floats { display: none; } }
+
+/* ---------- Illustration de l'accueil (téléphone) : même illustration que sur ordinateur, en plus compact ---------- */
+@media (max-width: 859px) {
+  .hero-poster, .hero:has(.mock-fig.is-video) .hero-poster { display: none; }
+  .mock-fig { display: flex; order: 2; position: relative; perspective: 900px; }
+  .mock-fig.is-video { display: flex; }
+  .mock-fig.is-video .seg { display: inline-flex; }
+  .mock-fig .mock-cap { display: none; }
+  .mock { transform: rotateY(-5deg) rotateX(2deg); transform-origin: 55% 50%; box-shadow: 0 30px 60px rgba(0, 0, 0, .6), 0 0 60px rgba(79, 157, 255, .16); }
+  .mock-bar { min-height: 42px; padding-left: 10px; }
+  .mock-grid { grid-template-columns: 1.3fr 1fr; padding: 10px; gap: 8px; }
+  .mp-head { min-height: 36px; padding: 4px 8px; gap: 6px; }
+  .mp-ic { width: 18px; height: 18px; }
+  .mp-title { font-size: 11.5px; }
+  .mp-badge { font-size: 8.5px; padding: 1px 5px; }
+  .mp-body { padding: 9px; gap: 6px; }
+  .kpi { gap: 6px; } .kpi b { font-size: 15px; white-space: nowrap; } .kpi span { font-size: 9px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .mp-late { display: none; }
+  .log span { overflow: hidden; text-overflow: ellipsis; }
+  .todo li { white-space: nowrap; overflow: hidden; } .todo li span:last-child { overflow: hidden; text-overflow: ellipsis; }
+  .bars { height: 30px; gap: 5px; }
+  .log { padding: 8px 8px 14px; font-size: 8px; }
+  .clock-time { font-size: 28px; } .clock-alarm { font-size: 9.5px; } .clock-date { font-size: 10.5px; }
+  .todo { padding: 9px; gap: 6px; font-size: 11px; }
+  .timer-time { font-size: 26px; }
+  .mp--clock { margin-top: -14px; } .mp--todo { margin: -20px 0 0 8px; } .mp--note { margin-top: 12px; } .mp--timer { margin: -16px 0 0 8px; }
+  .mock-floats { display: block; position: relative; height: 70px; margin-top: -22px; pointer-events: none; z-index: 2; }
+  .mf { position: absolute; width: 128px; background: var(--panel); border: 1px solid var(--line-2); border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, .6); }
+  .mf-head { display: flex; align-items: center; gap: 6px; padding: 5px 8px; background: var(--panel-2); border-bottom: 1px solid var(--line); }
+  .mf-body { padding: 6px 8px 8px; display: flex; flex-direction: column; align-items: center; gap: 1px; }
+  .mf-body b { font-family: var(--f-display); font-size: 22px; line-height: 1.05; letter-spacing: -0.03em; color: var(--head); }
+  .mf-body b i { font-style: normal; font-size: 14px; color: var(--mute); }
+  .mf-body span { font-size: 10px; color: var(--mute); }
+  .mf--weather { right: -4px; top: 0; transform: rotate(3deg); }
+  .mf--watch { right: 118px; top: 12px; transform: rotate(-2deg); }
+  .mock-fig.is-video .mock-floats { display: none; }
+  .mf .mp-badge { display: none; }
+}
+@media (max-width: 859px) and (prefers-reduced-motion: no-preference) { .mock { transition: transform .4s ease; } }
+@media (max-width: 859px) and (forced-colors: active) { .mock { transform: none; } .mock-floats { display: none; } }
