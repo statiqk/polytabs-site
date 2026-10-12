@@ -683,3 +683,33 @@ details[open] summary::after{transform:rotate(-135deg);margin-top:6px}
 .ck .keys { margin: 0; gap: 4px; }
 .ck li > span:last-child { color: var(--head); font-weight: 600; font-size: .92rem; line-height: 1.3; }
 @media (max-width: 1100px) { .hbl { grid-template-columns: repeat(3, 1fr); } .ck { grid-template-columns: 1fr; } }
+
+
+/* ---------- Illustration de l'accueil (ordinateur) : fenêtre en relief, deux widgets qui sortent du cadre ---------- */
+.kpi { display: flex; gap: 14px; }
+.kpi div { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.kpi b { font-family: var(--f-display); font-size: 22px; line-height: 1.1; color: var(--head); letter-spacing: -0.02em; }
+.kpi span { font-size: 11px; color: var(--mute); }
+.mock-floats { display: none; }
+@media (min-width: 860px) {
+  .mock-fig { position: relative; perspective: 1500px; }
+  .mock-fig::before { content: ""; position: absolute; inset: 8% 0 6% 0; background: radial-gradient(60% 60% at 50% 50%, rgba(79, 157, 255, .22), transparent 70%); filter: blur(30px); z-index: -1; pointer-events: none; }
+  .mock { transform: rotateY(-8deg) rotateX(3deg); transform-origin: 60% 50%; box-shadow: 0 50px 100px rgba(0, 0, 0, .65), 0 0 90px rgba(79, 157, 255, .16); }
+  .mock-fig .mock-cap { margin-top: 92px; }
+  .mock-floats { display: block; position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+  .mf { position: absolute; width: 160px; background: var(--panel); border: 1px solid var(--line-2); border-radius: 12px; overflow: hidden; box-shadow: 0 28px 56px rgba(0, 0, 0, .65); }
+  .mf-head { display: flex; align-items: center; gap: 8px; padding: 7px 10px; background: var(--panel-2); border-bottom: 1px solid var(--line); }
+  .mf-body { padding: 8px 12px 10px; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .mf-body b { font-family: var(--f-display); font-size: 26px; line-height: 1.05; letter-spacing: -0.03em; color: var(--head); }
+  .mf-body b i { font-style: normal; font-size: 18px; color: var(--mute); }
+  .mf-body span { font-size: 11.5px; color: var(--mute); }
+  .mf--weather { right: -10px; bottom: 62px; transform: rotate(3deg); }
+  .mf--watch { right: 150px; bottom: 50px; transform: rotate(-2deg); }
+  .mock-fig.is-video .mock-floats, .mock-fig.is-video::before { display: none; }
+}
+@media (min-width: 860px) and (prefers-reduced-motion: no-preference) {
+  .mock { transition: transform .5s cubic-bezier(.2, .8, .2, 1); }
+  .mock-fig:hover .mock { transform: rotateY(-3deg) rotateX(1deg); }
+}
+@media (min-width: 860px) and (max-width: 1100px) { .mf { display: none; } }
+@media (forced-colors: active) { .mock { transform: none; } .mock-floats { display: none; } }
