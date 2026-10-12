@@ -1,5 +1,142 @@
 [
   {
+    "version": "1.0.40",
+    "date": "2026-10-12T06:06:51Z",
+    "download": null,
+    "size": 117728811,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Les widgets peuvent se réduire en pastille pour libérer de la place sans s'arrêter.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Réduire un widget en pastille",
+              "text": "Un bouton ▁ dans l'en-tête de chaque widget (horloge, minuteur, chronomètre, tâches, notes, calendrier, météo, lecteur, dossier) le replie en une petite pastille. Elle reste à sa place, se déplace en la glissant, et un clic la rouvre à sa taille et à sa position d'origine. L'état est enregistré avec la disposition et revient au redémarrage. Les panneaux de site web et de fichier local n'ont pas ce bouton."
+            },
+            {
+              "title": "Ce que dit la pastille",
+              "text": "Horloge : l'heure. Minuteur : le nom et le temps restant, puis un halo et « terminé ! » à la fin. Chronomètre : le temps. Tâches : le nom et le nombre restant, en rouge si une tâche est en retard. Météo : la ville et la température. Lecteur : le titre, avec précédent, lecture/pause et suivant. Notes, calendrier et dossier : le nom."
+            },
+            {
+              "title": "Les widgets continuent de tourner",
+              "text": "Un minuteur, un chronomètre, un réveil ou un lecteur réduit continue normalement. Un réveil ou un minuteur qui sonne fait pulser la pastille ; un clic éteint la sonnerie et rouvre le widget."
+            },
+            {
+              "title": "Raccourci Ctrl + M",
+              "text": ": réduit ou rouvre le widget sélectionné."
+            }
+          ]
+        },
+        {
+          "title": "Modifications",
+          "items": [
+            {
+              "title": "Ctrl + M ne minimise plus la fenêtre",
+              "text": ": le raccourci est désormais réservé à la pastille."
+            }
+          ]
+        },
+        {
+          "title": "Technique",
+          "items": [
+            {
+              "title": "index.html : setCollapsed, makePill, pillInfo, refreshPill, startPillTimer, style .panel.collapsed / .pill ; propriété collapsed enregistrée dans le panneau ; watchSize ignore les panneaux réduits ; Ctrl + M intercepté dans le gestionnaire de touches",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.39",
+    "date": "2026-10-11T18:51:42Z",
+    "download": null,
+    "size": 117726161,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "L'ordre des écrans dans la barre des tâches Windows suit ta disposition réelle.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Ordre des boutons dans la barre des tâches",
+              "text": "Au démarrage, les fenêtres s'affichent dans l'ordre écran 3, écran 2, écran 1 (l'écran 1 étant le plus à droite). Windows range les boutons, et les vignettes au survol, dans l'ordre d'apparition : de gauche à droite, on retrouve ta disposition réelle. Les titres des fenêtres ne changent pas."
+            }
+          ]
+        },
+        {
+          "title": "Corrections",
+          "items": [
+            {
+              "title": "Vignettes d'Alt + Tab",
+              "text": "Le réordonnancement des fenêtres à chaque changement de fenêtre active, introduit dans la 1.0.38, est retiré : Windows garde son ordre habituel (dernière fenêtre utilisée en premier)."
+            }
+          ]
+        },
+        {
+          "title": "Technique",
+          "items": [
+            {
+              "title": "main.js : closeSplashAndShowAll affiche les fenêtres par numéro d'écran décroissant ; restackWindowsForAltTab supprimé",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.38",
+    "date": "2026-10-11T17:18:08Z",
+    "download": null,
+    "size": 117726731,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Après une mise à jour, l'appli retrouve son plein écran, annonce la mise à jour à l'écran, et les vignettes d'Alt + Tab suivent l'ordre de tes écrans.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Capsule « Mis à jour · version X »",
+              "text": "À la première ouverture qui suit une mise à jour, une petite capsule s'affiche en bas de la fenêtre, en même temps que l'annonce vocale, avec un lien « Nouveautés » vers les notes de version. Elle disparaît seule après 8 secondes et ne revient pas. Elle suit l'interrupteur « Annonces de mise à jour » des Réglages."
+            },
+            {
+              "title": "Ordre des vignettes dans Alt + Tab",
+              "text": "Avec plusieurs fenêtres, les autres fenêtres PolyTabs se rangent derrière la fenêtre active dans l'ordre écran 3, écran 2, écran 1 (l'écran 1 étant le plus à droite). Les titres des fenêtres ne changent pas."
+            }
+          ]
+        },
+        {
+          "title": "Corrections",
+          "items": [
+            {
+              "title": "Plein écran perdu après une mise à jour",
+              "text": "Quand l'appli se fermait pendant l'écran de démarrage (par exemple pour installer une mise à jour), l'état « maximisée » était écrasé et la fenêtre se rouvrait en taille normale. Une fenêtre qui n'a pas encore été affichée garde désormais l'état prévu."
+            }
+          ]
+        },
+        {
+          "title": "Technique",
+          "items": [
+            {
+              "title": "main.js : meta.neverShown (enregistrement de l'état des fenêtres), restackWindowsForAltTab / scheduleRestack",
+              "text": ""
+            },
+            {
+              "title": "index.html : showUpdatedCapsule, appelée depuis takeUpdateAnnouncements",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "version": "1.0.37",
     "date": "2026-10-09T22:33:28Z",
     "download": null,
