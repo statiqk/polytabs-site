@@ -404,7 +404,7 @@ details[open] summary > svg { transform: rotate(45deg); }
 /* ---------- menu mobile (assets/menu.js) ---------- */
 .nav-toggle, .nav-panel, .nav-scrim { display: none; }
 @media (max-width: 859px) {
-  .site-header.js-menu { position: relative; z-index: 30; flex-wrap: nowrap; gap: 10px; padding-top: 10px; padding-bottom: 10px; }
+  .site-header.js-menu { position: relative; z-index: 50; flex-wrap: nowrap; gap: 10px; padding-top: 10px; padding-bottom: 10px; }
   .js-menu .brand { margin-right: auto; }
   .js-menu .nav { flex-wrap: nowrap; gap: 0; }
   .js-menu .nav .nav-link { display: none; }
