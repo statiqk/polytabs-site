@@ -31,6 +31,7 @@
   const ICONS = {
     fonctionnalites: ['<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>', 'Ce que fait PolyTabs'],
     outils: ['<path d="M14.7 6.3a4 4 0 0 0-5 5L3 18l3 3 6.7-6.7a4 4 0 0 0 5-5l-2.4 2.4-2.6-.6-.6-2.6z"/>', 'Boutons et raccourcis'],
+    guide: ['<circle cx="12" cy="12" r="9"/><path d="M10 8.8v6.4l5.2-3.2z"/>', 'Les 12 vidéos et les PDF'],
     questions: ['<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7M12 17v.01"/>', 'Les réponses à tes questions'],
     versions: ['<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>', 'Les nouveautés, version par version']
   };
