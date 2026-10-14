@@ -8,10 +8,10 @@ Un site statique : une seule page, sans cookie, sans outil de suivi, sans serveu
 2. Dépose dans ce dépôt **le contenu** de ce dossier (pas le dossier lui-même) : `index.html`, `404.html`, `.nojekyll`, `assets/`, `fonts/` et ce fichier.
    Si tu glisses les fichiers dans le navigateur, vérifie que `.nojekyll` (fichier caché) est bien envoyé.
 3. Dans le dépôt : **Settings → Pages → Build and deployment**. Source : *Deploy from a branch*. Branche : `main`, dossier : `/ (root)`. Clique sur **Save**.
-4. Après une à deux minutes, le site est à l'adresse **https://statiqk.github.io/polytabs-site/**.
+4. Après une à deux minutes, le site est à l'adresse **https://polytabs.fr/**.
 
 ### Si l'adresse est différente (autre nom de dépôt, domaine personnalisé)
-Remplace `https://statiqk.github.io/polytabs-site/` aux endroits suivants, pour que l'aperçu de lien (réseaux sociaux, messageries) fonctionne :
+Remplace `https://polytabs.fr/` aux endroits suivants, pour que l'aperçu de lien (réseaux sociaux, messageries) fonctionne :
 - `index.html` : les balises `og:url` et `og:image` (début du fichier) ;
 - `404.html` : le lien « Retour à l'accueil ».
 
