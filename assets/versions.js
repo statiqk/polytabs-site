@@ -151,6 +151,7 @@
 
   // Page principale : les 6 dernières versions. Page « archives » (data-page="archives") : toutes les autres.
   const PER_PAGE = 6;
+  const ARCHIVE_MAX = 15;                       // la page « archives » n'affiche que les 15 versions qui suivent les 6 dernières
   const ARCHIVE = doc.body.dataset.page === 'archives';
   let all = [];
 
@@ -158,7 +159,7 @@
     all = rels.slice().sort((a, b) => cmp(b.version, a.version));
     list.textContent = '';
     if (!all.length) return false;
-    const shown = ARCHIVE ? all.slice(PER_PAGE) : all.slice(0, PER_PAGE);
+    const shown = ARCHIVE ? all.slice(PER_PAGE, PER_PAGE + ARCHIVE_MAX) : all.slice(0, PER_PAGE);
     doc.querySelectorAll('[data-version]').forEach((e) => { e.textContent = all[0].version; });
     doc.querySelectorAll('[data-vwrap]').forEach((e) => { e.hidden = false; });
     const more = doc.getElementById('versions-more');
@@ -324,6 +325,7 @@
     if (!id) return false;
     const idx = all.findIndex((r) => 'v' + r.version === id);
     if (idx < 0) return false;
+    if (idx >= PER_PAGE + ARCHIVE_MAX) return false;     // trop ancienne : plus affichée
     const onArchive = idx >= PER_PAGE;
     if (onArchive === ARCHIVE) return false;
     location.replace((onArchive ? 'versions-archives.html' : 'versions.html') + '#' + id);
