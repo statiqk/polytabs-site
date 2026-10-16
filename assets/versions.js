@@ -166,6 +166,7 @@
     if (redirectFromHash()) return true;
     if (!shown.length) { say('Il n\u2019y a pas encore de versions plus anciennes.'); return true; }
     say('');
+    if (ARCHIVE) { renderArchive(shown); openFromHash(); return true; }
     // sommaire : une puce pour chacune des 3 dernières versions
     const toc = doc.getElementById('versions-toc');
     if (toc) {
@@ -190,6 +191,129 @@
     });
     openFromHash();
     return true;
+  }
+
+
+  /* ------------------------------------------------ page « archives » : index des jours, recherche, filtres, tableau */
+  const dayLabel = (r, ref) => {
+    if (!r.date) return 'Date inconnue';
+    try { return new Date(r.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: ref && new Date(r.date).getFullYear() === ref ? undefined : 'numeric' }); } catch (e) { return ''; }
+  };
+  const counts = (r) => {
+    let n = 0, f = 0;
+    r.notes.sections.forEach((s) => { if (kindOf(s.title) === 'fix') f += s.items.length; else n += s.items.length; });
+    return { n, f };
+  };
+  const plural = (n, one, many) => n + ' ' + (n > 1 ? many : one);
+  function badge(kind, n) {
+    const b = el('span', 'arc-k arc-k--' + kind);
+    b.title = kind === 'new' ? plural(n, 'nouveauté', 'nouveautés') : plural(n, 'correction', 'corrections');
+    const v = el('span', '', (kind === 'new' ? '+' : '✓') + n); v.setAttribute('aria-hidden', 'true');
+    const t = el('span', 'arc-sr', b.title);
+    b.append(v, t);
+    return b;
+  }
+  const flat = (r) => [r.version, r.notes.intro].concat(r.notes.sections.reduce((a, s) => a.concat(s.title, s.items.map((i) => i.title + ' ' + i.text)), [])).join(' ').toLowerCase();
+  const fold = (t) => t.normalize('NFD').replace(/[̀-ͯ]/g, '');
+
+  function renderArchive(shown) {
+    const thisYear = shown[0] && shown[0].date ? new Date(shown[0].date).getFullYear() : 0;
+    const groups = [];
+    shown.forEach((r) => {
+      const label = dayLabel(r, thisYear);
+      let g = groups[groups.length - 1];
+      if (!g || g.label !== label) { g = { label, id: 'j' + groups.length, rows: [] }; groups.push(g); }
+      g.rows.push(r);
+    });
+
+    const root = el('div', 'arc');
+    // index des jours
+    const rail = el('nav', 'arc-rail'); rail.setAttribute('aria-label', 'Aller à un jour');
+    rail.appendChild(el('h2', 'arc-rail-title', 'Aller à'));
+    const railLinks = [];
+    groups.forEach((g) => {
+      const a = el('a', 'arc-rail-link'); a.href = '#' + g.id;
+      a.append(el('span', '', g.label), el('em', '', String(g.rows.length)));
+      a.addEventListener('click', (e) => { e.preventDefault(); const t = doc.getElementById(g.id); if (t) { t.scrollIntoView({ block: 'start' }); } });
+      rail.appendChild(a); railLinks.push(a);
+    });
+
+    // outils
+    const main = el('div', 'arc-main');
+    const tools = el('div', 'arc-tools');
+    const search = el('div', 'arc-search');
+    const input = el('input'); input.type = 'search'; input.placeholder = 'Rechercher (voix, Alt + Tab, Lecteur…)'; input.setAttribute('aria-label', 'Rechercher dans les versions précédentes'); input.autocomplete = 'off'; input.spellcheck = false;
+    search.appendChild(input);
+    const chips = el('div', 'arc-chips'); chips.setAttribute('role', 'group'); chips.setAttribute('aria-label', 'Filtrer');
+    let filter = 'all';
+    const chipEls = [['all', 'Tout'], ['new', 'Nouveautés'], ['fix', 'Corrections']].map(([k, label]) => {
+      const b = el('button', 'arc-chip', label); b.type = 'button'; b.setAttribute('aria-pressed', k === 'all' ? 'true' : 'false');
+      b.addEventListener('click', () => { filter = k; chipEls.forEach((c) => c.setAttribute('aria-pressed', String(c === b))); apply(); });
+      chips.appendChild(b); return b;
+    });
+    tools.append(search, chips);
+    const count = el('p', 'arc-count'); count.setAttribute('role', 'status'); count.setAttribute('aria-live', 'polite');
+
+    // tableau
+    const table = el('div', 'arc-table');
+    const cols = el('div', 'arc-cols'); cols.setAttribute('aria-hidden', 'true');
+    ['Version', 'Date', 'Résumé', 'Contenu'].forEach((t) => cols.appendChild(el('span', '', t)));
+    table.appendChild(cols);
+    const items = [];
+    groups.forEach((g) => {
+      const h = el('h2', 'arc-day', g.label); h.id = g.id;
+      table.appendChild(h);
+      g.rows.forEach((r) => {
+        const c = counts(r);
+        const d = el('details', 'ver arc-row'); d.id = 'v' + r.version;
+        const sm = el('summary', 'ver-sum');
+        sm.appendChild(el('span', 'ver-num', 'v' + r.version));
+        if (r.date) { const t = el('time', 'ver-date', dayLabel(r, thisYear).replace(/\s?\d{4}$/, '')); t.dateTime = r.date; sm.appendChild(t); } else sm.appendChild(el('span', 'ver-date'));
+        const first = r.notes.intro || (r.notes.sections[0] && r.notes.sections[0].items[0] && (r.notes.sections[0].items[0].title || ''));
+        sm.appendChild(el('span', 'ver-teaser', first || ''));
+        const k = el('span', 'arc-ks');
+        if (c.n) k.appendChild(badge('new', c.n));
+        if (c.f) k.appendChild(badge('fix', c.f));
+        sm.appendChild(k);
+        d.append(sm, body(r, false));
+        table.appendChild(d);
+        items.push({ el: d, day: h, txt: fold(flat(r)), n: c.n, f: c.f });
+      });
+    });
+    const empty = el('p', 'arc-empty', 'Aucune version ne correspond. Essaie un autre mot ou retire le filtre.'); empty.hidden = true;
+
+    function apply() {
+      const q = fold(input.value.trim().toLowerCase()).split(/\s+/).filter(Boolean);
+      let shownN = 0;
+      const dayHas = new Map();
+      items.forEach((it) => {
+        const ok = (filter === 'all' || (filter === 'new' && it.n) || (filter === 'fix' && it.f)) && q.every((w) => it.txt.indexOf(w) >= 0);
+        it.el.hidden = !ok;
+        if (ok) { shownN++; dayHas.set(it.day, true); }
+      });
+      groups.forEach((g, i) => { const h = doc.getElementById(g.id); h.hidden = !dayHas.get(h); railLinks[i].hidden = !dayHas.get(h); });
+      cols.hidden = !shownN; empty.hidden = shownN > 0;
+      count.textContent = (q.length || filter !== 'all') ? plural(shownN, 'version trouvée', 'versions trouvées') : '';
+      count.hidden = !count.textContent;
+    }
+    input.addEventListener('input', apply);
+
+    main.append(tools, count, table, empty);
+    root.append(rail, main);
+    list.appendChild(root);
+
+    // l'index suit la lecture
+    if ('IntersectionObserver' in window) {
+      const heads = groups.map((g) => doc.getElementById(g.id));
+      const io = new IntersectionObserver(() => {
+        let cur = 0;
+        heads.forEach((h, i) => { if (!h.hidden && h.getBoundingClientRect().top <= 140) cur = i; });
+        railLinks.forEach((a, i) => { if (i === cur) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+      }, { threshold: [0, 1], rootMargin: '0px 0px -60% 0px' });
+      heads.forEach((h) => io.observe(h));
+      window.addEventListener('scroll', () => io.takeRecords(), { passive: true });
+      railLinks[0] && railLinks[0].setAttribute('aria-current', 'true');
+    }
   }
 
   const hashId = () => { let h = ''; try { h = decodeURIComponent((location.hash || '').slice(1)); } catch (e) { /* adresse mal formée */ } return /^v\d+(\.\d+){1,3}$/.test(h) ? h : ''; };
