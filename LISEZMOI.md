@@ -22,6 +22,12 @@ Elle affiche **toutes** les publications de `statiqk/polytabs-releases` (une seu
 Si GitHub ne répond pas, la page lit `releases.json` (copie de secours hébergée avec le site). **Ce fichier ne contient pour l'instant que la 1.0.20** : ajoute une entrée par ancienne version (même structure) pour un historique complet hors ligne.
 Attention : `index.html` est généré. Le lien « Notes de version » du menu et du pied de page a été ajouté à la main : reporte-le dans le modèle du générateur (`tools/`), sinon `update.py` l'effacera.
 
+## Verrouiller / ouvrir les téléchargements
+Un seul interrupteur : `const DL_OUVERT = false;` au début de `assets/menu.js`.
+- `false` : les boutons « Télécharger » restent visibles avec une pastille « Bientôt » ; `telecharger.html` affiche « Bientôt disponible » et ne contacte pas GitHub.
+- `true` : tout redevient normal (la page lance le téléchargement).
+Cela masque les liens du site ; l'installeur reste public sur GitHub tant que les publications le sont.
+
 ## Le lien de téléchargement (`telecharger.html`)
 Tous les boutons « Télécharger » du site pointent vers `telecharger.html`. Cette page lit la dernière publication sur GitHub et lance le téléchargement de l'installeur : l'adresse GitHub n'est écrite dans aucune page ni dans `releases.json`. Elle reste visible dans les outils de développement du navigateur (la page interroge `api.github.com`) et dans le téléchargement lui-même.
 Les pages `versions.html` et `versions-archives.html` (6 dernières versions, puis les archives) lisent le même dépôt.

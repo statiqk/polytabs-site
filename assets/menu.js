@@ -2,6 +2,9 @@
  * Sans JavaScript, ou sur grand écran, la barre reste telle qu'elle est écrite dans la page. */
 (() => {
   'use strict';
+  /* Interrupteur des téléchargements : false = verrouillés (pastille « Bientôt » sur les boutons, page d'attente), true = ouverts. */
+  const DL_OUVERT = false;
+  if (!DL_OUVERT) document.documentElement.classList.add('dl-soon');
   /* Points sous les listes qui défilent sur le côté (téléphone) */
   document.querySelectorAll('.rows, .tools-cats').forEach((box) => {
     const items = Array.from(box.querySelectorAll(box.classList.contains('rows') ? '.card--lg, .feat-mini' : '.tc'));

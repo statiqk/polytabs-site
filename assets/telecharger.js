@@ -55,5 +55,12 @@
     }
     again.onclick = (ev) => { ev.preventDefault(); start(); };
   }
-  run();
+  // Téléchargements verrouillés (menu.js pose la classe « dl-soon ») : page d'attente, aucune demande à GitHub.
+  function soon() {
+    document.getElementById('dl-title').textContent = 'Bientôt disponible';
+    msg.textContent = 'Le téléchargement de PolyTabs ouvre prochainement. En attendant, explore les fonctionnalités et le guide.';
+    again.textContent = 'Voir les fonctionnalités'; again.href = 'index.html#fonctionnalites'; again.hidden = false;
+    const fine = doc.querySelector('.fine'); if (fine) fine.hidden = true;       // l'avertissement Windows n'a pas de sens tant qu'on ne peut rien installer
+  }
+  doc.addEventListener('DOMContentLoaded', () => { if (doc.documentElement.classList.contains('dl-soon')) soon(); else run(); });
 })();

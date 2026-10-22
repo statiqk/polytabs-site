@@ -885,3 +885,8 @@ details[open] summary::after{transform:rotate(-135deg);margin-top:6px}
 @media (prefers-reduced-motion: reduce) { .js-gd .gd-toc, .js-gd .gd-scrim, .js-gd .gd-chev { transition: none; } }
 @media (forced-colors: active) { .gd-it[aria-current="true"] { border-color: Highlight; } .gd-player, .gd-vwrap { border: 1px solid CanvasText; } }
 @media print { .gd-bar, .gd-scrim, .gd-vwrap { display: none; } }
+
+/* Téléchargements verrouillés (interrupteur DL_OUVERT dans menu.js) : les boutons restent visibles avec une pastille « Bientôt ». */
+.dl-soon a[data-download], .dl-soon .np-cta { position: relative; }
+.dl-soon a[data-download]::after, .dl-soon .np-cta::after { content: "Bientôt"; position: absolute; top: -9px; right: -8px; padding: 3px 8px; border-radius: 99px; background: #f5b942; color: #1a1305; font: 700 .66rem/1 var(--sans, sans-serif); letter-spacing: .04em; text-transform: uppercase; pointer-events: none; }
+.dl-soon .ver-dl::after { content: "Bientôt"; margin-left: 8px; padding: 3px 8px; border-radius: 99px; background: #f5b942; color: #1a1305; font: 700 .66rem/1 var(--sans, sans-serif); letter-spacing: .04em; text-transform: uppercase; }
