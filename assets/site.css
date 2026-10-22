@@ -886,7 +886,8 @@ details[open] summary::after{transform:rotate(-135deg);margin-top:6px}
 @media (forced-colors: active) { .gd-it[aria-current="true"] { border-color: Highlight; } .gd-player, .gd-vwrap { border: 1px solid CanvasText; } }
 @media print { .gd-bar, .gd-scrim, .gd-vwrap { display: none; } }
 
-/* Téléchargements verrouillés (interrupteur DL_OUVERT dans menu.js) : les boutons restent visibles avec une pastille « Bientôt ». */
-.dl-soon a[data-download], .dl-soon .np-cta { position: relative; }
-.dl-soon a[data-download]::after, .dl-soon .np-cta::after { content: "Bientôt"; position: absolute; top: -9px; right: -8px; padding: 3px 8px; border-radius: 99px; background: #f5b942; color: #1a1305; font: 700 .66rem/1 var(--sans, sans-serif); letter-spacing: .04em; text-transform: uppercase; pointer-events: none; }
-.dl-soon .ver-dl::after { content: "Bientôt"; margin-left: 8px; padding: 3px 8px; border-radius: 99px; background: #f5b942; color: #1a1305; font: 700 .66rem/1 var(--sans, sans-serif); letter-spacing: .04em; text-transform: uppercase; }
+/* Téléchargements verrouillés (interrupteur DL_OUVERT dans menu.js) : le bouton reste visible, avec « Bientôt » à l'intérieur. */
+.dl-soon a[data-download]::after, .dl-soon .np-cta::after { content: "Bientôt"; margin-left: 6px; padding: 4px 10px; border-radius: 8px; background: rgba(6, 19, 31, .16); box-shadow: inset 0 0 0 1px rgba(6, 19, 31, .22); color: #06131f; font: 700 .69rem/1 var(--sans, sans-serif); letter-spacing: .07em; text-transform: uppercase; }
+.dl-soon a.btn--sm[data-download]::after { margin-left: 2px; padding: 3px 8px; font-size: .62rem; }
+@media (max-width: 520px) { .dl-soon a.btn--sm[data-download]::after { display: none; } }   /* téléphone : la place manque dans la barre, la pastille reste sur le bouton de l'accueil et dans le menu */
+.dl-soon .ver-dl::after { content: "Bientôt"; margin-left: 8px; padding: 3px 8px; border-radius: 8px; background: color-mix(in srgb, currentColor 14%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, currentColor 35%, transparent); font: 700 .66rem/1 var(--sans, sans-serif); letter-spacing: .07em; text-transform: uppercase; }
