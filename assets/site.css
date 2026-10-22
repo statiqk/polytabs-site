@@ -890,4 +890,10 @@ details[open] summary::after{transform:rotate(-135deg);margin-top:6px}
 .dl-soon a[data-download]::after, .dl-soon .np-cta::after { content: "Bientôt"; margin-left: 6px; padding: 4px 10px; border-radius: 8px; background: rgba(6, 19, 31, .16); box-shadow: inset 0 0 0 1px rgba(6, 19, 31, .22); color: #06131f; font: 700 .69rem/1 var(--sans, sans-serif); letter-spacing: .07em; text-transform: uppercase; }
 .dl-soon a.btn--sm[data-download]::after { margin-left: 2px; padding: 3px 8px; font-size: .62rem; }
 @media (max-width: 520px) { .dl-soon a.btn--sm[data-download]::after { display: none; } }   /* téléphone : la place manque dans la barre, la pastille reste sur le bouton de l'accueil et dans le menu */
+/* Téléphone : sur les gros boutons, « Bientôt » devient une petite horloge ronde pour que le libellé tienne sur une ligne. */
+@media (max-width: 520px) {
+  .dl-soon a.btn--lg[data-download] { padding: 0 18px; gap: 10px; font-size: .95rem; white-space: nowrap; }
+  .dl-soon a.btn--lg[data-download]::after { content: ""; content: "" / "Bientôt"; width: 24px; height: 24px; margin-left: 0; padding: 0; border-radius: 50%; background: no-repeat center / 14px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2306131f' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E"), rgba(6, 19, 31, .16); box-shadow: inset 0 0 0 1px rgba(6, 19, 31, .22); }
+}
+@media (max-width: 340px) { .dl-soon a.btn--lg[data-download] { padding: 0 14px; gap: 8px; font-size: .9rem; } }
 .dl-soon .ver-dl::after { content: "Bientôt"; margin-left: 8px; padding: 3px 8px; border-radius: 8px; background: color-mix(in srgb, currentColor 14%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, currentColor 35%, transparent); font: 700 .66rem/1 var(--sans, sans-serif); letter-spacing: .07em; text-transform: uppercase; }
