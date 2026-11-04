@@ -1,5 +1,55 @@
 [
   {
+    "version": "1.0.77",
+    "date": "2026-11-04T22:00:00Z",
+    "download": null,
+    "size": 117797627,
+    "htmlUrl": null,
+    "notes": {
+      "intro": "Alignement des images dans la liseuse, avec clic automatique, aimant, zones modifiables et espacements.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Alignement dans la liseuse",
+              "text": "Le bouton « Alignement » de la barre du bas permet de comparer jusqu'à 6 zones d'une image. PolyTabs trouve le contour visible de chaque zone, trace les repères (« Gauche · aligné », « Gauche +4 px ») et détaille les écarts en pixels de l'image, quel que soit le zoom. Le rapport se copie en un clic."
+            },
+            {
+              "title": "Clic automatique",
+              "text": "Un simple clic sur un objet de l'image (logo, bouton, texte) détecte son contour. La sensibilité (Fine, Normale, Large) règle le regroupement : la lettre ou la forme, le mot, la ligne ; Maj + clic prend le bloc entier. Le mode Rectangle reste disponible."
+            },
+            {
+              "title": "Aimant, zones modifiables, espacements",
+              "text": "Un écart de 3 px ou moins compte comme « aligné » (réglable : 1, 3 ou 6 px). Une zone se sélectionne par son numéro pour la déplacer ou la redimensionner, la mesure se recalcule en direct. La distance entre zones consécutives s'affiche sur l'image, dans la palette et dans le rapport."
+            },
+            {
+              "title": "Palette détachable",
+              "text": "La palette de l'alignement peut se détacher dans une fenêtre séparée, toujours au-dessus et déplaçable sur un autre écran, comme pour les panneaux de site web. Un bouton la réintègre."
+            },
+            {
+              "title": "Météo : source de secours",
+              "text": "Si le service principal est surchargé ou injoignable, le widget bascule automatiquement sur MET Norway et l'indique."
+            }
+          ]
+        },
+        {
+          "title": "Corrections",
+          "items": [
+            {
+              "title": "Multi-écrans et Alt + Tab",
+              "text": "Cliquer sur PolyTabs ne remet plus toutes les fenêtres au premier plan par-dessus l'appli ouverte sur un autre écran, et Alt + Tab retrouve le comportement normal de Windows."
+            },
+            {
+              "title": "Aimant des panneaux",
+              "text": "En étirant un panneau vers le bas, il s'aligne sur la ligne de l'aimant, y compris quand la page est défilée ou que la marge du bas est à 0. Les panneaux ne sont plus plafonnés à 90 % de la hauteur de l'écran."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "version": "1.0.40",
     "date": "2026-10-12T06:06:51Z",
     "download": null,
