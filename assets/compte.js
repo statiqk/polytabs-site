@@ -134,7 +134,7 @@
         msg.textContent = ''; msg.className = 'ac-msg bad'; msg.append('Rien ne s’est ouvert ? L’appli n’est peut-être pas installée, ou la dernière version est nécessaire. ', Object.assign(el('a'), { href: 'telecharger.html', textContent: 'Télécharger PolyTabs' }), '.');
       }, 4000);
     });
-    $('#ac-signout').addEventListener('click', async () => { try { const t = cur() && cur().at; if (t) await api('/auth/v1/logout', { method: 'POST', token: t }); } catch (e) { /* hors ligne */ } mem.s = null; setS(null); location.replace('connexion.html'); });
+    $('#ac-signout').addEventListener('click', async () => { try { const t = cur() && cur().at; if (t) await api('/auth/v1/logout?scope=local', { method: 'POST', token: t }); } catch (e) { /* hors ligne */ } mem.s = null; setS(null); location.replace('connexion.html'); });
     const out = (e) => { if (e && e.code === 'signedout') { location.replace('connexion.html'); return true; } return false; };
     try { const u = await api('/auth/v1/user', { token: await token() }); email = u.email || email; } catch (e) { if (out(e)) return; }
     $('#ac-email').textContent = email;
