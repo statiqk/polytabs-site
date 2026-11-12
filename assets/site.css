@@ -72,7 +72,7 @@ h1 { font-family: var(--f-display); font-weight: 700; font-size: clamp(2.5rem, 6
 .mock-dot--add { background: var(--accent); border-color: var(--accent); display: flex; align-items: center; justify-content: center; }
 .mock-spacer { flex: 1; }
 .mock-tab { appearance: none; border: 0; background: transparent; padding: 0; min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; cursor: pointer; font: inherit; }
-.mock-tab span { padding: 3px 12px; border-radius: 7px; background: transparent; color: var(--mute); font-size: 12.5px; font-weight: 600; }
+.mock-tab span { white-space: nowrap; padding: 3px 12px; border-radius: 7px; background: transparent; color: var(--mute); font-size: 12.5px; font-weight: 600; }
 .mock-tab[aria-pressed="true"] span { background: var(--accent-deep); color: #cfe3ff; }
 .mock-grid { background: var(--bg); padding: 16px 16px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: 12px; }
 .mock-grid[hidden] { display: none; }
@@ -791,6 +791,7 @@ details[open] summary::after{transform:rotate(-135deg);margin-top:6px}
   .mock-fig .mock-cap { display: none; }
   .mock { transform: rotateY(-5deg) rotateX(2deg); transform-origin: 55% 50%; box-shadow: 0 30px 60px rgba(0, 0, 0, .6), 0 0 60px rgba(79, 157, 255, .16); }
   .mock-bar { min-height: 42px; padding-left: 10px; }
+  .mock-bar { gap: 2px; } .mock-tab { flex: none; min-width: 36px; } .mock-tab span { padding: 3px 9px; }
   .mock-grid { grid-template-columns: 1.3fr 1fr; padding: 10px; gap: 8px; }
   .mp-head { min-height: 36px; padding: 4px 8px; gap: 6px; }
   .mp-ic { width: 18px; height: 18px; }
