@@ -55,8 +55,19 @@
 
   // ---- page de connexion ----
   function loginPage() {
-    if (cur()) { location.replace('compte.html'); return; }
     const host = $('#ac-root'); let email = '';
+    // Arrivée depuis l'appli (« Ouvrir mon espace sur le site ») : le jeton est dans le fragment (#h=…), il n'est jamais envoyé au serveur du site.
+    const hm = /^#h=([A-Za-z0-9_-]{16,200})$/.exec(location.hash || '');
+    if (hm) {
+      try { history.replaceState(null, '', location.pathname); } catch (e) { /* sans effet */ }
+      const c = el('div', 'ac-card'); c.append(logo(), el('h1', '', 'Connexion en cours…'), el('p', 'sub', 'On t’ouvre ton espace PolyTabs.')); host.appendChild(c);
+      api('/auth/v1/verify', { method: 'POST', body: { type: 'magiclink', token_hash: hm[1] } }).then((r) => {
+        if (!r || !r.access_token) throw { code: 'badcode' };
+        saveSession(r); try { sessionStorage.setItem('polytabs-from-app', '1'); } catch (e) { /* sans effet */ } location.replace('compte.html');
+      }).catch((e) => { host.textContent = ''; stepEmail(e && e.code === 'network' ? msgOf(e) : 'Le lien de l’appli a expiré ou a déjà servi. Reconnecte-toi ici, ou clique de nouveau sur « Ouvrir mon espace sur le site » dans l’appli.'); });
+      return;
+    }
+    if (cur()) { location.replace('compte.html'); return; }
     function stepEmail(note) {
       host.textContent = ''; const c = el('div', 'ac-card');
       c.append(logo(), el('h1', '', 'Connecte-toi à PolyTabs'), el('p', 'sub', 'Le même compte que dans l’appli. Pas de compte ? Il sera créé automatiquement.'));
@@ -107,6 +118,22 @@
     let email = cur().email || '';
     const show = (id) => { tabs.forEach(t => t.setAttribute('aria-current', String(t.dataset.tab === id))); document.querySelectorAll('[data-pane]').forEach(p => { p.hidden = p.dataset.pane !== id; }); if (id === 'devices') loadDevices(); };
     tabs.forEach(t => t.addEventListener('click', () => show(t.dataset.tab)));
+    try { if (sessionStorage.getItem('polytabs-from-app')) { sessionStorage.removeItem('polytabs-from-app'); const ok = $('#ac-app-ok'); if (ok) ok.textContent = 'Connecté avec l’appli.'; } } catch (e) { /* sans effet */ }
+    const appBtn = $('#ac-app-btn');
+    if (appBtn) appBtn.addEventListener('click', async () => {
+      const msg = $('#ac-app-msg'); const say = (t, bad) => { msg.textContent = t; msg.className = 'ac-msg' + (bad ? ' bad' : ''); };
+      appBtn.disabled = true; say('Préparation…');
+      let h; try { const r = await api('/functions/v1/polytabs-handoff', { method: 'POST', token: await token(), body: {} }); h = r && r.token_hash; if (!h) throw { code: 'http' }; }
+      catch (e) { appBtn.disabled = false; if (e && e.code === 'signedout') { location.replace('connexion.html'); return; } say(msgOf(e), true); return; }
+      let left = false; const gone = () => { left = true; };
+      window.addEventListener('blur', gone, { once: true }); document.addEventListener('visibilitychange', gone, { once: true });
+      say('Ouverture de l’appli… autorise l’ouverture de PolyTabs si ton navigateur le demande.');
+      location.href = 'polytabs://login?h=' + encodeURIComponent(h);
+      setTimeout(() => {
+        appBtn.disabled = false; if (left) { say('Si l’appli s’est ouverte, c’est fait.'); return; }
+        msg.textContent = ''; msg.className = 'ac-msg bad'; msg.append('Rien ne s’est ouvert ? L’appli n’est peut-être pas installée, ou la dernière version est nécessaire. ', Object.assign(el('a'), { href: 'telecharger.html', textContent: 'Télécharger PolyTabs' }), '.');
+      }, 4000);
+    });
     $('#ac-signout').addEventListener('click', async () => { try { const t = cur() && cur().at; if (t) await api('/auth/v1/logout', { method: 'POST', token: t }); } catch (e) { /* hors ligne */ } mem.s = null; setS(null); location.replace('connexion.html'); });
     const out = (e) => { if (e && e.code === 'signedout') { location.replace('connexion.html'); return true; } return false; };
     try { const u = await api('/auth/v1/user', { token: await token() }); email = u.email || email; } catch (e) { if (out(e)) return; }
