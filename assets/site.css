@@ -503,7 +503,7 @@ details[open] summary > svg { transform: rotate(45deg); }
 @media print { .nav-toggle, .nav-panel, .nav-scrim { display: none !important; } }
 
 /* ---------- accueil sur téléphone (≤ 859 px) : éléments réservés au téléphone, cachés ailleurs ---------- */
-.hero-poster, .warn-chip, .tools-cats, .cta-brand, .cta-ver, .dots { display: none; }
+.hero-poster, .warn-chip, .tools-cats, .cta-brand, .cta-ver, .dots, .swipe-hint { display: none; }
 @media (max-width: 859px) {
   /* haut de page : titre, image forte, bouton, pastille */
   .hero { display: flex; flex-direction: column; align-items: stretch; gap: 16px; padding-top: 20px; }
@@ -533,11 +533,13 @@ details[open] summary > svg { transform: rotate(45deg); }
   .rows, .tools-cats { display: flex; flex-direction: row; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-left: -24px; margin-right: -24px; padding: 2px 24px; scroll-padding-left: 24px; -webkit-overflow-scrolling: touch; }
   .rows::-webkit-scrollbar, .tools-cats::-webkit-scrollbar { display: none; }
   .rows .row { display: contents; }
-  .rows .card--lg { flex: 0 0 82%; scroll-snap-align: start; min-width: 0; }
+  .rows .card--lg { flex: 0 0 88%; align-self: flex-start; scroll-snap-align: start; min-width: 0; }
   .rows .card--lg .stack, .rows .card--lg .wgts { display: none; }
   /* la liste « Pensé pour plusieurs écrans… » devient la dernière carte du défilement (elle restait hors de portée) */
-  .rows .feat-mini { flex: 0 0 82%; scroll-snap-align: start; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
-  .rows .feat-mini li { flex: 1; align-items: flex-start; padding: 16px; }
+  .rows .feat-mini { flex: 0 0 88%; justify-content: flex-start; scroll-snap-align: start; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .rows .feat-mini li { flex: 0 0 auto; align-items: flex-start; padding: 16px; }
+  .swipe-hint { display: flex; justify-content: flex-end; align-items: center; gap: 6px; margin: 4px 0 10px; font-size: 12.5px; color: var(--accent); }
+  .more-link { display: inline-flex; align-items: center; min-height: 40px; }
   .cta .nm { display: none; }
   .dots { display: flex; justify-content: center; gap: 6px; margin-top: 14px; }
   .dots i { width: 7px; height: 7px; border-radius: 99px; background: var(--line); transition: width .2s, background .2s; }

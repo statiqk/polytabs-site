@@ -15,9 +15,9 @@
   /* ---------------------------------------------------------------- 1. Maquette interactive */
   const mock = doc.getElementById('mock');
   if (mock) {
-    const SETS = { '1': ['web', 'log', 'clock', 'todo'], '2': ['cal', 'note', 'timer'] };
-    const front = { '1': 'todo', '2': 'timer' };
-    const grids = { '1': doc.getElementById('mock-tab-1'), '2': doc.getElementById('mock-tab-2') };
+    const SETS = { '1': ['web', 'log', 'clock', 'todo'], '2': ['cal', 'note', 'timer'], '3': ['proj', 'radio', 'lect'] };
+    const front = { '1': 'todo', '2': 'timer', '3': 'lect' };
+    const grids = { '1': doc.getElementById('mock-tab-1'), '2': doc.getElementById('mock-tab-2'), '3': doc.getElementById('mock-tab-3') };
     const panel = (id) => mock.querySelector('[data-panel="' + id + '"]');
     const applyZ = (set) => {
       SETS[set].forEach((id, i) => {
@@ -30,11 +30,12 @@
     };
     applyZ('1');
     applyZ('2');
+    applyZ('3');
     mock.addEventListener('click', (e) => {
       const head = e.target.closest('[data-raise]');
       if (head) {
         const id = head.getAttribute('data-raise');
-        const set = SETS['1'].indexOf(id) !== -1 ? '1' : '2';
+        const set = Object.keys(SETS).find((k) => SETS[k].indexOf(id) !== -1) || '1';
         front[set] = id;
         applyZ(set);
         return;
