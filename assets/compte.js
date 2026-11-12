@@ -70,7 +70,18 @@
         catch (e) { go.disabled = false; msg.textContent = msgOf(e); msg.className = 'ac-msg bad'; }
       });
       inp.addEventListener('keydown', (e) => { if (e.key === 'Enter') go.click(); });
-      c.append(lab, go, msg, el('p', 'ac-fine', 'Aucun mot de passe à retenir : un code à 6 chiffres t’est envoyé par e-mail.')); host.appendChild(c); inp.focus();
+      const ou = el('div', 'ac-fine', '— ou —');
+      const pw = el('input', 'ac-in'); pw.type = 'password'; pw.autocomplete = 'current-password'; pw.placeholder = 'Mot de passe'; pw.setAttribute('aria-label', 'Mot de passe');
+      const pgo = el('button', 'ac-btn ac-btn--ghost', 'Se connecter avec le mot de passe'); pgo.type = 'button';
+      const doPw = async () => {
+        email = inp.value.trim().toLowerCase(); if (!validMail(email)) { msg.textContent = 'Adresse e-mail invalide.'; msg.className = 'ac-msg bad'; return; }
+        if (!pw.value) { msg.textContent = 'Entre ton mot de passe.'; msg.className = 'ac-msg bad'; return; }
+        pgo.disabled = true; msg.textContent = 'Connexion…'; msg.className = 'ac-msg';
+        try { const r = await api('/auth/v1/token?grant_type=password', { method: 'POST', body: { email, password: pw.value } }); saveSession(r); location.replace('compte.html'); }
+        catch (e) { pgo.disabled = false; msg.textContent = e.code === 'network' || e.code === 'rate' ? msgOf(e) : 'E-mail ou mot de passe incorrect. Pas de mot de passe ? Utilise le code.'; msg.className = 'ac-msg bad'; }
+      };
+      pgo.addEventListener('click', doPw); pw.addEventListener('keydown', (e) => { if (e.key === 'Enter') doPw(); });
+      c.append(lab, go, ou, pw, pgo, msg, el('p', 'ac-fine', 'Pas de mot de passe à retenir : un code à 6 chiffres t’est envoyé par e-mail.')); host.appendChild(c); inp.focus();
     }
     function stepCode() {
       host.textContent = ''; const c = el('div', 'ac-card'); let busy = false;
@@ -140,6 +151,25 @@
       });
       list.appendChild(el('p', 'ac-fine', '« Retirer » déconnecte l’appareil : ses données restent sur ce PC, mais il ne se synchronise plus.'));
     }
+    // mot de passe (optionnel)
+    const pwBtn = $('#ac-pw-btn'), pwBox = $('#ac-pw-box'), pwOk = $('#ac-pw-ok');
+    pwBtn.addEventListener('click', () => {
+      pwBtn.hidden = true; pwBox.hidden = false; pwBox.textContent = ''; pwOk.textContent = '';
+      const l1 = el('label', 'ac-lab', 'Nouveau mot de passe (8 caractères minimum)'), p1 = el('input', 'ac-in'); p1.type = 'password'; p1.autocomplete = 'new-password'; l1.appendChild(p1);
+      const l2 = el('label', 'ac-lab', 'Confirme le mot de passe'), p2 = el('input', 'ac-in'); p2.type = 'password'; p2.autocomplete = 'new-password'; l2.appendChild(p2);
+      const msg = el('div', 'ac-msg'); msg.setAttribute('role', 'status');
+      const check = () => { if (!p1.value && !p2.value) { msg.textContent = ''; msg.className = 'ac-msg'; } else if (p1.value.length < 8) { msg.textContent = '8 caractères minimum.'; msg.className = 'ac-msg'; } else if (p1.value !== p2.value) { msg.textContent = 'Les deux mots de passe ne correspondent pas.'; msg.className = 'ac-msg bad'; } else { msg.textContent = 'Les deux mots de passe correspondent.'; msg.className = 'ac-msg ok'; } };
+      p1.addEventListener('input', check); p2.addEventListener('input', check);
+      const go = el('button', 'ac-btn ac-btn--auto', 'Enregistrer'); go.type = 'button';
+      const cancel = el('button', 'ac-link', 'Annuler'); cancel.type = 'button'; cancel.addEventListener('click', () => { pwBox.hidden = true; pwBtn.hidden = false; });
+      go.addEventListener('click', async () => {
+        if (p1.value.length < 8 || p1.value !== p2.value) { check(); if (p1.value.length < 8) { msg.textContent = '8 caractères minimum.'; msg.className = 'ac-msg bad'; } return; }
+        go.disabled = true; msg.textContent = 'Enregistrement…'; msg.className = 'ac-msg';
+        try { await api('/auth/v1/user', { method: 'PUT', token: await token(), body: { password: p1.value } }); pwBox.hidden = true; pwBtn.hidden = false; pwOk.textContent = 'Mot de passe enregistré.'; }
+        catch (e) { go.disabled = false; if (!out(e)) { msg.textContent = msgOf(e); msg.className = 'ac-msg bad'; } }
+      });
+      const row = el('div', 'ac-row'); row.append(go, cancel); pwBox.append(l1, l2, msg, row); p1.focus();
+    });
     // suppression du compte
     const delBtn = $('#ac-del-btn'), delBox = $('#ac-del-box');
     delBtn.addEventListener('click', () => {
