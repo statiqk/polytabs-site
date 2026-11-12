@@ -808,7 +808,12 @@ details[open] summary::after{transform:rotate(-135deg);margin-top:6px}
   .todo { padding: 9px; gap: 6px; font-size: 11px; }
   .timer-time { font-size: 26px; }
   .mp--clock { margin-top: -14px; } .mp--todo { margin: -20px 0 0 8px; } .mp--note { margin-top: 12px; } .mp--timer { margin: -16px 0 0 8px; }
-  .mock-floats { display: block; position: relative; height: 70px; margin-top: -22px; pointer-events: none; z-index: 2; }
+  .mock-floats { display: block; position: relative; height: 70px; margin-top: -30px; pointer-events: none; z-index: 2; }
+  /* onglet Widgets : calendrier et notes plus compacts pour remonter le minuteur et les widgets flottants */
+  #mock-tab-2 .cal-pad { padding: 7px 7px 14px; gap: 3px; } #mock-tab-2 .cal-title { font-size: 10.5px; }
+  #mock-tab-2 .cal-grid { gap: 1px; font-size: 9.5px; } #mock-tab-2 .cal-grid--wd { font-size: 8.5px; } #mock-tab-2 .cal-grid span { padding: 1px 0; }
+  #mock-tab-2 .note { padding: 8px; gap: 4px; font-size: 10px; line-height: 1.35; }
+  #mock-tab-2 .mp--note { margin-top: 8px; } #mock-tab-2 .mp--timer { margin: -6px 0 0 8px; }
   .mf { position: absolute; width: 128px; background: var(--panel); border: 1px solid var(--line-2); border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, .6); }
   .mf-head { display: flex; align-items: center; gap: 6px; padding: 5px 8px; background: var(--panel-2); border-bottom: 1px solid var(--line); }
   .mf-body { padding: 6px 8px 8px; display: flex; flex-direction: column; align-items: center; gap: 1px; }
