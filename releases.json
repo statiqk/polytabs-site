@@ -1,5 +1,322 @@
 [
   {
+    "version": "1.0.85",
+    "date": "2026-11-12T16:09:20Z",
+    "download": "https://github.com/statiqk/polytabs-releases/releases/download/v1.0.85/PolyTabs-Setup-1.0.85.exe",
+    "size": 123320978,
+    "htmlUrl": "https://github.com/statiqk/polytabs-releases/releases/tag/v1.0.85",
+    "notes": {
+      "intro": "Page Compte plus compacte et plus claire : tout tient dans la fenêtre des Réglages, sans défilement.",
+      "sections": [
+        {
+          "title": "Améliorations",
+          "items": [
+            {
+              "title": "Page Compte",
+              "text": "l'état de la synchronisation passe dans l'en-tête (« À jour · synchronisé à l'instant ») avec le bouton « Synchroniser ». « Ce qui est synchronisé » devient une ligne dépliable."
+            },
+            {
+              "title": "Mes appareils",
+              "text": "point de couleur selon l'activité (gris et mention « Inactif depuis N jours » après 7 jours), crayon pour renommer ce PC, « Retirer » discret (rouge pour un appareil inactif) avec confirmation, « Tout voir » à droite du titre."
+            },
+            {
+              "title": "Accès",
+              "text": "Espace en ligne et Mot de passe en lignes régulières, marges homogènes et titres de sections plus lisibles."
+            },
+            {
+              "title": "Se déconnecter de ce PC",
+              "text": "s'affiche enfin en rouge, avec la version de l'appli à droite."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.84",
+    "date": "2026-11-12T15:31:34Z",
+    "download": "https://github.com/statiqk/polytabs-releases/releases/download/v1.0.84/PolyTabs-Setup-1.0.84.exe",
+    "size": 123320079,
+    "htmlUrl": "https://github.com/statiqk/polytabs-releases/releases/tag/v1.0.84",
+    "notes": {
+      "intro": "Page Compte et connexion repensées, et correctif de la synchronisation qui rechargeait les panneaux.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Page Compte",
+              "text": "adresse et état de la synchronisation en tête avec le bouton « Synchroniser », liste de ce qui est synchronisé (et de ce qui ne l'est pas), appareils visibles directement (« Ce PC » repéré, **Renommer** ce PC, **Retirer** avec confirmation, « Voir tout »), puis Espace en ligne et Mot de passe en simples lignes. « Se déconnecter de ce PC » est plus discret."
+            },
+            {
+              "title": "Connexion",
+              "text": "un seul bouton « Continuer », le mot de passe en option après un « ou »."
+            },
+            {
+              "title": "Saisie du code",
+              "text": "six cases (un chiffre par case, collage du code d'un coup), validation automatique au 6e chiffre, cases en rouge en cas d'erreur, « Renvoyer le code » après 45 s."
+            }
+          ]
+        },
+        {
+          "title": "Améliorations",
+          "items": [
+            {
+              "title": "Synchronisation",
+              "text": "les panneaux ne sont plus rechargés ni réécrits en boucle. La comparaison ignore maintenant l'ordre des données, que le serveur range autrement que l'appli."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.83",
+    "date": "2026-11-12T14:49:38Z",
+    "download": "https://github.com/statiqk/polytabs-releases/releases/download/v1.0.83/PolyTabs-Setup-1.0.83.exe",
+    "size": 123318567,
+    "htmlUrl": "https://github.com/statiqk/polytabs-releases/releases/tag/v1.0.83",
+    "notes": {
+      "intro": "Passage direct entre l'appli et polytabs.fr sans se reconnecter, logo sur l'écran de connexion et mot de passe en option.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Ouvrir mon espace sur le site",
+              "text": "dans Réglages › Compte, un bouton ouvre polytabs.fr dans ton navigateur, déjà connecté. Rien à retaper."
+            },
+            {
+              "title": "Ouvrir dans l'appli",
+              "text": "sur polytabs.fr › Mon compte, un bouton lance PolyTabs, déjà connectée à ton compte (le navigateur demande l'autorisation une fois). L'appli te demande de confirmer le compte avant de te connecter."
+            },
+            {
+              "title": "Mot de passe en option",
+              "text": "tu peux définir un mot de passe (Réglages › Compte) et te connecter avec, sans attendre de code. Le code par e-mail reste toujours possible."
+            }
+          ]
+        },
+        {
+          "title": "Améliorations",
+          "items": [
+            {
+              "title": "Écran de connexion",
+              "text": "le logo de l'appli remplace la lettre « P »."
+            },
+            {
+              "title": "Une seule fenêtre PolyTabs",
+              "text": "relancer l'appli remet la fenêtre existante au premier plan au lieu d'en ouvrir une deuxième."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.82",
+    "date": "2026-11-12T13:33:25Z",
+    "download": "https://github.com/statiqk/polytabs-releases/releases/download/v1.0.82/PolyTabs-Setup-1.0.82.exe",
+    "size": 123316724,
+    "htmlUrl": "https://github.com/statiqk/polytabs-releases/releases/tag/v1.0.82",
+    "notes": {
+      "intro": "Compte PolyTabs et synchronisation entre PC, et le raccourci du bureau qui ne disparaît plus à la mise à jour.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Compte PolyTabs",
+              "text": "connexion par e-mail et code à 6 chiffres (le compte est créé automatiquement), mot de passe en option, ou « Continuer sans compte ». C'est le même compte que sur polytabs.fr. Un écran de connexion s'ouvre une seule fois au premier lancement."
+            },
+            {
+              "title": "Synchronisation entre PC",
+              "text": "tes panneaux et widgets (avec leurs données), tes favoris et quelques réglages (voix, magnétisme, palette d'alignement) se retrouvent sur tous tes PC. Ne sont pas synchronisés : fichiers et dossiers locaux, widgets Dossier et Lecteur, disposition des écrans."
+            },
+            {
+              "title": "Réglages › Compte",
+              "text": "adresse connectée, état de la synchronisation, « Synchroniser maintenant », « Voir mes appareils », « Se déconnecter »."
+            },
+            {
+              "title": "Mes appareils",
+              "text": "la liste des PC connectés (« Ce PC » repéré), avec « Retirer » pour déconnecter un appareil. Un PC retiré se déconnecte tout seul et garde ses panneaux."
+            },
+            {
+              "title": "Espace membre sur polytabs.fr",
+              "text": "connexion, Mon compte, appareils, changement d'adresse e-mail et suppression du compte."
+            }
+          ]
+        },
+        {
+          "title": "Améliorations",
+          "items": [
+            {
+              "title": "Raccourci du bureau",
+              "text": "il n'est plus perdu après une mise à jour quand il était déjà présent."
+            },
+            {
+              "title": "Conflits",
+              "text": "si un élément est modifié sur deux PC, le plus récent est gardé, et une copie de ce qui est remplacé reste sur le PC."
+            },
+            {
+              "title": "Mises à jour de la synchronisation",
+              "text": "toutes les minutes, au retour sur la fenêtre et peu après chaque modification."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.81",
+    "date": "2026-11-12T07:00:59Z",
+    "download": "https://github.com/statiqk/polytabs-releases/releases/download/v1.0.81/PolyTabs-Setup-1.0.81.exe",
+    "size": 123309243,
+    "htmlUrl": "https://github.com/statiqk/polytabs-releases/releases/tag/v1.0.81",
+    "notes": {
+      "intro": "Le nouveau widget « Projets » arrive, et la voix annonce tes projets à l'accueil.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Widget « Projets »",
+              "text": "une carte par projet avec son nom, son type (Appli, Site web, Logiciel .exe, API / Service, Jeu ou un type libre), sa barre d'avancée et son état. Des filtres par type permettent de les retrouver vite. Il est indépendant du widget « Liste de tâches »."
+            },
+            {
+              "title": "Fiche projet",
+              "text": "chaque projet a ses propres tâches à cocher, avec échéance, modification en cliquant sur le texte et suppression. Elles sont séparées en « À faire » et « Terminées »."
+            },
+            {
+              "title": "Création et modification",
+              "text": "nom, type, couleur et état (Idée, En cours, En pause, Terminé). La suppression d'un projet demande une confirmation."
+            },
+            {
+              "title": "Voix",
+              "text": "le message d'accueil annonce le nombre de projets en cours, puis une phrase par projet (3 au maximum, les plus en retard d'abord) : la tâche en retard, sinon celle à échéance la plus proche, sinon la première à faire. Les noms de sites se lisent naturellement (« polytabs point fr »)."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.80",
+    "date": "2026-11-12T06:13:24Z",
+    "download": "https://github.com/statiqk/polytabs-releases/releases/download/v1.0.80/PolyTabs-Setup-1.0.80.exe",
+    "size": 123309055,
+    "htmlUrl": "https://github.com/statiqk/polytabs-releases/releases/tag/v1.0.80",
+    "notes": {
+      "intro": "Nouveau widget « Projets » pour suivre tes projets (appli, site web, .exe…) avec leurs tâches, et une phrase sur tes projets dans le message d'accueil.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Widget « Projets »",
+              "text": "une carte par projet avec son nom, son type (Appli, Site web, Logiciel .exe, API / Service, Jeu ou un type libre), sa barre d'avancée et son état. Des filtres par type permettent de les retrouver vite. Il est indépendant du widget « Liste de tâches »."
+            },
+            {
+              "title": "Fiche projet",
+              "text": "chaque projet a ses propres tâches à cocher, avec échéance, modification en cliquant sur le texte et suppression. Elles sont séparées en « À faire » et « Terminées »."
+            },
+            {
+              "title": "Création et modification",
+              "text": "nom, type, couleur et état (Idée, En cours, En pause, Terminé). La suppression d'un projet demande une confirmation."
+            },
+            {
+              "title": "Voix",
+              "text": "le message d'accueil annonce tes projets en cours, ceux qui ont des tâches en retard, ou la prochaine tâche à faire."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.79",
+    "date": "2026-11-11T20:13:24Z",
+    "download": "https://github.com/statiqk/polytabs-releases/releases/download/v1.0.79/PolyTabs-Setup-1.0.79.exe",
+    "size": 123304763,
+    "htmlUrl": "https://github.com/statiqk/polytabs-releases/releases/tag/v1.0.79",
+    "notes": {
+      "intro": "Menu clic droit avec correcteur orthographique, et un installeur entièrement repensé aux couleurs de PolyTabs.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Menu clic droit",
+              "text": "un clic droit dans n'importe quel champ de texte (appli et webviews) ouvre un menu aux couleurs de PolyTabs : Annuler, Couper, Copier, Coller, Tout sélectionner."
+            },
+            {
+              "title": "Correcteur orthographique en français",
+              "text": "les mots mal orthographiés proposent des corrections directement dans le menu, avec « Ajouter au dictionnaire ». La navigation au clavier (flèches, Entrée, Échap) est prise en charge."
+            },
+            {
+              "title": "Nouvel installeur",
+              "text": "pages d'accueil et de fin repensées, avec illustration, textes en français uniquement, et une case « Créer un raccourci sur le bureau » sur la page de fin."
+            },
+            {
+              "title": "Lien vers les nouveautés",
+              "text": "la dernière page de l'installeur propose « Voir les nouveautés de la version 1.0.79 »."
+            }
+          ]
+        },
+        {
+          "title": "Améliorations",
+          "items": [
+            {
+              "title": "Remplacement d'un mot corrigé",
+              "text": "cliquer sur une suggestion remplace désormais de façon fiable le mot sélectionné, y compris quand le champ ne le permet pas nativement (méthode de secours)."
+            },
+            {
+              "title": "Désinstalleur",
+              "text": "page « Désinstaller PolyTabs » aux mêmes couleurs, et suppression du raccourci bureau à la désinstallation."
+            },
+            {
+              "title": "Images de l'installeur",
+              "text": "bandeaux latéraux, en-tête et illustration d'accueil refaits avec les icônes de l'application."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "version": "1.0.78",
+    "date": "2026-11-11T16:26:58Z",
+    "download": "https://github.com/statiqk/polytabs-releases/releases/download/v1.0.78/PolyTabs-Setup-1.0.78.exe",
+    "size": 123211487,
+    "htmlUrl": "https://github.com/statiqk/polytabs-releases/releases/tag/v1.0.78",
+    "notes": {
+      "intro": "Menu clic droit aux couleurs de PolyTabs : corrections orthographiques, couper, copier, coller.",
+      "sections": [
+        {
+          "title": "Nouveautés",
+          "items": [
+            {
+              "title": "Menu clic droit sur le texte",
+              "text": "sur un mot souligné en rouge, jusqu'à 5 corrections et « Ajouter au dictionnaire » ; dans un champ de saisie, Annuler, Couper, Copier, Coller et Tout sélectionner ; sur du texte sélectionné, Copier et Tout sélectionner. Il fonctionne dans l'appli et dans les panneaux de site web."
+            },
+            {
+              "title": "Navigation au clavier",
+              "text": "flèches + Entrée pour choisir, Échap (ou un clic à côté) pour fermer."
+            }
+          ]
+        },
+        {
+          "title": "Améliorations",
+          "items": [
+            {
+              "title": "Correcteur orthographique",
+              "text": "réglé en français en priorité."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "version": "1.0.77",
     "date": "2026-11-04T22:00:00Z",
     "download": null,
