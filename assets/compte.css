@@ -1,0 +1,41 @@
+/* PolyTabs — espace membre (connexion, Mon compte, appareils). S'ajoute à site.css, ne le modifie pas. */
+.ac-card { max-width: 440px; margin: 0 auto; padding: 32px 28px; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); display: flex; flex-direction: column; gap: 14px; text-align: center; }
+.ac-logo { align-self: center; width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center; font: 700 26px var(--f-display); color: #fff; background: linear-gradient(135deg, #4f9dff, #8b6bff); }
+.ac-card h1 { font: 700 1.6rem var(--f-display); letter-spacing: -.02em; color: var(--head); }
+.ac-card .sub { color: var(--dim); font-size: .95rem; }
+.ac-lab { display: flex; flex-direction: column; gap: 6px; text-align: left; font-size: .74rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
+.ac-in { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line-2); background: var(--bg); color: var(--text); font: 400 1rem var(--f-body); letter-spacing: 0; text-transform: none; }
+.ac-in:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(79,157,255,.25); }
+.ac-btn { width: 100%; min-height: 46px; border: 0; border-radius: 10px; background: var(--accent); color: #06131f; font: 600 1rem var(--f-body); cursor: pointer; }
+.ac-btn:hover { filter: brightness(1.08); } .ac-btn:disabled { opacity: .55; cursor: default; }
+.ac-btn--ghost { background: transparent; color: var(--text); border: 1px solid var(--line-2); }
+.ac-btn--danger { background: transparent; color: #ff6b66; border: 1px solid rgba(255,107,102,.55); }
+.ac-btn--auto { width: auto; padding: 0 18px; }
+.ac-codes { display: flex; gap: 8px; justify-content: center; }
+.ac-codes input { width: 46px; height: 54px; text-align: center; font: 600 1.5rem var(--f-body); border-radius: 10px; border: 1px solid var(--line-2); background: var(--bg); color: var(--text); padding: 0; }
+.ac-codes input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(79,157,255,.25); }
+.ac-msg { min-height: 1.3em; font-size: .9rem; color: var(--dim); } .ac-msg.bad { color: #ff7d78; } .ac-msg.ok { color: #3ecf8e; }
+.ac-link { background: none; border: 0; padding: 4px 2px; color: var(--accent-soft); font: inherit; font-size: .9rem; cursor: pointer; text-decoration: underline; }
+.ac-fine { font-size: .85rem; color: var(--mute); }
+.ac-layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 32px; align-items: start; }
+.ac-side { display: flex; flex-direction: column; gap: 4px; position: sticky; top: 16px; }
+.ac-tab { text-align: left; padding: 11px 14px; border-radius: 10px; border: 0; background: transparent; color: var(--dim); font: 500 1rem var(--f-body); cursor: pointer; }
+.ac-tab[aria-current="true"] { background: var(--panel-2); color: var(--head); }
+.ac-tab:hover { color: var(--head); }
+.ac-side .ac-out { margin-top: 24px; }
+.ac-main { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.ac-main h1 { font: 700 1.9rem var(--f-display); letter-spacing: -.02em; color: var(--head); }
+.ac-box { padding: 22px; border: 1px solid var(--line); border-radius: 16px; background: var(--panel); display: flex; flex-direction: column; gap: 12px; }
+.ac-box h2 { font: 650 1.05rem var(--f-display); color: var(--head); }
+.ac-mail { font-size: 1.05rem; color: var(--text); overflow-wrap: anywhere; }
+.ac-dev { display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 12px; background: var(--panel-3); border: 1px solid var(--line); flex-wrap: wrap; }
+.ac-dev-tx { flex: 1 1 200px; min-width: 0; } .ac-dev-name { font-weight: 600; color: var(--head); } .ac-dev-sub { font-size: .85rem; color: var(--mute); }
+.ac-pill { padding: 2px 10px; border-radius: 999px; font-size: .8rem; font-weight: 600; background: rgba(62,207,142,.15); color: #3ecf8e; }
+.ac-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.ac-hide[hidden] { display: none !important; }
+@media (max-width: 760px) {
+  .ac-layout { grid-template-columns: 1fr; gap: 18px; }
+  .ac-side { position: static; flex-direction: row; flex-wrap: wrap; gap: 6px; } .ac-side .ac-out { margin: 0 0 0 auto; }
+  .ac-card { padding: 24px 18px; } .ac-codes input { width: 40px; height: 50px; }
+}
+[hidden] { display: none !important; }
