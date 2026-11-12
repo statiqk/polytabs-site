@@ -1,6 +1,7 @@
 /* PolyTabs — espace membre (connexion, Mon compte, appareils). S'ajoute à site.css, ne le modifie pas. */
 .ac-card { max-width: 440px; margin: 0 auto; padding: 32px 28px; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); display: flex; flex-direction: column; gap: 14px; text-align: center; }
-.ac-logo { align-self: center; width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center; font: 700 26px var(--f-display); color: #fff; background: linear-gradient(135deg, #4f9dff, #8b6bff); }
+.ac-logo { align-self: center; width: 72px; height: 72px; border-radius: 18px; overflow: hidden; box-shadow: 0 6px 18px rgba(0,0,0,.35); }
+.ac-logo img { width: 72px; height: 72px; display: block; }
 .ac-card h1 { font: 700 1.6rem var(--f-display); letter-spacing: -.02em; color: var(--head); }
 .ac-card .sub { color: var(--dim); font-size: .95rem; }
 .ac-lab { display: flex; flex-direction: column; gap: 6px; text-align: left; font-size: .74rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }

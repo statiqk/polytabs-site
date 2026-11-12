@@ -36,6 +36,9 @@
   const ago = (iso) => { if (!iso) return 'jamais'; const s = Math.max(0, (Date.now() - Date.parse(iso)) / 1000); if (s < 45) return 'à l’instant'; if (s < 3600) return 'il y a ' + Math.round(s / 60) + ' min'; if (s < 86400) return 'il y a ' + Math.round(s / 3600) + ' h'; return 'il y a ' + Math.round(s / 86400) + ' j'; };
   const validMail = (m) => /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(m);
 
+  // Icône de l'application (la même que le favicon et l'appli)
+  const logo = () => { const d = el('div', 'ac-logo'); const i = el('img'); i.src = 'assets/icon-512.png'; i.alt = 'PolyTabs'; i.width = 72; i.height = 72; d.appendChild(i); return d; };
+
   // ---- champ à 6 chiffres ----
   function codeBoxes(onDone) {
     const box = el('div', 'ac-codes'); const ins = [];
@@ -56,7 +59,7 @@
     const host = $('#ac-root'); let email = '';
     function stepEmail(note) {
       host.textContent = ''; const c = el('div', 'ac-card');
-      c.append(el('div', 'ac-logo', 'P'), el('h1', '', 'Connecte-toi à PolyTabs'), el('p', 'sub', 'Le même compte que dans l’appli. Pas de compte ? Il sera créé automatiquement.'));
+      c.append(logo(), el('h1', '', 'Connecte-toi à PolyTabs'), el('p', 'sub', 'Le même compte que dans l’appli. Pas de compte ? Il sera créé automatiquement.'));
       const lab = el('label', 'ac-lab', 'Adresse e-mail'); const inp = el('input', 'ac-in'); inp.type = 'email'; inp.autocomplete = 'email'; inp.placeholder = 'toi@exemple.fr'; inp.value = email; lab.appendChild(inp);
       const msg = el('div', 'ac-msg', note || ''); msg.setAttribute('role', 'status');
       const go = el('button', 'ac-btn', 'Recevoir un code'); go.type = 'button';
@@ -81,7 +84,7 @@
       const again = el('button', 'ac-link', 'Renvoyer le code'); again.type = 'button'; again.addEventListener('click', async () => { msg.textContent = 'Envoi…'; try { await api('/auth/v1/otp', { method: 'POST', body: { email, create_user: true, data: { app: 'polytabs' } } }); msg.textContent = 'Nouveau code envoyé.'; msg.className = 'ac-msg ok'; } catch (e) { msg.textContent = msgOf(e); msg.className = 'ac-msg bad'; } });
       const chg = el('button', 'ac-link', 'Changer d’adresse'); chg.type = 'button'; chg.addEventListener('click', () => stepEmail());
       const row = el('div', 'ac-row'); row.style.justifyContent = 'center'; row.append(again, chg);
-      c.append(el('div', 'ac-logo', '✉'), el('h1', '', 'Entre le code reçu'), p, cb.box, msg, row, el('p', 'ac-fine', 'Code valable 10 minutes. Rien reçu ? Regarde dans les indésirables.')); host.appendChild(c); cb.focus();
+      c.append(logo(), el('h1', '', 'Entre le code reçu'), p, cb.box, msg, row, el('p', 'ac-fine', 'Code valable 10 minutes. Rien reçu ? Regarde dans les indésirables.')); host.appendChild(c); cb.focus();
     }
     stepEmail();
   }
